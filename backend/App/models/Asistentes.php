@@ -162,11 +162,7 @@ sql;
   public static function getRegistroAccesoByClaveRA($clave){
     $mysqli = Database::getInstance();
     $query=<<<sql
-<<<<<<< HEAD
-    SELECT * FROM registros_acceso ra
-=======
     SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr FROM registros_acceso ra
->>>>>>> 3fe3cb545ccfbb1ccceaad03503f4444de27225d
     INNER JOIN utilerias_asistentes ua
     ON ra.id_registro_acceso = ua.id_registro_acceso
     WHERE ra.clave = '$clave'

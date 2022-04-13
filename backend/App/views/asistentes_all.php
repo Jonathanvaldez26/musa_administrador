@@ -519,7 +519,7 @@
                 $('.next.disabled').addClass("btn-outline-info opacity-5 btn-rounded mx-2");
                 $('.previous').addClass("btn-outline-info btn-rounded mx-2");
                 $('.next').addClass("btn-outline-info btn-rounded mx-2");
-                $('a.btn').addClass("btn-rounded");
+                $('a.bg-gradiente-musa').addClass("btn-rounded");
             },
             "language": {
 
