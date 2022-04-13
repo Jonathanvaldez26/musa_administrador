@@ -11,31 +11,17 @@ class PruebasCovidUsuarios implements Crud{
     public static function getAll(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT pc.id_prueba_covid AS id_c_v, pc.utilerias_asistentes_id, pc.status AS status_prueba, pc.resultado, pc.tipo_prueba,
-            numero_empleado, fecha_carga_documento, tipo_prueba, pc.nota, resultado, email, telefono, documento,  CONCAT(ra.nombre, ' ',ra.segundo_nombre,' ',ra.apellido_paterno,' ',ra.apellido_materno) AS nombre_completo, 
-            b.nombre AS nombre_bu, 
-            p.nombre as nombre_posicion,
+        SELECT pc.id_prueba_covid AS id_c_v, pc.utilerias_asistentes_id, pc.status AS status_prueba, pc.resultado, pc.tipo_prueba, fecha_carga_documento, tipo_prueba, pc.nota, resultado, email, telefono, documento,  CONCAT(ra.nombre, ' ',ra.segundo_nombre,' ',ra.apellido_paterno,' ',ra.apellido_materno) AS nombre_completo,
             lp.nombre AS nombre_linea, 
-            le.nombre as nombre_linea_ejecutivo, 
-            le.color, al.utilerias_administradores_id_linea_asignada as id_ejecutivo_administrador, 
             uad.nombre as nombre_ejecutivo
         FROM prueba_covid pc
         JOIN utilerias_asistentes u
         JOIN registros_acceso ra
-        JOIN bu b
-        JOIN linea_principal lp
-        JOIN posiciones p
-        JOIN linea_ejecutivo le
-        JOIN asigna_linea al
+        JOIN linea_principal lp        
         JOIN utilerias_administradores uad    
         ON pc.utilerias_asistentes_id = u.utilerias_asistentes_id
         and u.id_registro_acceso = ra.id_registro_acceso
-        and b.id_bu = ra.id_bu
-        and lp.id_linea_principal = ra.id_linea_principal
-        and p.id_posicion = ra.id_posicion
-        and le.id_linea_ejecutivo = lp.id_linea_ejecutivo
-        and al.id_linea_ejecutivo = le.id_linea_ejecutivo
-        and uad.utilerias_administradores_id = al.utilerias_administradores_id_linea_asignada;
+        and lp.id_linea_principal = ra.especialidad
 sql;
 
         return $mysqli->queryAll($query);

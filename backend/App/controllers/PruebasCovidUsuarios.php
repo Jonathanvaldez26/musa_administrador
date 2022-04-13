@@ -45,12 +45,12 @@ html;
 
     $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
       
-      if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
         $pruebas = PruebasCovidUsuariosDao::getAll();
-      }else{
-        $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
-        $pruebas = PruebasCovidUsuariosDao::getComprobatesByLinea($id_linea['id_linea_ejecutivo']);
-      }
+      // }else{
+      //   $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+      //   $pruebas = PruebasCovidUsuariosDao::getComprobatesByLinea($id_linea['id_linea_ejecutivo']);
+      // }
       // $pruebas = PruebasCovidUsuariosDao::getAll();
       //$id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
       //var_dump( $id_linea);
@@ -70,9 +70,9 @@ html;
               </td>
               <td>
                 <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>  {$value['nombre_completo']}</h6>
-                <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>
+               <!-- <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p> -->
                   <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
-                  <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>
+                  <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>-->
 
                 <hr>
 
@@ -125,22 +125,22 @@ html;
                               <span> <b>Nombre:</b> {$value['nombre_completo']}</span>
                               <span class="badge badge-danger">Rechazado</span>
                             </div>
-                            <div class="mb-2">
+                            <!--<div class="mb-2">
                               <h6 class="fas fa-address-card"> </h6>
                               <span> <b>Número de empleado:</b> {$value['numero_empleado']}</span>
                             </div>
                             <div class="mb-2">
                               <h6 class="fas fa-business-time"> </h6>
                               <span> <b>Bu:</b> {$value['nombre_bu']}</span>
-                            </div>
+                            </div>-->
                             <div class="mb-2">
                               <h6 class="fas fa-pills"> </h6>
                               <span> <b>Línea:</b> {$value['nombre_linea']}</span>
                             </div>
-                            <div class="mb-2">
+                            <!--<div class="mb-2">
                               <h6 class="fas fa-hospital"> </h6>
                               <span> <b>Posición:</b> {$value['nombre_posicion']}</span>
-                            </div>
+                            </div>-->
                             <div class="mb-2">
                               <h6 class="fa fa-mail-bulk"> </h6>
                               <span> <b>Correo Electrónico:</b> <u><a href="mailto:{$value['email']}">{$value['email']}</a></u></span>
@@ -239,9 +239,9 @@ html;
                 </td>
                 <td>
                   <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>  {$value['nombre_completo']}</h6>
-                  <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>
+                  <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p> -->
                     <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>
+                    <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>-->
 
                   <hr>
 
@@ -293,22 +293,22 @@ html;
                                   <span> <b>Nombre:</b> {$value['nombre_completo']}</span>
                                   <span class="badge badge-success">Aprobado</span>
                                 </div>
-                                <div class="mb-2">
+                                <!--<div class="mb-2">
                                   <h6 class="fas fa-address-card"> </h6>
                                   <span> <b>Número de empleado:</b> {$value['numero_empleado']}</span>
                                 </div>
                                 <div class="mb-2">
                                   <h6 class="fas fa-business-time"> </h6>
                                   <span> <b>Bu:</b> {$value['nombre_bu']}</span>
-                                </div>
+                                </div> -->
                                 <div class="mb-2">
                                   <h6 class="fas fa-pills"> </h6>
                                   <span> <b>Línea:</b> {$value['nombre_linea']}</span>
                                 </div>
-                                <div class="mb-2">
+                                <!--<div class="mb-2">
                                   <h6 class="fas fa-hospital"> </h6>
                                   <span> <b>Posición:</b> {$value['nombre_posicion']}</span>
-                                </div>
+                                </div>-->
                                 <div class="mb-2">
                                   <h6 class="fa fa-mail-bulk"> </h6>
                                   <span> <b>Correo Electrónico:</b> <u><a href="mailto:{$value['email']}">{$value['email']}</a></u></span>
@@ -407,9 +407,9 @@ html;
                 </td>
                 <td>
                   <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>  {$value['nombre_completo']}</h6>
-                  <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>
+                  <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>-->
                     <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>
+                   <!-- <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p> -->
 
                   <hr>
 
@@ -461,22 +461,22 @@ html;
                                   <span> <b>Nombre:</b> {$value['nombre_completo']}</span>
                                   <span class="badge badge-warning">Pendiente</span>
                                 </div>
-                                <div class="mb-2">
+                                <!--<div class="mb-2">
                                   <h6 class="fas fa-address-card"> </h6>
                                   <span> <b>Número de empleado:</b> {$value['numero_empleado']}</span>
                                 </div>
                                 <div class="mb-2">
                                   <h6 class="fas fa-business-time"> </h6>
                                   <span> <b>Bu:</b> {$value['nombre_bu']}</span>
-                                </div>
+                                </div>-->
                                 <div class="mb-2">
                                   <h6 class="fas fa-pills"> </h6>
                                   <span> <b>Línea:</b> {$value['nombre_linea']}</span>
                                 </div>
-                                <div class="mb-2">
+                                <!--<div class="mb-2">
                                   <h6 class="fas fa-hospital"> </h6>
                                   <span> <b>Posición:</b> {$value['nombre_posicion']}</span>
-                                </div>
+                                </div> -->
                                 <div class="mb-2">
                                   <h6 class="fa fa-mail-bulk"> </h6>
                                   <span> <b>Correo Electrónico:</b> <u><a href="mailto:{$value['email']}">{$value['email']}</a></u></span>
@@ -977,15 +977,15 @@ html;
     </script>
 html;
 
-      $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+     // $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
 
       //-----------------------------//
-      if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
         $pruebas_validos = PruebasCovidUsuariosDao::contarPruebasValidos();
-      }
-      else{
-        $pruebas_validos = PruebasCovidUsuariosDao::contarPruebasValidosByLine($id_linea['id_linea_ejecutivo']);
-      }
+      // }
+      // else{
+      //   $pruebas_validos = PruebasCovidUsuariosDao::contarPruebasValidosByLine($id_linea['id_linea_ejecutivo']);
+      // }
       foreach ($pruebas_validos[0] as $key => $value) {
         $numero_validos = $value;
       }
@@ -993,11 +993,11 @@ html;
 
 
       //-----------------------------//
-      if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
         $asistentes_total = PruebasCovidUsuariosDao::contarAsistentes();
-      }else{
-        $asistentes_total = PruebasCovidUsuariosDao::contarAsistentesByLine($id_linea['id_linea_ejecutivo']);
-      }
+      // }else{
+        // $asistentes_total = PruebasCovidUsuariosDao::contarAsistentesByLine($id_linea['id_linea_ejecutivo']);
+      // }
 
       foreach ($asistentes_total[0] as $key => $value) {
         $numero_asistentes = $value;
@@ -1006,11 +1006,11 @@ html;
 
 
       //-----------------------------//
-      if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
         $pruebas_total = PruebasCovidUsuariosDao::contarPruebasTotales();
-      }else{
-        $pruebas_total = PruebasCovidUsuariosDao::contarPruebasTotalesByLine($id_linea['id_linea_ejecutivo']);
-      }
+      // }else{
+      //   $pruebas_total = PruebasCovidUsuariosDao::contarPruebasTotalesByLine($id_linea['id_linea_ejecutivo']);
+      // }
 
       foreach ($pruebas_total[0] as $key => $value) {
         $numero_pruebas = $value;
@@ -1019,11 +1019,11 @@ html;
 
 
       //-----------------------------//
-      if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
         $pruebas_sin_revisar = PruebasCovidUsuariosDao::contarPruebasPorRevisar();
-      }else{
-        $pruebas_sin_revisar = PruebasCovidUsuariosDao::contarPruebasPorRevisarByLine($id_linea['id_linea_ejecutivo']);
-      }
+      // }else{
+      //   $pruebas_sin_revisar = PruebasCovidUsuariosDao::contarPruebasPorRevisarByLine($id_linea['id_linea_ejecutivo']);
+      // }
       foreach ($pruebas_sin_revisar[0] as $key => $value) {
         $numero_sin_revisar = $value;
       }
@@ -1115,7 +1115,7 @@ html;
         $nota = $prueba['nota'];
 
         $id = PruebasCovidUsuariosDao::rechazar($documento);
-        PruebasCovidUsuariosDao::insertLog($ua_id,$fecha_carga_doc,$fecha_prueba_covid,$tipo_prueba,$documento_prueba,$nota);
+        // PruebasCovidUsuariosDao::insertLog($ua_id,$fecha_carga_doc,$fecha_prueba_covid,$tipo_prueba,$documento_prueba,$nota);
 
         if($id){
             echo "success";
