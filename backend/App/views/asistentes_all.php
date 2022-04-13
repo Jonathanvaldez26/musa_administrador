@@ -29,51 +29,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a data-bs-toggle="collapse" onclick="catalogos()" href="#catalogos" class="nav-link " aria-controls="catalogos" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-sitemap" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Catálogos</span>
-                    </a>
-                    <div class="collapse " id="catalogos" hidden>
-                        <ul class="nav ms-4 ps-3">
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Bu/">
-                                    <span class="sidenav-mini-icon"> B </span>
-                                    <span class="sidenav-normal">Bu Asofarma</span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Lineas/">
-                                    <span class="sidenav-mini-icon"> L </span>
-                                    <span class="sidenav-normal">Lineas Asofarma</span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Posiciones/">
-                                    <span class="sidenav-mini-icon"> P </span>
-                                    <span class="sidenav-normal"> Posiciones Asofarma </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Restaurantes/">
-                                    <span class="sidenav-mini-icon"> R </span>
-                                    <span class="sidenav-normal"> Restaurates </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <hr class="horizontal dark" />
-                            </li>
-                            <!-- <li class="nav-item ">
-                            <a class="nav-link " href="/Restaurantes/">
-                                <span class="sidenav-mini-icon"> E </span>
-                                <span class="sidenav-normal"> Restaurates </span>
-                            </a>
-                        </li> -->
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item">
                     <a href="/Asistentes/" class="nav-link active" aria-controls="applicationsExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-users" style="color: white"></span>
@@ -347,24 +302,13 @@
                         <div class="col-auto my-auto">
                             <div class="h-100">
                                 <h5 class="mb-1">
-                                    Asistentes ASOFARMA (Invitados)
+                                    Invitados MUSA
                                 </h5>
                                 <p class="mb-0 font-weight-bold text-sm">
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6 my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                            <div class="nav-wrapper position-relative end-0">
-                                <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link mb-0 px-0 py-1 active" href="#Invitados" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
-                                            <span class="fa fa-door-open"></span>
-                                            <span class="ms-1">Acceso Invitados</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
             </div>
@@ -376,12 +320,7 @@
 
                         <div class="card-header pb-0">
                             <div class="d-lg-flex">
-                                <div>
-                                    <p class="text-sm mb-0">
-                                        En esta sección se podran visualizar todos los usuarios que han finalizado su registro, si usted desea ver quienes no han terminado el registro dirijasé a la pestaña nuevos accesos
-                                    </p>
-
-                                </div>
+                               
                                
                                 <div class="ms-auto my-auto mt-lg-0 mt-4">
                                     <div class="ms-auto my-auto">
@@ -415,15 +354,17 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-3 col-sm-12">
+                                <div class="col-md-12 col-sm-12">
                                 <div>
-                                    <form class="form-inline my-2 my-lg-0" action="/Asistentes/buscarUsuario" method="post" style="display:flex;">
+                                    <form class="form-inline my-2 my-lg-0" action="/Asistentes/Usuario" method="post" style="display:flex;">
                                         <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                                        <button class="btn btn-success my-2 my-sm-0" type="submit" style="display: none;">Search</button>
                                     </form>
                                 </div>
                                 </div>
                             </div>
+
+                            <hr>
                             
                         </div>
                         <div class="card-body px-0 pb-0">
