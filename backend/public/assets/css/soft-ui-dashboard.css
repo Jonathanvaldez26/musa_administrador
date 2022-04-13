@@ -10,7 +10,7 @@
   --bs-blue: #63B3ED;
   --bs-indigo: #596CFF;
   --bs-purple: #6f42c1;
-  --bs-pink: #d63384;
+  --bs-pink: rgb(255, 198, 227);
   --bs-red: #F56565;
   --bs-orange: #fd7e14;
   --bs-yellow: #FBD38D;
@@ -10373,7 +10373,7 @@ fieldset:disabled .btn {
 }
 
 .bg-gradient-pink-white {
-  background-image: linear-gradient(0deg, pink, white 75%);
+  background-image: linear-gradient(0deg, pink, #f7e1ebcc 75%);
 }
 
 .bg-gradient-red {
