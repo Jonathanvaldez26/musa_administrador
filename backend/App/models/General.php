@@ -61,7 +61,6 @@ sql;
     SELECT ra.nombre, uasis.usuario, tv.clave
     FROM registros_acceso ra
     INNER JOIN utilerias_asistentes uasis ON (ra.id_registro_acceso = uasis.id_registro_acceso)
-    LEFT JOIN ticket_virtual tv ON(ra.id_ticket_virtual = tv.id_ticket_virtual)
     WHERE uasis.utilerias_asistentes_id = $id
 sql;
 

@@ -151,11 +151,9 @@ sql;
     public static function getRegistroAccesoById($id){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT ra.*, tv.clave AS clave_ticket, tv.qr FROM registros_acceso ra
+      SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr  FROM registros_acceso ra
       INNER JOIN utilerias_asistentes ua
       ON ra.id_registro_acceso = ua.id_registro_acceso
-      INNER JOIN ticket_virtual tv
-      ON tv.id_ticket_virtual = ra.id_ticket_virtual
       WHERE utilerias_asistentes_id = $id
 sql;
       return $mysqli->queryAll($query);
@@ -164,7 +162,11 @@ sql;
   public static function getRegistroAccesoByClaveRA($clave){
     $mysqli = Database::getInstance();
     $query=<<<sql
+<<<<<<< HEAD
     SELECT * FROM registros_acceso ra
+=======
+    SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr FROM registros_acceso ra
+>>>>>>> 3fe3cb545ccfbb1ccceaad03503f4444de27225d
     INNER JOIN utilerias_asistentes ua
     ON ra.id_registro_acceso = ua.id_registro_acceso
     WHERE ra.clave = '$clave'
@@ -290,6 +292,15 @@ sql;
       return $mysqli->update($query);
     }
 
+    public static function updateTicketVirtualRA($id,$clave){
+      $mysqli = Database::getInstance(true);
+      $query=<<<sql
+      UPDATE registros_acceso SET ticket_virtual = '$clave' WHERE id_registro_acceso = '$id'
+sql;
+
+      return $mysqli->update($query);
+    }
+
     public static function getIdTicket($clave){
       $mysqli = Database::getInstance();
       $query=<<<sql
@@ -309,9 +320,7 @@ sql;
     public static function getClaveByEmail($email){
       $mysqli = Database::getInstance();
       $query=<<<sql
-      SELECT ra.*, tv.clave AS clave_ticket FROM registros_acceso ra
-      INNER JOIN ticket_virtual tv
-      ON tv.id_ticket_virtual = ra.id_ticket_virtual
+      SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr FROM registros_acceso ra
       WHERE email = '$email';
 sql;
       return $mysqli->queryAll($query);

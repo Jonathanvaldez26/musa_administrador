@@ -359,7 +359,7 @@
                                     <form class="form-inline my-2 my-lg-0" action="/Asistentes/Usuario" method="post">
                                         <div class="row">
                                             <div class="col-12 col-md-12">
-                                                <input class="form-control mr-sm-2" style="font-size: 35px;" autofocus type="search" id="search" name="search" placeholder="Buscar" aria-label="Search">
+                                                <input class="form-control mr-sm-2" style="font-size: 35px;" autofocus type="search" id="search" name="search" placeholder="Ej. Adrian Segura Becerra - XaS6cr" aria-label="Search">
                                             </div>
                                             <div class="col-12 col-md-12 mt-md-2">
                                                 <button class="btn max-btn-lg bg-gradient-pink-white text-gray my-2 my-sm-0" type="submit">Buscar</button>
