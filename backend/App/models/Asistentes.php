@@ -164,11 +164,9 @@ sql;
   public static function getRegistroAccesoByClaveRA($clave){
     $mysqli = Database::getInstance();
     $query=<<<sql
-    SELECT ra.*, tv.clave AS clave_ticket, tv.qr FROM registros_acceso ra
+    SELECT * FROM registros_acceso ra
     INNER JOIN utilerias_asistentes ua
     ON ra.id_registro_acceso = ua.id_registro_acceso
-    INNER JOIN ticket_virtual tv
-    ON tv.id_ticket_virtual = ra.id_ticket_virtual
     WHERE ra.clave = '$clave'
 sql;
     return $mysqli->queryAll($query);
