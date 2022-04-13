@@ -73,9 +73,21 @@ class Asistentes extends Controller
 
         //tab faltantes
         // View::set('tabla_faltantes', $this->getAsistentesFaltantes());
+
+        $all_ra = AsistentesDao::getAllRegistrosAcceso();
+        $this->setTicketVirtual($all_ra);
         
         View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));        
         View::render("asistentes_all");
+    }
+
+    public function setTicketVirtual($asistentes){
+        foreach ($asistentes as $key => $value) {
+            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+                $clave_10 = $this->generateRandomString(6);
+                AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_10);
+            }
+        }
     }
 
     public function Detalles($id)
