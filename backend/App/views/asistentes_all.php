@@ -8,7 +8,7 @@
             <a class="navbar-brand m-0" href="/Principal/" target="_blank">
                 <img src="/assets/img/favicon.png" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold"></span>
-                <p style="margin-top: 15px;"><span class="fa fa-user" style="color: #344767"></span> <?php echo $_SESSION['nombre']; ?></p>
+                <p style="margin-top: 15px;"><span class="fa fa-user morado-musa-text"></span> <?php echo $_SESSION['nombre']; ?></p>
             </a>
 
 
@@ -21,7 +21,7 @@
                 <li class="nav-item">
                     <a href="/Principal/" role="button" class="nav-link" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-home" style="color: #344767"></span>
+                            <span class="fa fa-home morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Principal</span>
                     </a>
@@ -39,7 +39,7 @@
                 <li class="nav-item">
                     <a href="/Vuelos/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-plane" style="color: #344767"></span>
+                            <span class="fa fa-plane morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Vuelos</span>
                     </a>
@@ -47,7 +47,7 @@
                 <li class="nav-item">
                     <a href="/PickUp/" class="nav-link " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-bus" style="color: #344767"></span>
+                            <span class="fa fa-bus morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">PickUp</span>
                     </a>
@@ -55,7 +55,7 @@
                 <li class="nav-item">
                     <a href="/Habitaciones/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-shield-virus" style="color: #344767"></span>
+                            <span class="fa fa-shield-virus morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Habitaciones</span>
                     </a>
@@ -63,7 +63,7 @@
                 <li class="nav-item">
                     <a href="/Cenas/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-coffee" style="color: #344767"></span>
+                            <span class="fa fa-coffee morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Cenas</span>
                     </a>
@@ -71,7 +71,7 @@
                 <li class="nav-item">
                     <a href="/Asistencias/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-bell" style="color: #344767"></span>
+                            <span class="fa fa-bell morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Asistencias</span>
                     </a>
@@ -83,7 +83,7 @@
                 <li class="nav-item">
                     <a href="/ComprobantesVacunacion/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-shield-virus" style="color: #344767"></span>
+                            <span class="fa fa-shield-virus morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Comprobante Vacunación</span>
                     </a>
@@ -91,7 +91,7 @@
                 <li class="nav-item">
                     <a href="/PruebasCovidUsuarios/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-virus-slash" style="color: #344767"></span>
+                            <span class="fa fa-virus-slash morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Pruebas Covid Usuarios</span>
                     </a>
@@ -104,7 +104,7 @@
                 <li class="nav-item">
                     <a href="/Configuracion/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-tools" style="color: #344767"></span>
+                            <span class="fa fa-tools morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Configuración</span>
                     </a>
@@ -112,7 +112,7 @@
                 <li class="nav-item">
                     <a data-bs-toggle="collapse" onclick="utilerias()" href="#utilerias" class="nav-link " aria-controls="utilerias" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-user-circle-o" style="color: #344767"></span>
+                            <span class="fa fa-user-circle-o morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Utilerias</span>
                     </a>
@@ -294,7 +294,7 @@
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
                         <div class="col-auto">
-                            <div class="bg-gradient-red avatar avatar-xl position-relative">
+                            <div class="bg-gradient-musa avatar avatar-xl position-relative">
                                 <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
                                 <span class="fa fa-users" style="font-size: xx-large;"></span>
                             </div>
@@ -356,9 +356,16 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12">
                                 <div>
-                                    <form class="form-inline my-2 my-lg-0" action="/Asistentes/Usuario" method="post" style="display:flex;">
-                                        <input class="form-control mr-sm-2" type="search" id="search" name="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-success my-2 my-sm-0" type="submit" style="display: none;">Search</button>
+                                    <form class="form-inline my-2 my-lg-0" action="/Asistentes/Usuario" method="post">
+                                        <div class="row">
+                                            <div class="col-12 col-md-12">
+                                                <input class="form-control mr-sm-2" style="font-size: 35px;" autofocus type="search" id="search" name="search" placeholder="Buscar" aria-label="Search">
+                                            </div>
+                                            <div class="col-12 col-md-12 mt-md-2">
+                                                <button class="btn max-btn-lg bg-gradient-pink-white text-gray my-2 my-sm-0" type="submit">Buscar</button>
+                                            </div>
+                                        </div>
+                                       
                                     </form>
                                 </div>
                                 </div>
@@ -501,17 +508,17 @@
     $(document).ready(function() {
         $('#user_list_table').DataTable({
             "drawCallback": function(settings) {
-                $('.current').addClass("btn bg-gradient-danger btn-rounded").removeClass("paginate_button");
+                $('.current').addClass("btn bg-gradient-musa morado-musa-text btn-rounded").removeClass("paginate_button");
                 $('.paginate_button').addClass("btn").removeClass("paginate_button");
                 $('.dataTables_length').addClass("m-4");
                 $('.dataTables_info').addClass("mx-4");
                 $('.dataTables_filter').addClass("m-4");
                 $('input').addClass("form-control");
                 $('select').addClass("form-control");
-                $('.previous.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
-                $('.next.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
-                $('.previous').addClass("btn-outline-danger btn-rounded mx-2");
-                $('.next').addClass("btn-outline-danger btn-rounded mx-2");
+                $('.previous.disabled').addClass("btn-outline-info opacity-5 btn-rounded mx-2");
+                $('.next.disabled').addClass("btn-outline-info opacity-5 btn-rounded mx-2");
+                $('.previous').addClass("btn-outline-info btn-rounded mx-2");
+                $('.next').addClass("btn-outline-info btn-rounded mx-2");
                 $('a.btn').addClass("btn-rounded");
             },
             "language": {
@@ -544,17 +551,17 @@
 
         $('#user_list_table_faltante').DataTable({
             "drawCallback": function(settings) {
-                $('.current').addClass("btn bg-gradient-danger btn-rounded").removeClass("paginate_button");
+                $('.current').addClass("btn bg-gradient-musa morado-musa-text btn-rounded").removeClass("paginate_button");
                 $('.paginate_button').addClass("btn").removeClass("paginate_button");
                 $('.dataTables_length').addClass("m-4");
                 $('.dataTables_info').addClass("mx-4");
                 $('.dataTables_filter').addClass("m-4");
                 $('input').addClass("form-control");
                 $('select').addClass("form-control");
-                $('.previous.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
-                $('.next.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
-                $('.previous').addClass("btn-outline-danger btn-rounded mx-2");
-                $('.next').addClass("btn-outline-danger btn-rounded mx-2");
+                $('.previous.disabled').addClass("btn-outline-info opacity-5 btn-rounded mx-2");
+                $('.next.disabled').addClass("btn-outline-info opacity-5 btn-rounded mx-2");
+                $('.previous').addClass("btn-outline-info btn-rounded mx-2");
+                $('.next').addClass("btn-outline-info btn-rounded mx-2");
                 $('a.btn').addClass("btn-rounded");
             },
             "language": {

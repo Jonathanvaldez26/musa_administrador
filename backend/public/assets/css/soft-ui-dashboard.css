@@ -10368,8 +10368,32 @@ fieldset:disabled .btn {
   background-image: var(--bs-gradient) !important;
 }
 
+.bg-gradient-musa {
+  background-image: linear-gradient(0deg, turquoise, pink 75%);
+}
+
+.bg-gradient-pink-white {
+  background-image: linear-gradient(0deg, pink, white 75%);
+}
+
 .bg-gradient-red {
   background-image: linear-gradient(310deg, #ff0032 0%, #b10303 100%);
+}
+
+.morado-musa-text{
+  color: rgb(98 56 246);
+}
+
+.bg-musa-morado{
+  background-color: rgb(98 56 246);
+}
+
+.bg-pink{
+  background-color: pink;
+}
+
+.bg-turquoise{
+  background-color: turquoise;
 }
 
 .user-select-all {
@@ -22856,7 +22880,8 @@ z-index: 9999;
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon {
-  background-image: linear-gradient(310deg, #ff0032 0%, #b10303 100%);
+  /* background-image: linear-gradient(310deg, #ff0032 0%, #b10303 100%); */
+  background-image: linear-gradient(0deg, turquoise, pink 75%);
 }
 
 .navbar-vertical .navbar-nav>.nav-item .nav-link.active .icon svg .color-background,
@@ -36943,3 +36968,14 @@ table.dataTable.no-footer {
   max-height: 25rem;
 }
 /*# sourceMappingURL=dashboard-pro.css.map */
+
+.max-btn{
+  width: 100%;
+  max-width: -webkit-fill-available;
+}
+
+.max-btn-lg{
+  width: 100%;
+  max-width: -webkit-fill-available;
+  font-size: x-large;
+}
