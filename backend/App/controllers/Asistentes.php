@@ -76,6 +76,7 @@ class Asistentes extends Controller
 
         $all_ra = AsistentesDao::getAllRegistrosAcceso();
         $this->setTicketVirtual($all_ra);
+        $this->setClaveRA($all_ra);
         
         View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));        
         View::render("asistentes_all");
@@ -86,6 +87,15 @@ class Asistentes extends Controller
             if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
                 $clave_10 = $this->generateRandomString(6);
                 AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_10);
+            }
+        }
+    }
+
+    public function setClaveRA($all_ra){
+        foreach ($all_ra as $key => $value) {
+            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+                $clave_10 = $this->generateRandomString(10);
+                AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
             }
         }
     }
