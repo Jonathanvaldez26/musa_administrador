@@ -146,7 +146,7 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">Configuración</span>
                     </a>
                 </li>
-                <li id="utilerias" class="nav-item" {$utileriasHidden};>
+                <li id="util" class="nav-item" {$utileriasHidden};>
                     <a data-bs-toggle="collapse" onclick="utilerias()" href="#utilerias" class="nav-link " aria-controls="utilerias" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-user-circle-o morado-musa-text"></span>
@@ -157,7 +157,7 @@ class Contenedor extends Controller{
                         <ul class="nav ms-4 ps-3">
                             <li id="administradores" class="nav-item ">
                                 <a class="nav-link " href="/Administradores/">
-                                    <span class="sidenav-mini-icon"> E </span>
+                                    <span class="sidenav-mini-icon"> A </span>
                                     <span class="sidenav-normal">Administradores</span>
                                 </a>
                             </li>
@@ -229,11 +229,9 @@ html;
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
-            <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-            <title>
-               GRUPO LAHE
-            </title>
+            <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Musa0-01.png">
+            <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">
+            
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
             <!-- Nucleo Icons -->
             <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -324,7 +322,7 @@ html;
         <!-- jQuery -->
 
           <script>
-            function catalogos(params) {
+            function catalogos() {
                 var catalogo = document.getElementById("catalogos");
 
                 if (catalogo.hasAttribute('hidden')) {
@@ -334,7 +332,7 @@ html;
                 }
             }
 
-            function utilerias(params) {
+            function utilerias() {
                 var utileria = document.getElementById("utilerias");
 
                 if (utileria.hasAttribute('hidden')) {

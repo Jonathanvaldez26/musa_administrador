@@ -1,5 +1,7 @@
 <?php echo $header; ?>
-
+<title>
+    Habitaciones - MUSA - GRUPO LAHE
+</title>
 <body class="g-sidenav-show  bg-gray-100">
     <?php echo $asideMenu;?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">

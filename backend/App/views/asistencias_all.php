@@ -1,5 +1,7 @@
 <?php echo $header; ?>
-
+<title>
+    Asistencias - MUSA - GRUPO LAHE
+</title>
 <body class="g-sidenav-show  bg-gray-100">
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
         <div class="sidenav-header" style="margin-bottom: 30px;">
@@ -353,7 +355,7 @@
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
                         <div class="col-auto">
-                            <div class="bg-gradient-red avatar avatar-xl position-relative">
+                            <div class="bg-gradient-musa avatar avatar-xl position-relative">
                                 <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
                                 <span class="fa fa-bell" style="font-size: xx-large;"></span>
                             </div>
@@ -422,8 +424,8 @@
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fecha Asistencia</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hora inicio</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Hora fin</th>
-                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_directivos</th>
-                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_staf</th>
+                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">URL</th>
+                                                        <!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_staf</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_neurociencias</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_kaes_osteo</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_cardio</th>
@@ -433,7 +435,7 @@
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_medicina_general</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_ole</th>
                                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_analgesia</th>
-                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_checkin</th>
+                                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">url_checkin</th> -->
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -452,7 +454,7 @@
 
         </div>
 
-        <!-- Modal asignar habitacion-->
+        <!-- Modal Agregar Asistencia-->
         <div class="modal fade" id="Modal_Add" role="dialog" aria-labelledby="asignar_habitacionLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -498,7 +500,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
+                                <!-- <div class="row mb-3">
                                     <label class="form-label">Es CheckIn *</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="checkin" id="checkin_si" value="1">
@@ -536,7 +538,7 @@
                                             <?php echo $lineas; ?>
                                         </select>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <!-- <div class="row mb-3">
                                     <label class="form-label">¿De que línea es la plenaria? *</label>

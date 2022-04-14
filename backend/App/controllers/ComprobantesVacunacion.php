@@ -1002,9 +1002,7 @@ html;
      View::set('vacunacionHidden', $vacunacionHidden);
      View::set('pruebasHidden', $pruebasHidden);
      View::set('configuracionHidden', $configuracionHidden);
-     View::set('utileriasHidden', $utileriasHidden);
-   
-     
+     View::set('utileriasHidden', $utileriasHidden);     
 
     View::set('comprobantes',$comprobantes);
     View::set('numero_sin_revisar',$numero_sin_revisar);
@@ -1014,6 +1012,7 @@ html;
     View::set('tabla',$tabla);
     View::set('tabla_no_v',$tabla_no_v);
     View::set('tabla_rechazados',$tabla_rechazados);
+    View::set('asideMenu',$this->_contenedor->asideMenu());
     View::set('header',$this->_contenedor->header($extraHeader));
     View::set('footer',$this->_contenedor->footer($extraFooter));
     View::render("comprobantesvacunacion_all");

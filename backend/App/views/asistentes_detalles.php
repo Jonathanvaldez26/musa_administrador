@@ -1,5 +1,10 @@
 <?php echo $header; ?>
-
+<title>
+    Asistentes Detalles - <?php echo $detalles_registro['nombre'] . ' ';
+                                                                                                        echo $detalles_registro['segundo_nombre'] . ' ';
+                                                                                                        echo $detalles_registro['apellido_paterno'] . ' ';
+                                                                                                        echo $detalles_registro['apellido_materno']; ?> - MUSA - GRUPO LAHE
+</title>
 <body class="g-sidenav-show  bg-gray-100">
     <?php echo $asideMenu;?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
