@@ -28,8 +28,8 @@ class RegistroAsistencia
         $extraHeader = <<<html
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
-        <link rel="icon" type="image/png" href="/assets/img/favicon.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Musa0-01.png">
+        <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">
         <title>
             Asistencia CONAVE Convención 2022 ASOFARMA
         </title>
@@ -182,33 +182,15 @@ html;
         echo json_encode($delete_registrado);
     }
 
-    public function registroAsistencia($clave, $code)
-    {
-
-        var_dump($clave);
-        exit;
-
-        $clave_habitacion = '';
-        $id_asigna_habitacion = '';
-
+    public function registroAsistencia($clave, $code){
+        
         $user_clave = RegistroAsistenciaDao::getInfo($clave)[0];
-        $existe_user = RegistroCheckInDao::getInfo($clave);
-        $linea_principal = RegistroAsistenciaDao::getLineaPrincipial();
-        $bu = RegistroAsistenciaDao::getBu();
-        $posiciones = RegistroAsistenciaDao::getPosiciones();
+        $especialidades = RegistroAsistenciaDao::getEspecialidades();
         $asistencia = RegistroAsistenciaDao::getIdRegistrosAsistenciasByCode($code)[0];
-
-        $habitaciones = HabitacionesDao::getAsignaHabitacionByIdRegAcceso($user_clave['id_registro_acceso'])[0];
-        if ($habitaciones) {
-            $clave_habitacion = $habitaciones['clave'];
-            $id_asigna_habitacion = $habitaciones['id_asigna_habitacion'];
-            $numero_habitacion = $habitaciones['id_habitacion'];
-        }
-
 
         $fecha = new DateTime('now', new DateTimeZone('America/Cancun'));
         $hora_actual = substr($fecha->format(DATE_RFC822), 15, 5);
-        // $a_tiempo = '';
+        $a_tiempo = '';
 
         if (
             intval(substr($hora_actual, 0, 2)) > intval(substr($asistencia['hora_asistencia_inicio'], 0, 2))
@@ -232,10 +214,6 @@ html;
             $a_tiempo = 2;
             $aqui = 4;
         }
-        // || substr($hora_actual,0,2) > substr($asistencia['hora_asistencia_fin'],0,2)
-
-
-        if ($existe_user) {
             if ($user_clave) {
                 $hay_asistente = RegistroAsistenciaDao::findAsistantById($user_clave['utilerias_asistentes_id'], $asistencia['id_asistencia'])[0];
                 if ($hay_asistente) {
@@ -247,9 +225,7 @@ html;
     
                 $data = [
                     'datos' => $user_clave,
-                    'linea_principal' => $linea_principal,
-                    'bu' => $bu,
-                    'posiciones' => $posiciones,
+                    'especialidades' => $especialidades,
                     'status' => 'success',
                     'msg_insert' => $msg_insert,
                     'hay_asistente' => $hay_asistente,
@@ -259,25 +235,17 @@ html;
                     'aqui' => $aqui,
                     'hora_actual' => intval(substr($hora_actual, 0, 2)),
                     'hora_fin' => intval(substr($asistencia['hora_asistencia_fin'], 0, 2)),
-                    'clave_habitacion' => $clave_habitacion,
-                    'id_asigna_habitacion' => $id_asigna_habitacion,
-                    'numero_habitacion' => $numero_habitacion
                 ];
             } else {
                 $data = [
                     'status' => 'fail'
                 ];
             }
-        } else {
-            $data = [
-                'datos'=>$user_clave,
-                'linea'=>$linea,    
-                'status'=>'fail_user'
-            ];
-        }
 
         echo json_encode($data);
     }
+
+
 
     public function registroAsistenciaCheckin($clave, $code)
     {

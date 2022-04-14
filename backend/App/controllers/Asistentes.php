@@ -38,29 +38,7 @@ class Asistentes extends Controller
     public function index()
     {
 
-
-        //$user = GeneralDao::getDatosUsuarioLogeado($this->__usuario);
-        //$asistentes = GeneralDao::getAllColaboradores();
-        //$filtros = "";
-        //if ($_POST != "")
-            //$filtros = $this->getFiltro($post);
-
-            ///////////////////////////////////////////////////////
-            // var_dump($user);
-            // var_dump($asistentes);
-
-            //$all_ra = AsistentesDao::getAllRegistrosAcceso();
-
-        // foreach ($all_ra as $key => $value) {
-        //     if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
-        //         $clave_10 = $this->generateRandomString(10);
-        //         AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
-        //     }
-        // }
-
-        //tab faltantes
-
-
+        View::set('asideMenu',$this->_contenedor->asideMenu());
         // View::set('tabla_faltantes', $this->getAsistentesFaltantes());
         // View::set('tabla', $this->getAllColaboradoresAsignados());
         View::render("asistentes_all");
@@ -78,7 +56,8 @@ class Asistentes extends Controller
         $this->setTicketVirtual($all_ra);
         $this->setClaveRA($all_ra);
         
-        View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));        
+        View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));
+        View::set('asideMenu',$this->_contenedor->asideMenu());    
         View::render("asistentes_all");
     }
 
@@ -104,9 +83,7 @@ class Asistentes extends Controller
     {
 
         $extraHeader = <<<html
-        <title>
-            Detalles Asistentes - GRUPO LAHE
-        </title>
+
 
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link href="Content/jquery.Jcrop.css" rel="stylesheet" />
@@ -605,7 +582,7 @@ html;
         View::set('msg_clave', $msg_clave);
         View::set('btn_gafete', $btn_gafete);
         View::set('clave_ra', $id);
-        // View::set('btn_etiquetas', $btn_etiquetas);
+        View::set('asideMenu',$this->_contenedor->asideMenu());
         View::set('btn_clave', $btn_clave);
         View::set('btn_genQr', $btn_genQr);
         View::set('alergias_a', $alergias_a);

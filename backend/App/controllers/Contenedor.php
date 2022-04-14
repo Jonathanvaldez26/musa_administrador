@@ -18,6 +18,173 @@ class Contenedor extends Controller{
       return $this->__usuario;
     }
 
+    public function asideMenu(){
+
+      $menu = <<<html
+      <aside class="bg-white-aside sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
+        <div class="sidenav-header" style="margin-bottom: 30px;">
+            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+
+            <a class="navbar-brand m-0" href="/Principal/" target="_blank">
+                <img src="/assets/img/favicon.png" class="navbar-brand-img h-100" alt="main_logo">
+                <span class="ms-1 font-weight-bold"></span>
+                <p style="margin-top: 15px;"><span class="fa fa-user morado-musa-text"></span> {$_SESSION['nombre']}</p>
+            </a>
+
+
+        </div>
+        <hr class="horizontal dark mt-0">
+
+
+        <div class="collapse navbar-collapse  w-auto h-auto h-100" id="sidenav-collapse-main">
+            <ul class="navbar-nav">
+                <!--li class="nav-item">
+                    <a href="/Principal/" class="nav-link active" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-home text-white" ></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Principal</span>
+                    </a>
+                </li-->
+
+                <li id="principal" class="nav-item" {$asistentesHidden};>
+                    <a href="/Principal/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-home morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Principal</span>
+                    </a>
+                </li>
+
+                <li id="asistentes" class="nav-item" {$asistentesHidden};>
+                    <a href="/Asistentes/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-users morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Asistentes</span>
+                    </a>
+                </li>
+                <li id="" class="nav-item" {$vuelosHidden};>
+                    <a href="/Vuelos/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-plane morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Vuelos</span>
+                    </a>
+                </li>
+                <li id="pickup" class="nav-item" {$pickUpHidden};>
+                    <a href="/PickUp/" class="nav-link " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-bus morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">PickUp</span>
+                    </a>
+                </li>
+                <li id="habitaciones" class="nav-item" {$habitacionesHidden};>
+                    <a href="/Habitaciones/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-hotel morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Habitaciones</span>
+                    </a>
+                </li>
+                <li id="cenas" class="nav-item" {$cenasHidden};>
+                    <a href="/Cenas/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-coffee morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Cenas</span>
+                    </a>
+                </li>
+                <li id="asistencias" class="nav-item" {$aistenciasHidden};>
+                    <a href="/Asistencias/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-bell morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Asistencias</span>
+                    </a>
+                </li>
+                <li id="salud" class="nav-item" {$vacunacionHidden};>
+                    <hr class="horizontal dark" />
+                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SALUD</h6>
+                </li>
+                <li id="vacunacion" class="nav-item" {$vacunacionHidden};>
+                    <a href="/ComprobantesVacunacion/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-shield-virus morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Comprobante Vacunación</span>
+                    </a>
+                </li>
+                <li id="pruebas_usuario" class="nav-item" {$pruebasHidden};>
+                    <a href="/PruebasCovidUsuarios/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-virus-slash morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Pruebas Covid Usuarios</span>
+                    </a>
+                </li>
+
+                <li id="pruebas_sitio" class="nav-item" {$pruebasHidden};>
+                    <a href="/PruebasCovidEnSitio/" class="nav-link" aria-controls="basicExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-virus morado-musa-text" ></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Pruebas Covid En Sitio</span>
+                    </a>
+                </li>
+
+                <li id="config" class="nav-item" {$configuracionHidden};>
+                    <hr class="horizontal dark" />
+                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">OTROS</h6>
+                </li>
+                <li id="configuracion" class="nav-item" {$configuracionHidden};>
+                    <a href="/Configuracion/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-tools morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Configuración</span>
+                    </a>
+                </li>
+                <li id="util" class="nav-item" {$utileriasHidden};>
+                    <a data-bs-toggle="collapse" onclick="utilerias()" href="#utilerias" class="nav-link " aria-controls="utilerias" role="button" aria-expanded="false">
+                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
+                            <span class="fa fa-user-circle-o morado-musa-text"></span>
+                        </div>
+                        <span class="nav-link-text ms-1">Utilerias</span>
+                    </a>
+                    <div class="collapse " id="utilerias" hidden>
+                        <ul class="nav ms-4 ps-3">
+                            <li id="administradores" class="nav-item ">
+                                <a class="nav-link " href="/Administradores/">
+                                    <span class="sidenav-mini-icon"> A </span>
+                                    <span class="sidenav-normal">Administradores</span>
+                                </a>
+                            </li>
+                            <li id="perfiles" class="nav-item ">
+                                <a class="nav-link " href="/Perfiles/">
+                                    <span class="sidenav-mini-icon"> P </span>
+                                    <span class="sidenav-normal"> Perfiles </span>
+                                </a>
+                            </li>
+                            <li id="log" class="nav-item ">
+                                <a class="nav-link " href="/Log/">
+                                    <span class="sidenav-mini-icon"> L </span>
+                                    <span class="sidenav-normal"> Log </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </aside>
+html; 
+
+      return $menu;
+    }
+
     public function header($extra = ''){
      $usuario = $this->__usuario;
      
@@ -62,11 +229,9 @@ class Contenedor extends Controller{
           <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon.png">
-            <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-            <title>
-               GRUPO LAHE
-            </title>
+            <link rel="apple-touch-icon" sizes="76x76" href="https://foromusa.com/assets/images/Musa0-01.png">
+            <link rel="icon" type="image/png" href="https://foromusa.com/assets/images/Musa0-01.png">
+            
             <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
             <!-- Nucleo Icons -->
             <link href="../../assets/css/nucleo-icons.css" rel="stylesheet" />
@@ -157,7 +322,7 @@ html;
         <!-- jQuery -->
 
           <script>
-            function catalogos(params) {
+            function catalogos() {
                 var catalogo = document.getElementById("catalogos");
 
                 if (catalogo.hasAttribute('hidden')) {
@@ -167,7 +332,7 @@ html;
                 }
             }
 
-            function utilerias(params) {
+            function utilerias() {
                 var utileria = document.getElementById("utilerias");
 
                 if (utileria.hasAttribute('hidden')) {
