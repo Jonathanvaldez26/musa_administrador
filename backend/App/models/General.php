@@ -31,7 +31,7 @@ sql;
     FROM utilerias_asistentes ua
     INNER JOIN registros_acceso ra ON (ra.id_registro_acceso = ua.id_registro_acceso)
     INNER JOIN linea_principal lp ON (ra.especialidad = lp.id_linea_principal)
-    AND CONCAT_WS(ra.email,ra.nombre,ra.segundo_nombre,ra.apellido_materno,ra.apellido_paterno) LIKE '%$search%';
+    AND CONCAT_WS(ra.email,ra.nombre,ra.segundo_nombre,ra.apellido_materno,ra.apellido_paterno,ra.ticket_virtual) LIKE '%$search%';
 sql;
     return $mysqli->queryAll($query);
   }

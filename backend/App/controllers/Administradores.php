@@ -40,7 +40,6 @@ class Administradores extends Controller
     
       <script>
         $(document).ready(function(){
-          
 
           $.validator.addMethod("checkUserName",
           function(value, element) {
@@ -517,8 +516,9 @@ html;
     View::set('utileriasHidden', $utileriasHidden);
 
     View::set('tabla', $tabla);
+    View::set('asideMenu',$this->_contenedor->asideMenu());
     View::set('header', $this->_contenedor->header($header));
-    View::set('footer', $extraFooter);
+    View::set('footer',  $this->_contenedor->header($extraFooter));
     View::render("administradores_all");
   }
 

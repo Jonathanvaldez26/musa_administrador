@@ -38,6 +38,12 @@ class Asistentes extends Controller
     public function index()
     {
 
+<<<<<<< HEAD
+=======
+        View::set('asideMenu',$this->_contenedor->asideMenu());
+        // View::set('tabla_faltantes', $this->getAsistentesFaltantes());
+        // View::set('tabla', $this->getAllColaboradoresAsignados());
+>>>>>>> 2cfe18a867042a3d4c275a41670d95ac144c07cf
         View::render("asistentes_all");
     }
 
@@ -50,7 +56,8 @@ class Asistentes extends Controller
         $this->setTicketVirtual($all_ra);
         $this->setClaveRA($all_ra);
         
-        View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));        
+        View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));
+        View::set('asideMenu',$this->_contenedor->asideMenu());    
         View::render("asistentes_all");
     }
 
@@ -72,13 +79,10 @@ class Asistentes extends Controller
         }
     }
 
-    public function Detalles($id)
-    {
+    public function Detalles($id){
 
         $extraHeader = <<<html
-        <title>
-            Detalles Asistentes - GRUPO LAHE
-        </title>
+
 
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link href="Content/jquery.Jcrop.css" rel="stylesheet" />
@@ -514,12 +518,14 @@ html;
         foreach ($all_ra as $key => $value) {
             if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
                 $clave_10 = $this->generateRandomString(10);
+                $this->generaterQr($all_ra['ticket_virtual']);
                 AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
             }
         }
 
         $email = AsistentesDao::getByClaveRA($id)[0]['usuario'];
         $clave_user = AsistentesDao::getRegistroAccesoByClaveRA($id)[0];
+        $tv = AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['ticket_virtual'];
         $nombre = AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['nombre'].' '.AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['segundo_nombre'];
         $apellidos = AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['apellido_paterno'].' '.AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['apellido_materno'];
         if ($clave_user['clave_ticket'] == '' || $clave_user['clave_ticket'] == NULL || $clave_user['clave_ticket'] == 'NULL') {
@@ -529,17 +535,17 @@ html;
             <button type="button" id="generar_clave" title="Generar Ticket Virtual" class="btn bg-gradient-dark mb-0"><i class="fas fa-qrcode"></i></button>
 html;
         } else {
-            $this->generaterQr($clave_user);
+            
             $msg_clave = '';
             $btn_genQr = '';
             $btn_clave = <<<html
-                <button id="show_ticket" type="button" class="btn bg-gradient-info mb-0" title="Ver Ticket Virtual"><i class="fas fa-eye"></i></button>
+                <!--button id="show_ticket" type="button" class="btn bg-gradient-info mb-0" title="Ver Ticket Virtual"><i class="fas fa-eye"></i></button-->
 html;
         }
 
         $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info'><i class='fa fal fa-address-card' style='font-size: 18px;'></i>Presione esté botón para descargar el gafete</a>";
         // $btn_etiquetas = "<a href='/RegistroAsistencia/abrirpdf/{$clave_user['clave']}' target='_blank' id='a_abrir_etiqueta' class='btn btn-info'>Imprimir etiquetas</a>";
-
+        $this->generaterQr($tv);
 
 
         $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
@@ -577,7 +583,7 @@ html;
         View::set('msg_clave', $msg_clave);
         View::set('btn_gafete', $btn_gafete);
         View::set('clave_ra', $id);
-        // View::set('btn_etiquetas', $btn_etiquetas);
+        View::set('asideMenu',$this->_contenedor->asideMenu());
         View::set('btn_clave', $btn_clave);
         View::set('btn_genQr', $btn_genQr);
         View::set('alergias_a', $alergias_a);
@@ -594,15 +600,6 @@ html;
     public function generaterQr($clave_ticket)
     {
 
-        // $id_constancia = $_POST['id_constancia'];
-        // $user_id = $_SESSION['utilerias_asistentes_id'];
-
-        // var_dump($user_id);
-        //Eliminar los archivos del servidor
-        //$this->deleteFiles($id_constancia);
-
-
-        // $codigo_rand = $this->generateRandomString();
         $codigo_rand = $clave_ticket;
 
         $config = array(
@@ -1072,13 +1069,13 @@ html;
                         <div>
                             <img src="{$img_user}" class="avatar me-3" alt="image">
                         </div>
-                        <div class="d-flex flex-column justify-content-center">
+                        <div class="d-flex flex-column justify-content-center text-move text-morado-musa">
                     
-                            <a href="/Asistentes/Detalles/{$value['clave']}">
-                            <h6 class="mb-0 text-sm"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} $estatus</h6></a>
+                            <a href="/Asistentes/Detalles/{$value['clave']}" target="blank">
+                            <h6 class="mb-0 text-sm text-morado-musa"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} $estatus</h6></a>
                             <div class="d-flex flex-column justify-content-center">
-                                <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
-                                <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
+                                <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-morado-musa"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
+                                <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm text-morado-musa font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
                             </div>
                             <!--<p class="text-sm mb-0"><span class="fa fa-solid fa-id-card" style="font-size: 13px;"></span> Número de empleado:  <span style="text-decoration: underline;">{$value['numero_empleado']}</span></p>-->
                             <hr>
@@ -1911,3 +1908,4 @@ class PHPQRCode
         return $ext_type;
     }
 } // class end
+
