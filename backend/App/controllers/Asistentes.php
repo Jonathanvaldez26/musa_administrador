@@ -885,7 +885,7 @@ html;
                         </div>
                         <div class="d-flex flex-column justify-content-center">
                     
-                            <a href="/Asistentes/Detalles/{$value['clave']}">
+                            <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                             <h6 class="mb-0 text-sm"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} $estatus</h6></a>
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
@@ -1076,7 +1076,7 @@ html;
                         </div>
                         <div class="d-flex flex-column justify-content-center text-move text-morado-musa">
                     
-                            <a href="/Asistentes/Detalles/{$value['clave']}" target="blank">
+                            <a href="/Asistentes/Detalles/{$value['clave']}" target="_blank">
                             <h6 class="mb-0 text-sm text-morado-musa"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} {$value['segundo_nombre']} {$value['apellido_paterno']} {$value['apellido_materno']} $estatus</h6></a>
                             <div class="d-flex flex-column justify-content-center">
                                 <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm text-morado-musa"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['usuario']}</h6></a></u>
