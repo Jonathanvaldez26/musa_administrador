@@ -325,7 +325,7 @@
                                             <div class="row m-4">
                                                 <div class="col-3">
                                                     <div class="bg-gradient-musa avatar avatar-l position-relative">
-                                                        <span class="fas fa-syringe m-3 morado-musa-text" style="font-size: x-large;"></span>
+                                                        <span class="fas fa-syringe m-3 text-white" style="font-size: x-large;"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-9 m-auto">
@@ -357,7 +357,7 @@
                                             <div class="row m-4">
                                                 <div class="col-3">
                                                     <div class="bg-gradient-musa avatar avatar-l position-relative" >
-                                                        <span class="fas fa-plane m-3 morado-musa-text" style="font-size: x-large;"></span>
+                                                        <span class="fas fa-plane m-3 text-white" style="font-size: x-large;"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-9 m-auto">
@@ -389,7 +389,7 @@
                                             <div class="row m-4">
                                                 <div class="col-3">
                                                     <div class="bg-gradient-musa avatar avatar-l position-relative" >
-                                                        <span class="fas fa-virus-slash m-3 morado-musa-text" style="font-size: x-large;"></span>
+                                                        <span class="fas fa-virus-slash m-3 text-white" style="font-size: x-large;"></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-9 m-auto">

@@ -6,6 +6,7 @@ use \Core\View;
 use \Core\MasterDom;
 use \App\controllers\Contenedor;
 use \Core\Controller;
+use \App\models\Asistentes as AsistentesDao;
 
 class Principal extends Controller{
 
@@ -41,6 +42,10 @@ html;
       $configuracionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_configuracion", 1)==0)? "style=\"display:none;\"" : "";
       $utileriasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_utilerias", 1)==0)? "style=\"display:none;\"" : "";  
 
+      $all_ra = AsistentesDao::getAllRegistrosAcceso();
+      $this->setTicketVirtual($all_ra);
+      $this->setClaveRA($all_ra);
+
       View::set('permisoGlobalHidden',$permisoGlobalHidden);
       View::set('asistentesHidden',$asistentesHidden);
       View::set('vuelosHidden',$vuelosHidden);
@@ -56,6 +61,30 @@ html;
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
       View::render("principal_all");
+    }
+
+    
+
+    public function setTicketVirtual($asistentes){
+        foreach ($asistentes as $key => $value) {
+            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+                $clave_10 = $this->generateRandomString(6);
+                AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_10);
+            }
+        }
+    }
+
+    public function setClaveRA($all_ra){
+        foreach ($all_ra as $key => $value) {
+            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+                $clave_10 = $this->generateRandomString(10);
+                AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
+            }
+        }
+    }
+
+    public function generateRandomString($length = 6){
+        return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
     }
 
 }
