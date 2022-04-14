@@ -36983,3 +36983,12 @@ table.dataTable.no-footer {
   max-width: -webkit-fill-available;
   font-size: x-large;
 }
+
+.text-move:hover{
+  transform: translateY(-5px);
+  text-shadow: 0px 0px 10px turquoise;
+}
+
+.text-morado-musa{
+  color: rgb(98 56 246) !important;
+}

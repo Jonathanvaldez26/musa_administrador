@@ -105,11 +105,7 @@ html;
                     <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><span class="fa fa-whatsapp" style="color:green;"> </span> {$value['telefono']}</a></u>
                 </td>
                 <td>
-                    <b>Línea: </b>{$value['nombre_linea']}
-                    <br>
-                    <b>BU: </b>{$value['nombre_bu']}
-                    <br>
-                    <b>Posición: </b>{$value['nombre_posicion']} 
+                    <b>Especialidad: </b>{$value['nombre_especialidad']}
                 </td>
                 
 html;

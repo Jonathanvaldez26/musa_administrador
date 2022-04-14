@@ -335,7 +335,9 @@
                                                                 <input id="apellidos-canvas" type="text" value="<?php echo $apellidos; ?>" hidden readonly>
                                                                 <div class="col-md-12 col-12 text-center">
                                                                     <div id="main_ticket" hidden>
-                                                                        <canvas id="canvas_ticket" width="1220" height="457" name="ticket-<?php echo $clave_user; ?>" alt="ticket-<?php echo $clave_user; ?>" style="background: white; width: -webkit-fill-available;"></canvas> <!--  background-image: url('/img/ticket.jpg'); -->
+                                                                        <canvas id="canvas_ticket" width="1220" height="457" name="ticket-<?php echo $clave_user; ?>" alt="ticket-<?php echo $clave_user; ?>" style="background: white; width: -webkit-fill-available;">
+                                                                            <img src="/img/boleto.png" alt="">
+                                                                        </canvas> <!--  background-image: url('/img/ticket.jpg'); -->
                                                                     </div>
                                                                 </div>
 
@@ -652,12 +654,12 @@
 
             public.loadPicture = function() {
 
-                var imgTicketFondo = new Image();
-                imgTicketFondo.src = '/img/boleto.png';
+                // var imgTicketFondo = new Image();
+                // imgTicketFondo.src = '/img/boleto.png';
 
-                imgTicketFondo.onload = function() {
-                    context.drawImage(imgTicketFondo, 0, 0);
-                }
+                // imgTicketFondo.onload = function() {
+                //     context.drawImage(imgTicketFondo, 0, 0);
+                // }
 
                 context = canvas.getContext('2d');
 
@@ -690,12 +692,15 @@
             return public;
         }());
 
-        $('#show_ticket').on('click', function(event) {
-            // alert('Mostrar Ticket');
-            // console.log('asdasdasdas');
-            document.getElementById('main_ticket').removeAttribute('hidden');
-            app.loadPicture();
-        })
+        document.getElementById('main_ticket').removeAttribute('hidden');
+        app.loadPicture();
+
+        // $('#show_ticket').on('click', function(event) {
+        //     // alert('Mostrar Ticket');
+        //     // console.log('asdasdasdas');
+        //     document.getElementById('main_ticket').removeAttribute('hidden');
+        //     app.loadPicture();
+        // })
 
         $('#generar_clave').on('click', function(event) {
 
