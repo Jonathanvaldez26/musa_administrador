@@ -3,6 +3,7 @@
 namespace App\controllers;
 
 defined("APPPATH") or die("Access denied");
+require_once dirname(__DIR__) . '/../public/librerias/mpdf/mpdf.php';
 require_once dirname(__DIR__) . '/../public/librerias/fpdf/fpdf.php';
 require_once dirname(__DIR__) . '/../public/librerias/phpqrcode/qrlib.php';
 
@@ -426,6 +427,8 @@ html;
         $pdf->setY(1);
         $pdf->SetFont('Arial', 'B', 16);
         $pdf->Image('qrs/gafetes/'.$clave_ticket.'.png', 27, 40, 100, 100);
+        $pdf->SetFont('Arial', 'B', 25);
+        $pdf->Multicell(135, 80, $clave_ticket, 0, 'C');
 
         //$pdf->Image('1.png', 1, 0, 190, 190);
         $pdf->SetFont('Arial', '', 5);    //Letra Arial, negrita (Bold), tam. 20
@@ -434,7 +437,7 @@ html;
         //$num_linea2 =utf8_decode("Línea: 39");
 
         $pdf->SetXY(18.3, 300);
-        $pdf->SetFont('Times', 'B', 35);
+        $pdf->SetFont('Arial', 'B', 35);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
         $pdf->Multicell(120, 10, $nombre_completo, 0, 'C');
@@ -485,6 +488,8 @@ html;
 
         //   $url = explode('/', $qrcode );
     }
+
+ 
 }
 
 
