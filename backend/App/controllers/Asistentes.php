@@ -49,9 +49,6 @@ class Asistentes extends Controller
     {
         $search = $_POST['search'];        
 
-        //tab faltantes
-        // View::set('tabla_faltantes', $this->getAsistentesFaltantes());
-
         $all_ra = AsistentesDao::getAllRegistrosAcceso();
         $this->setTicketVirtual($all_ra);
         $this->setClaveRA($all_ra);
@@ -1068,28 +1065,6 @@ html;
                 $compro_covid = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Aún no se sube el documento"><span class="fa fa-file-text-o" style="font-size: 13px;"></span> Comprobante Covid  (<i class="fas fa-times" style="color: #7B241C;" ></i>)</p>';
             }
 
-            // $id_linea = $value['id_linea_principal'];           
-
-            // $ticket_virtual = GeneralDao::searchAsistentesTicketbyId($value['utilerias_asistentes_id'])[0];
-
-
-            // if ($ticket_virtual['clave'] != null) {
-
-            //     $ticket_v = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Ticket Virtual generado"><span class="fa fa-ticket" style="font-size: 13px;"></span> Ticket Virtual (<i class="fa fa-solid fa-check" style="color: green;"></i>)</p>';
-            // } else {
-
-            //     $ticket_v = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="No se ha generado su ticket virtual"><span class="fa fa-ticket" style="font-size: 13px;"></span> Ticket Virtual (<i class="fas fa-times" style="color: #7B241C;" ></i>)</p>';
-            // }
-
-            $itinerario = GeneralDao::searchItinerarioByAistenteId($value['utilerias_asistentes_id'])[0];
-
-            if ($itinerario['id_uasis_it'] != null) {
-
-                $itinerario_asis = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Itinerario Cargado"><span class="fa fa-calendar-check-o" style="font-size: 13px;"></span> Itinerario (<i class="fa fa-solid fa-check" style="color: green;"></i>)</p>';
-            } else {
-
-                $itinerario_asis = '<p class="text-sm font-weight-bold mb-0 " style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="No se ha cargado el itinerario"><span class="fa fa-calendar-check-o" style="font-size: 13px;"></span> Itinerario (<i class="fas fa-times" style="color: #7B241C;" ></i>)</p>';
-            }
 
 
             $html .= <<<html
@@ -1144,13 +1119,11 @@ html;
             {$ticket_v}
             {$pru_covid}
             {$compro_covid}
-            {$itinerario_asis}  
           </td>
           
           <td style="text-align:center; vertical-align:middle;">
-            <a href="/Asistentes/Detalles/{$value['clave']}" hidden><i class="fa fa-eye"></i></a>
-            <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="imprimir" target="_blank"><i class="fas fa-print"></i></a>            
-            <button class="btn bg-turquoise btn-icon-only text-white" title="imprimir"><i class="fas fa-tag"></i></button>
+            <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="imprimir" target="_blank"><i class="fas fa-print"> </i></a>            
+            <button class="btn bg-turquoise btn-icon-only text-white" title="Imprimir Etiquetas para Maletas"><i class="fas fa-tag"></i></button>
             <!--button type="button" class="btn btn-outline-primary btn_qr" value="{$value['id_ticket_virtual']}"><span class="fa fa-qrcode" style="padding: 0px;"> {$ticket_virtual[0]['clave']}</span></button-->
           </td>
         </tr>
@@ -1548,7 +1521,6 @@ html;
         }
         return $html;
     }
-
 
 
     function generateRandomString($length = 6)

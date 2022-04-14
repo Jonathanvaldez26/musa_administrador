@@ -77,7 +77,7 @@
         </nav>
         <!-- End Navbar -->
 
-        <div class="container-fluid py-4">
+        <div class="container-fluid">
             <div class=" mt-7 mb-4">
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
@@ -173,7 +173,7 @@
                                                     <th class="text-uppercase text-secondary text-center text-xxs font-weight-bolder opacity-7">Usuario</th>
                                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Otros Datos</th>
                                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
+                                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Imprimir</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
