@@ -518,8 +518,15 @@ html;
         foreach ($all_ra as $key => $value) {
             if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
                 $clave_10 = $this->generateRandomString(10);
-                $this->generaterQr($all_ra['ticket_virtual']);
                 AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);
+            }
+        }
+
+        foreach ($all_ra as $key => $value) {
+            if ($value['ticket_virtual'] == '' || $value['ticket_virtual'] == NULL || $value['ticket_virtual'] == 'NULL') {
+                $clave_6 = $this->generateRandomString(6);
+                $this->generaterQr($all_ra['ticket_virtual']);
+                AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_6);
             }
         }
 
@@ -528,11 +535,12 @@ html;
         $tv = AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['ticket_virtual'];
         $nombre = AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['nombre'].' '.AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['segundo_nombre'];
         $apellidos = AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['apellido_paterno'].' '.AsistentesDao::getRegistroAccesoByClaveRA($id)[0]['apellido_materno'];
-        if ($clave_user['clave_ticket'] == '' || $clave_user['clave_ticket'] == NULL || $clave_user['clave_ticket'] == 'NULL') {
+        if ($clave_user['ticket_virtual'] == '' || $clave_user['ticket_virtual'] == NULL || $clave_user['ticket_virtual'] == 'NULL') {
             $msg_clave = 'No posee ningún código';
             $btn_clave = '';
+            var_dump($clave_user['ticket_virtual']);
             $btn_genQr = <<<html
-            <button type="button" id="generar_clave" title="Generar Ticket Virtual" class="btn bg-gradient-dark mb-0"><i class="fas fa-qrcode"></i></button>
+            <!--button type="button" id="generar_clave" title="Generar Ticket Virtual" class="btn bg-gradient-dark mb-0"><i class="fas fa-qrcode"></i></button-->
 html;
         } else {
             
