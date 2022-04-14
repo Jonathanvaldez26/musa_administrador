@@ -38,12 +38,9 @@ class Asistentes extends Controller
     public function index()
     {
 
-<<<<<<< HEAD
-=======
         View::set('asideMenu',$this->_contenedor->asideMenu());
         // View::set('tabla_faltantes', $this->getAsistentesFaltantes());
         // View::set('tabla', $this->getAllColaboradoresAsignados());
->>>>>>> 2cfe18a867042a3d4c275a41670d95ac144c07cf
         View::render("asistentes_all");
     }
 
