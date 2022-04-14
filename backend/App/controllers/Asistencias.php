@@ -159,23 +159,10 @@ $extraFooter =<<<html
       </script>
 html;
     $tabla = '';
-    // $url_checkin = '#';
-    // $url_directivos	= '#';
-    // $url_staf	= '#';
-    // $url_neurociencias	= '#';
-    // $url_kaes_osteo	= '#';
-    // $url_cardio	= '#';
-    // $url_uro	= '#';
-    // $url_gastro	= '#';
-    // $url_gineco	= '#';
-    // $url_medicina_general	= '#';
-    // $url_ole	= '#';
-    // $url_analgesia= '#';
     $datos = AsistenciasDao::getAll();
     
     foreach ($datos as $key => $value) {
 
-      // var_dump($value['es_ckeckin']);
         if($value['es_ckeckin'] == 1){
           $url_checkin = $value['url_checkin'];
           $url_directivos	= $value['url_directivos'];
