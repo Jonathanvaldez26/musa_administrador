@@ -1040,14 +1040,14 @@
 
 <script>
     function borrarPaseAbordar(dato){
-        const swalWithBootstrapButtons = Swal.mixin({
+        const SwalBootstrapEliminar = Swal.mixin({
             customClass: {
                 confirmButton: 'btn bg-gradient-info mx-2',
                 cancelButton: 'btn bg-gradient-danger mx-2'
             },
             buttonsStyling: false
         })
-        swalWithBootstrapButtons.fire({
+        SwalBootstrapEliminar.fire({
             title: '¿Está seguro de eliminar este pase?',
             showCancelButton: true,
             confirmButtonText: 'Si',
@@ -1380,32 +1380,42 @@
 
         $(".btn-iframe-uno").on("click",function(){
             var documento = $(this).attr('data-document');
-            var modal_id = $(this).attr('data-target');
+            var modal_id_1 = $(this).attr('data-target');
             
-            if($(modal_id+" iframe_1").length == 0){
-                $(modal_id+" .iframe_1").append('<iframe src="/comprobante_vuelo_uno/'+documento+'" style="width:100%; height:36rem;" frameborder="0" ></iframe>');
+            console.log(modal_id_1);
+            console.log($(modal_id_1+" .iframe_1").length);
+            if($(modal_id_1+" iframe_1").length == 0){
+                $(modal_id_1+" .iframe_1").html('<iframe src="/comprobante_vuelo_uno/'+documento+'" style="width:100%; height:36rem;" frameborder="0" ></iframe>');
             }          
         });
 
         $(".btn-iframe-dos").on("click",function(){
             var documento = $(this).attr('data-document');
-            var modal_id = $(this).attr('data-target');
+            var modal_id_2 = $(this).attr('data-target');
             
-            if($(modal_id+" iframe_2").length == 0){
-                $(modal_id+" .iframe_2").append('<iframe src="/comprobante_vuelo_dos/'+documento+'" style="width:100%; height:36rem;" frameborder="0" ></iframe>');
-            }          
+            console.log(modal_id_2);
+            console.log($(modal_id_2+" .iframe_2").length);
+            if($(modal_id_2+" iframe_2").length == 0){
+                $(modal_id_2+" .iframe_2").html('<iframe src="/comprobante_vuelo_dos/'+documento+'" style="width:100%; height:36rem;" frameborder="0" ></iframe>');
+            }  
         });
 
         $(".send_mail").on("click", function(){
             var id_pase_abordar = $(this).val();
+            const SwalBootstrapMail = Swal.mixin({
+                customClass: {
+                    confirmButton: 'btn bg-gradient-info mx-2',
+                    cancelButton: 'btn bg-gradient-danger mx-2'
+                },
+                buttonsStyling: false
+            })
 
-            Swal.fire({
+            SwalBootstrapMail.fire({
                 title: 'Estas seguro?',
                 text: "Una vez enviado ya no se podra borrar, por favor verifica que todos los datos sean correctos!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
                 cancelButtonText: 'Cancelar',
                 confirmButtonText: 'Si, enviar!'
                 }).then((result) => {

@@ -201,7 +201,7 @@ html;
                 <td style="text-align:center; vertical-align:middle;">
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <!--a class="bg-gradient-primary btn btn-icon-only btn-iframe-uno" data-document="{$value['link']}" href="/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
-                    <button class="btn bg-gradient-primary btn-icon-only btn-iframe-uno" data-document="{$value['link']}" type="button" data-toggle="modal" data-target="#Modal_Ver-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
+                    <button class="btn bg-gradient-primary btn-icon-only btn-iframe-uno" data-document="{$value['link']}" type="button" data-toggle="modal" data-target="#modal-ver-pdf-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
                     <button class="btn bg-gradient-info btn-icon-only send_mail" value="{$value['id_pase_abordar']}" type="button"><span class="fas fa-envelope"></span></button>
                     <button class="btn bg-gradient-danger btn-icon-only" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}"><span class="fas fa-trash"></span></button>
                 </td>
@@ -254,7 +254,7 @@ html;
                  <td style="text-align:center; vertical-align:middle;">
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
-                    <button class="btn bg-gradient-primary btn-icon-only btn-iframe-dos" data-document="{$value['link']}" type="button" data-toggle="modal" data-target="#Modal_Ver-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
+                    <button class="btn bg-gradient-primary btn-icon-only btn-iframe-dos" data-document="{$value['link']}" type="button" data-toggle="modal" data-target="#modal-ver-pdf-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
                     <button class="btn bg-gradient-info btn-icon-only send_mail" value="{$value['id_pase_abordar']}" type="button"><span class="fas fa-envelope"></span></button>
                     <button class="btn bg-gradient-danger btn-icon-only" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}"><span class="fas fa-trash"></span></button>
                 </td>
@@ -481,20 +481,18 @@ html;
     public function modalPDF($datos){
         if ($datos['tipo'] == 1) {
             $modal = <<<html
-            <div class="modal fade" id="Modal_Ver-{$datos['id_pase_abordar']}" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal fade" id="modal-ver-pdf-{$datos['id_pase_abordar']}" role="dialog" aria-labelledby="" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="Modal_Ver-Label">Pase de Abordar - 1er Vuelo</h5>
+                            <h5 class="modal-title" id="modal-ver-pdf-Label">Pase de Abordar - 1er Vuelo</h5>
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <input hidden id="id_pase_abordar" name="id_pase_abordar" type="text" value="{$datos['id_pase_abordar']}" readonly>
-                            <div class="form-group row iframe_1">
-                                <!--iframe src="/comprobante_vuelo_dos/{$datos['link']}" style="width:100%; height:700px;" frameborder="0" ></iframe-->
-                            </div>
+                            <div class="form-group row iframe_1"></div>
                         </div>
                     </div>
                 </div>
@@ -502,20 +500,18 @@ html;
         html;
         } else {
             $modal = <<<html
-            <div class="modal fade" id="Modal_Ver-{$datos['id_pase_abordar']}" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal fade" id="modal-ver-pdf-{$datos['id_pase_abordar']}" role="dialog" aria-labelledby="" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="Modal_Ver-Label">Pase de Abordar - 2do Vuelo</h5>
+                            <h5 class="modal-title" id="modal-ver-pdf-Label">Pase de Abordar - 2do Vuelo</h5>
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <input hidden id="id_pase_abordar" name="id_pase_abordar" type="text" value="{$datos['id_pase_abordar']}" readonly>
-                            <div class="form-group row iframe_2">
-                                <!--iframe src="/comprobante_vuelo_dos/{$datos['link']}" style="width:100%; height:700px;" frameborder="0" ></iframe-->
-                            </div>
+                            <div class="form-group row iframe_2"></div>
                         </div>
                     </div>
                 </div>
