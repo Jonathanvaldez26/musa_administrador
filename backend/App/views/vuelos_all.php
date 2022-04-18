@@ -1031,7 +1031,7 @@
 
     </main>
 
-    <?php echo $modal_salida; ?>
+    <?php echo $modal_salida; echo $modal;?>
 </body>
 
 <?php echo $footer; ?>
@@ -1376,6 +1376,24 @@
                     console.log(respuesta);
                 }
             });
+        });
+
+        $(".btn-iframe-uno").on("click",function(){
+            var documento = $(this).attr('data-document');
+            var modal_id = $(this).attr('data-target');
+            
+            if($(modal_id+" iframe_1").length == 0){
+                $(modal_id+" .iframe_1").append('<iframe src="/comprobante_vuelo_uno/'+documento+'" style="width:100%; height:36rem;" frameborder="0" ></iframe>');
+            }          
+        });
+
+        $(".btn-iframe-dos").on("click",function(){
+            var documento = $(this).attr('data-document');
+            var modal_id = $(this).attr('data-target');
+            
+            if($(modal_id+" iframe_2").length == 0){
+                $(modal_id+" .iframe_2").append('<iframe src="/comprobante_vuelo_dos/'+documento+'" style="width:100%; height:36rem;" frameborder="0" ></iframe>');
+            }          
         });
 
         $(".send_mail").on("click", function(){
