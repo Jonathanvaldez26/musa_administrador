@@ -384,12 +384,12 @@
                                             <span class="ms-1">Vuelos Llegada</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link mb-0 px-0 py-1 " href="#itinerario" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
                                             <span class="fa fa-plane-arrival"></span>
                                             <span class="ms-1">Itinerario</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -1351,6 +1351,7 @@
             for (var value of formData.values()) {
                 //console.log(value);
             }
+
             $.ajax({
                 url: "/Vuelos/itinerario",
                 type: "POST",
@@ -1420,7 +1421,7 @@
                 confirmButtonText: 'Si, enviar!'
                 }).then((result) => {
                 if (result.isConfirmed) {
-
+                    let id_btn = $(this).val();
                     //enviar aqui
                     $.ajax({
                         url: "/Mailer/mailVuelosAdmin",
@@ -1437,7 +1438,10 @@
                                 'Pase de Abordar enviado!',
                                 'El documento ha sido enviado',
                                 'success'
-                                )
+                                ).then((data) =>{
+                                    // console.log();
+                                    $('#btn-borrar-'+id_btn).attr('hidden',true);
+                                })
 
                             }
                             else{
