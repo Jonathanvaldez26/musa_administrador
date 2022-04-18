@@ -1,5 +1,7 @@
 <?php
 namespace App\controllers;
+require_once dirname(__DIR__) . '/../public/librerias/fpdf/fpdf.php';
+require_once dirname(__DIR__) . '/../public/librerias/phpqrcode/qrlib.php';
 defined("APPPATH") OR die("Access denied");
 
 use \Core\View;

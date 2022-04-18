@@ -129,6 +129,11 @@ html;
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
+                    }else{
+                        swal("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : \\n1) Compruebe su conexión a internet \\n2) El archivo debe de ser formato pdf \\n3) El archivo excede el tamaño de 3mb ", "error").
+                        then((value) => {
+                            window.location.replace("/Vuelos/");
+                        });
                     }
                     console.log(respuesta);
                 },
@@ -545,26 +550,29 @@ html;
             $clave = $this->generateClave();
             $documento->_clave = $clave;
 
-            $escala = $_POST["tiene_escala"];
+            $escala = $_POST["tiene_escala_salida"];
             $documento->_escala = $escala;
 
-            //Escala
 
-            $id_aeropuerto_origen_escala = $_POST['id_origen_escala_salida'];
-            $documento->_id_aeropuerto_origen_escala = $id_aeropuerto_origen_escala;
+            // //Escala
 
-            $id_aeropuerto_destino_escala = $_POST['id_destino_escala_salida'];
-            $documento->_id_aeropuerto_destino_escala = $id_aeropuerto_destino_escala;
+            // $id_aeropuerto_origen_escala = $_POST['id_origen_escala_salida'];
+            // $documento->_id_aeropuerto_origen_escala = $id_aeropuerto_origen_escala;
 
-            $numero_vuelo_escala = $_POST['numero_vuelo_escala_salida'];
-            $documento->_numero_vuelo_escala = $numero_vuelo_escala;
+            // $id_aeropuerto_destino_escala = $_POST['id_destino_escala_salida'];
+            // $documento->_id_aeropuerto_destino_escala = $id_aeropuerto_destino_escala;
 
-            $hora_llegada_escala = $_POST['hora_llegada_escala_salida'];
-            $documento->_hora_llegada_escala = $hora_llegada_escala;
+            // $numero_vuelo_escala = $_POST['numero_vuelo_escala_salida'];
+            // $documento->_numero_vuelo_escala = $numero_vuelo_escala;
+
+            // $hora_llegada_escala = $_POST['hora_llegada_escala_salida'];
+            // $documento->_hora_llegada_escala = $hora_llegada_escala;
 
             $file = $_FILES["file_salida"];
+            $tipo_archivo = $_FILES['file_salida']['type'];
+            $tamano_archivo = $_FILES['file_salida']['size'];
             $pdf = $this->generateRandomString();
-            move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf');
+            // move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf');
 
             $documento->_url = $pdf.'.pdf';
 
@@ -573,9 +581,7 @@ html;
             $email = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['email'];
             $nombre = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['nombre_completo'];
 
-            // echo $email;
-            // echo $utilerias_asistentes_id;
-            // exit;
+
 
             $msg = [
                 'name' => $nombre,
@@ -589,17 +595,25 @@ html;
             }
             $documento->_notas = $notas;
 
-            $id = VuelosDao::insertSalida($documento);
+            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 100000))) {
+                echo "fail";
+            }else{
+                if(move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf')){
+                    $id = VuelosDao::insertSalida($documento);
 
-            if ($id) {
+                    if ($id) {
 
-                // $mailer = new Mailer();
-                // $mailer->mailVuelosRegreso($msg);
-                echo 'success';
+                        // $mailer = new Mailer();
+                        // $mailer->mailVuelosRegreso($msg);
+                        echo 'success';
+        
+                    } else {
+                        echo 'fail';
+                    }
+                }  
+            }     
 
-            } else {
-                echo 'fail';
-            }
+           
         } else {
             echo 'fail REQUEST';
         }
