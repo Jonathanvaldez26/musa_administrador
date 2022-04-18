@@ -490,6 +490,11 @@ html;
 html;
     }
 
+    $permisos = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? "style=\"display:none;\"" : "";
+    // var_dump(Controller::getPermisoUser($this->__usuario)[0]['perfil_id']);
+    // var_dump(Controller::getPermisoUser($this->__usuario)['perfil_id']);
+    // var_dump($permisos);
+
     $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
     $asistentesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistentes", 1) == 0) ? "style=\"display:none;\"" : "";
     $vuelosHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos", 1) == 0) ? "style=\"display:none;\"" : "";
@@ -513,7 +518,7 @@ html;
     View::set('vacunacionHidden', $vacunacionHidden);
     View::set('pruebasHidden', $pruebasHidden);
     View::set('configuracionHidden', $configuracionHidden);
-    View::set('utileriasHidden', $utileriasHidden);
+    View::set('utileriasHidden', $permisos);
 
     View::set('tabla', $tabla);
     View::set('asideMenu',$this->_contenedor->asideMenu());
@@ -987,11 +992,11 @@ html;
     $lineas = '';
 
     
-    foreach (LineaDao::getLineasEjecutivo() as $key => $value) {
-      $lineas .= <<<html
-                <option value="{$value['id_linea_ejecutivo']}">{$value['nombre']}</option>
-html;
-    }
+//     foreach (LineaDao::getLineasEjecutivo() as $key => $value) {
+//       $lineas .= <<<html
+//                 <option value="{$value['id_linea_ejecutivo']}">{$value['nombre']}</option>
+// html;
+//     }
 //     $lineaTodos = LineaDao::getLineaTodos()[0];      
 //     $lineas .= <<<html
 //         <option value="{$lineaTodos['id_linea_principal']}">{$lineaTodos['nombre']}</option>
@@ -1061,17 +1066,17 @@ html;
   public function administradorAdd()
   {
 
-    if(isset($_POST['linea_id'])){
-        $linea_id  = $_POST['linea_id'];
-    }else{
-        $linea_id  = 0;
-    }
+    // if(isset($_POST['linea_id'])){
+    //     $linea_id  = $_POST['linea_id'];
+    // }else{
+    //     $linea_id  = 0;
+    // }
     $administrador = new \stdClass();
 
     $administrador->_nombre = MasterDom::getData('nombre');
     $administrador->_usuario = MasterDom::getData('usuario');
     $administrador->_perfil_id = MasterDom::getData('perfil_id');
-    $administrador->_linea_id = $linea_id;
+    // $administrador->_linea_id = $linea_id;
     $administrador->_descripcion = MasterDom::getData('descripcion');
     $administrador->_status = MasterDom::getData('status');
     $administrador->_tipo = 0;
@@ -1162,12 +1167,13 @@ html;
       $asignaLinea->_utilerias_administradores_linea_asignada = $idAdministrador;
       $asignaLinea->_utilerias_administradores = $_SESSION['utilerias_administradores_id'];
 
-      $idAsignaLinea = LineaDao::insertAsignaLinea($asignaLinea);
-      $idPermisos = AdministradoresDao::insertPermisos($permisos);
+      // $idAsignaLinea = LineaDao::insertAsignaLinea($asignaLinea);
+      // $idPermisos = AdministradoresDao::insertPermisos($permisos);
     }
 
 
-    if ($idAdministrador >= 1 && $idPermisos >= 1 && $idAsignaLinea >= 1) {
+    // if ($idAdministrador >= 1 && $idPermisos >= 1 && $idAsignaLinea >= 1) {
+      if ($idAdministrador >= 1) {
       // $this->alerta($id, 'add');
       echo "<script>
         alert('Se agrego el usuario correctamente');
@@ -1646,7 +1652,7 @@ html;
       
       $administrador = AdministradoresDao::getAllByCode($code);
       
-      $asigna_line = AdministradoresDao::getAsignaLine($administrador['utilerias_administradores_id']);
+      // $asigna_line = AdministradoresDao::getAsignaLine($administrador['utilerias_administradores_id']);
 
       $lineas = '';
 
@@ -1670,13 +1676,13 @@ html;
 //         <option value="{$lineaTodos['id_linea_principal']}">{$lineaTodos['nombre']}</option>
 // html;
 //       }
-      foreach (LineaDao::getLineas() as $key => $value) {
-        $selected = ($asigna_line['id_linea_ejecutivo'] == $value['id_linea_ejecutivo']) ? 'selected' : '';
-        $lineas .= <<<html
-          <option {$selected} value="{$value['id_linea_ejecutivo']}">{$value['nombre']}</option>
+//       foreach (LineaDao::getLineas() as $key => $value) {
+//         $selected = ($asigna_line['id_linea_ejecutivo'] == $value['id_linea_ejecutivo']) ? 'selected' : '';
+//         $lineas .= <<<html
+//           <option {$selected} value="{$value['id_linea_ejecutivo']}">{$value['nombre']}</option>
            
-html;
-      }
+// html;
+//       }
 
 
     $status = "";
@@ -1731,7 +1737,7 @@ html;
         $permisos = array('checked', 'checked', 'checked', 'checked', 'checked', 'checked');
       }
 
-      $tabla1 .= <<<html
+     /* $tabla1 .= <<<html
           <tr>
             <td>
               <input type="checkbox" id="myCheck{$value['utilerias_seccion_id']}" name="seccion{$value['utilerias_seccion_id']}" {$permisos[0]} {$check_habilitado[0]}> {$value['nombre_seccion']}
@@ -1754,7 +1760,7 @@ html;
               <input class="toggle botonEstado" name="eliminar{$value['utilerias_seccion_id']}" id="eliminar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" {$permisos[5]} {$check_habilitado[5]} >
             </td>
         </tr>
-html;
+html;*/
     }
 
     
@@ -1880,11 +1886,11 @@ html;
     $asignaLinea->_linea_id = MasterDom::getData('linea_id');    
     $asignaLinea->_utilerias_administradores = $_SESSION['utilerias_administradores_id'];
 
-    $idAsignaLinea = LineaDao::updateAsignaLinea($asignaLinea);
+    // $idAsignaLinea = LineaDao::updateAsignaLinea($asignaLinea);
 
     
 
-    if (($idAdministrador >= 1 || $idAsignaLinea >= 1 || $idPermisos)) {
+    if (($idAdministrador >= 1 )) {
      
       $this->alerta($id, 'edit');
     } else {

@@ -412,7 +412,7 @@
                                             </div>
 
 
-                                            <div class="form-group" id="permiosos-personalizados" style="">
+                                            <!-- <div class="form-group" id="permiosos-personalizados" style="">
                                                 <label class="col-md-3 col-sm-3 col-xs-12 control-label">Secciones a visualizar
                                                     <br>
                                                     <small class="text-navy">Selecciona dentro de la <br> tabla que secciones deseas <br> que este perfil quieres <br> que visualice. <br> También asigna si deseas <br> que pueda realizar:
@@ -445,7 +445,7 @@
 
                                                 </div>
                                             </div>
-                                            <br>
+                                            <br> -->
                                             <input type="hidden" name="administrador_id" id="administrador_id" value="<?php echo $administrador['utilerias_administradores_id']; ?>">
 
                                             <div class="form-group text-center">

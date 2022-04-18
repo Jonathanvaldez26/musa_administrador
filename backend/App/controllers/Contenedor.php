@@ -20,6 +20,8 @@ class Contenedor extends Controller{
 
     public function asideMenu(){
 
+      $permisos = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? "style=\"display:none;\"" : "";
+
       $menu = <<<html
       <aside class="bg-white-aside sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
         <div class="sidenav-header" style="margin-bottom: 30px;">
@@ -134,11 +136,11 @@ class Contenedor extends Controller{
                     </a>
                 </li>
 
-                <li id="config" class="nav-item" {$configuracionHidden};>
+                <li id="config" class="nav-item" {$permisos}>
                     <hr class="horizontal dark" />
                     <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">OTROS</h6>
                 </li>
-                <li id="configuracion" class="nav-item" {$configuracionHidden};>
+                <li id="configuracion" class="nav-item" {$permisos}>
                     <a href="/Configuracion/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-tools morado-musa-text"></span>
@@ -146,7 +148,7 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">Configuración</span>
                     </a>
                 </li>
-                <li id="util" class="nav-item" {$utileriasHidden};>
+                <li id="util" class="nav-item" {$permisos}>
                     <a data-bs-toggle="collapse" onclick="utilerias()" href="#utilerias" class="nav-link " aria-controls="utilerias" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-user-circle-o morado-musa-text"></span>

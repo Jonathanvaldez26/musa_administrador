@@ -93,5 +93,13 @@ class Controller{
 
     }
 
+    public static function getPermisoUser($usuario){
+        
+        $id = GeneralDao::getPerfilUsuario($usuario);
+
+        return $id;
+
+    }
+
 
 }

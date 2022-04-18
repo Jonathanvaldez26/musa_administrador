@@ -221,6 +221,7 @@
                                     <div class="card mb-4">
                                         <div class="card-header pb-0">
                                             <h6>Administradores del Sistemas y Asignación de Permisos</h6>
+                                            <?php echo $utileriasHidden; ?>
                                         </div>
 
                                         <div class="card-body px-0 pt-0 pb-2">
