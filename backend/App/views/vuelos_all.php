@@ -1378,6 +1378,58 @@
             });
         });
 
+        $(".send_mail").on("click", function(){
+            var id_pase_abordar = $(this).val();
+
+            Swal.fire({
+                title: 'Estas seguro?',
+                text: "Una vez enviado ya no se podra borrar, por favor verifica que todos los datos sean correctos!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                cancelButtonText: 'Cancelar',
+                confirmButtonText: 'Si, enviar!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    //enviar aqui
+                    $.ajax({
+                        url: "/Mailer/mailVuelosAdmin",
+                        type: "POST",
+                        data: {id_pase_abordar},
+                        beforeSend: function() {
+                            console.log("Procesando....");
+                        },
+                        success: function(respuesta) {
+                            console.log(respuesta);
+                            if (respuesta == 'success') {
+
+                                Swal.fire(
+                                'Pase de Abordar enviado!',
+                                'El documento ha sido enviado',
+                                'success'
+                                )
+
+                            }
+                            else{
+                                Swal.fire(
+                                'No se pudo enviar el correo!',
+                                'Hubo un error al enviar el archivo',
+                                'error'
+                                ) 
+                            }
+                            
+                        },
+                        error: function(respuesta) {
+                            console.log(respuesta);
+                        }
+                    });
+                }
+            })
+
+        });
+
     });
 
     $('input:radio[name="confirm_escala_ida"]').change(function() {
