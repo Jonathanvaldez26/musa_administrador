@@ -1123,7 +1123,7 @@
                 $('.next.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
                 $('.previous').addClass("btn-outline-danger btn-rounded mx-2");
                 $('.next').addClass("btn-outline-danger btn-rounded mx-2");
-                $('a.btn').addClass("btn-rounded");
+                $('a.current').addClass("btn-rounded");
                 $('.odd').addClass("bg-gray-conave");
                 $('.even').addClass("bg-white").removeClass("bg-gray-conave-100");
             },
@@ -1168,7 +1168,7 @@
                 $('.next.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
                 $('.previous').addClass("btn-outline-danger btn-rounded mx-2");
                 $('.next').addClass("btn-outline-danger btn-rounded mx-2");
-                $('a.btn').addClass("btn-rounded");
+                $('a.current').addClass("btn-rounded");
                 $('.odd').addClass("bg-gray-conave");
                 $('.even').addClass("bg-white").removeClass("bg-gray-conave-100");
             },
@@ -1213,7 +1213,7 @@
                 $('.next.disabled').addClass("btn-outline-danger opacity-5 btn-rounded mx-2");
                 $('.previous').addClass("btn-outline-danger btn-rounded mx-2");
                 $('.next').addClass("btn-outline-danger btn-rounded mx-2");
-                $('a.btn').addClass("btn-rounded");
+                $('a.current').addClass("btn-rounded");
                 $('.odd').addClass("bg-gray-conave");
                 $('.even').addClass("bg-white").removeClass("bg-gray-conave-100");
             },
