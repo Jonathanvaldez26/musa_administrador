@@ -509,7 +509,7 @@ html;
             }
             $documento->_notas = $notas;
 
-            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 100000))) {
+            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 3000000))) {
                 echo "fail";
             }else{
                 if(move_uploaded_file($file["tmp_name"], "comprobante_vuelo_uno/".$pdf.'.pdf')){
@@ -592,7 +592,7 @@ html;
             }
             $documento->_notas = $notas;
 
-            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 100000))) {
+            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 3000000))) {
                 echo "fail";
             }else{
                 if(move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf')){

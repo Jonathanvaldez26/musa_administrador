@@ -1340,12 +1340,6 @@
                 if (result.isConfirmed) {
 
                     //enviar aqui
-                    // Swal.fire(
-                    // 'Deleted!',
-                    // 'Your file has been deleted.',
-                    // 'success'
-                    // )
-
                     $.ajax({
                         url: "/Mailer/mailVuelosAdmin",
                         type: "POST",
@@ -1357,16 +1351,19 @@
                             console.log(respuesta);
                             if (respuesta == 'success') {
 
-                                // Swal.fire(
-                                // 'Deleted!',
-                                // 'Your file has been deleted.',
-                                // 'success'
-                                // )
+                                Swal.fire(
+                                'Pase de Abordar enviado!',
+                                'El documento ha sido enviado',
+                                'success'
+                                )
 
-                                // swal("¡El itinerario se Cargo Correctamente!", "", "success").
-                                // then((value) => {
-                                //     window.location.replace("/Vuelos/");
-                                // });
+                            }
+                            else{
+                                Swal.fire(
+                                'No se pudo enviar el correo!',
+                                'Hubo un error al enviar el archivo',
+                                'error'
+                                ) 
                             }
                             
                         },
