@@ -228,6 +228,14 @@ sql;
 sql;
       return $mysqli->queryOne($query);
     }
+
+    public static function getPerfilUsuario($usuario){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT * FROM utilerias_administradores WHERE usuario LIKE '$usuario'   
+sql;
+      return $mysqli->queryOne($query);
+    }
     /*
         Buscar los colaboradores 
         @tipo: SEMANAL o QUINCENAL
