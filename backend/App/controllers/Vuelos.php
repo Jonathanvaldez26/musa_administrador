@@ -94,9 +94,9 @@ html;
                             window.location.replace("/Vuelos/");
                         });
                     } else {
-                        Swal.fire("¡Lo sentimos no se pudo Agregar el Vuelo de Ida al Evento!", "", "warning").
+                        Swal.fire("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : \\n1) Compruebe su conexión a internet \\n2) El archivo debe de ser formato pdf \\n3) El archivo excede el tamaño de 3mb ", "error").
                         then((value) => {
-                            // window.location.replace("/Vuelos/");
+                            window.location.replace("/Vuelos/");
                         });
                     }
                       console.log(respuesta);
@@ -134,10 +134,10 @@ html;
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
-                    } else {
-                        Swal.fire("¡Lo sentimos no se pudo Agregar el Vuelo de Regreso a Casa!", "", "warning").
+                    }else{
+                        Swal.fire("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : \\n1) Compruebe su conexión a internet \\n2) El archivo debe de ser formato pdf \\n3) El archivo excede el tamaño de 3mb ", "error").
                         then((value) => {
-                            // window.location.replace("/Vuelos/");
+                            window.location.replace("/Vuelos/");
                         });
                     }
                     console.log(respuesta);
@@ -480,8 +480,10 @@ html;
             $documento->_escala = $escala;
 
             $file = $_FILES["file_"];
+            $tipo_archivo = $_FILES['file_']['type'];
+            $tamano_archivo = $_FILES['file_']['size'];
             $pdf = $this->generateRandomString();
-            move_uploaded_file($file["tmp_name"], "comprobante_vuelo_uno/".$pdf.'.pdf');
+            // move_uploaded_file($file["tmp_name"], "comprobante_vuelo_uno/".$pdf.'.pdf');
 
             $documento->_url = $pdf.'.pdf';
 
@@ -504,18 +506,26 @@ html;
                 $notas = 'Sin notas';
             }
             $documento->_notas = $notas;
+
+            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 100000))) {
+                echo "fail";
+            }else{
+                if(move_uploaded_file($file["tmp_name"], "comprobante_vuelo_uno/".$pdf.'.pdf')){
+                    $id = VuelosDao::insert($documento);
+    
+                    if ($id) {
+    
+                        // $mailer = new Mailer();
+                        // $mailer->mailVuelosRegreso($msg);
+                        echo 'success';
+        
+                    } else {
+                        echo 'fail';
+                    }
+                }  
+            } 
             
-            $id = VuelosDao::insert($documento);
-
-            if ($id) {
-
-                $mailer = new Mailer();
-                $mailer->mailVuelos($msg);
-                echo 'success';
-
-            } else {
-                echo 'fail';
-            }
+            
         } else {
             echo 'fail REQUEST';
         }
@@ -537,21 +547,36 @@ html;
             $clave = $this->generateClave();
             $documento->_clave = $clave;
 
-            $escala = $_POST["tiene_escala"];
+            $escala = $_POST["tiene_escala_salida"];
             $documento->_escala = $escala;
 
+
+            // //Escala
+
+            // $id_aeropuerto_origen_escala = $_POST['id_origen_escala_salida'];
+            // $documento->_id_aeropuerto_origen_escala = $id_aeropuerto_origen_escala;
+
+            // $id_aeropuerto_destino_escala = $_POST['id_destino_escala_salida'];
+            // $documento->_id_aeropuerto_destino_escala = $id_aeropuerto_destino_escala;
+
+            // $numero_vuelo_escala = $_POST['numero_vuelo_escala_salida'];
+            // $documento->_numero_vuelo_escala = $numero_vuelo_escala;
+
+            // $hora_llegada_escala = $_POST['hora_llegada_escala_salida'];
+            // $documento->_hora_llegada_escala = $hora_llegada_escala;
+
             $file = $_FILES["file_salida"];
+            $tipo_archivo = $_FILES['file_salida']['type'];
+            $tamano_archivo = $_FILES['file_salida']['size'];
             $pdf = $this->generateRandomString();
-            move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf');
+            // move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf');
 
             $documento->_url = $pdf.'.pdf';
 
             $email = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['email'];
             $nombre = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['nombre_completo'];
 
-            // echo $email;
-            // echo $utilerias_asistentes_id;
-            // exit;
+
 
             $msg = [
                 'name' => $nombre,
@@ -565,17 +590,25 @@ html;
             }
             $documento->_notas = $notas;
 
-            $id = VuelosDao::insertSalida($documento);
+            if (!((strpos($tipo_archivo, "pdf")) && ($tamano_archivo < 100000))) {
+                echo "fail";
+            }else{
+                if(move_uploaded_file($file["tmp_name"], "comprobante_vuelo_dos/".$pdf.'.pdf')){
+                    $id = VuelosDao::insertSalida($documento);
 
-            if ($id) {
+                    if ($id) {
 
-                // $mailer = new Mailer();
-                // $mailer->mailVuelosRegreso($msg);
-                echo 'success';
+                        // $mailer = new Mailer();
+                        // $mailer->mailVuelosRegreso($msg);
+                        echo 'success';
+        
+                    } else {
+                        echo 'fail';
+                    }
+                }  
+            }     
 
-            } else {
-                echo 'fail';
-            }
+           
         } else {
             echo 'fail REQUEST';
         }

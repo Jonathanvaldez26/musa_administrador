@@ -163,18 +163,12 @@ html;
     
     foreach ($datos as $key => $value) {
 
-<<<<<<< HEAD
-        if($value['es_ckeckin'] == 1){
-          $url_checkin = $value['url_checkin'];
-          $url_directivos	= $value['url_directivos'];
-=======
       
       $url_directivos	= $value['url'];
       // var_dump($value['es_ckeckin']);
         // if($value['es_ckeckin'] == 1){
         //   $url_checkin = $value['url_checkin'];
         //   $url_directivos	= $value['url'];
->>>>>>> 2cfe18a867042a3d4c275a41670d95ac144c07cf
           
         //   $url_staf	= $value['url_staf'];
         //   $url_neurociencias	= $value['url_neurociencias	'];

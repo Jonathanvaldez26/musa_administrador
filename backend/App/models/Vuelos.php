@@ -161,7 +161,7 @@ sql;
             :utilerias_asistentes_id, 
             :utilerias_administradores_id, 
             :clave,
-            1,
+            :tiene_escala,
             :url,
             :nota, 
             2);
@@ -170,6 +170,7 @@ sql;
             ':utilerias_asistentes_id'=>$data->_utilerias_asistentes_id,
             ':utilerias_administradores_id'=>$data->_utilerias_administradores_id,
             ':clave'=>$data->_clave,
+            ':tiene_escala' =>$data->_escala,
             ':url'=>$data->_url,
             ':nota'=>$data->_notas
         );
