@@ -242,7 +242,11 @@ sql;
         
     }
     public static function delete($id){
-        
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        DELETE FROM pases_abordar WHERE id_pase_abordar = $id 
+sql;
+        return $mysqli->delete($query);
     }
 
     public static function getAsistenteNombre(){
@@ -252,8 +256,6 @@ sql;
         CONCAT(ra.nombre, ' ', ra.segundo_nombre, ' ', ra.apellido_paterno, ' ', ra.apellido_materno) as nombre, ua.utilerias_asistentes_id 
         from utilerias_asistentes ua 
         INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso 
-        INNER JOIN comprobante_vacuna cv on cv.utilerias_asistentes_id = ua.utilerias_asistentes_id
-        INNER JOIN prueba_covid pc on pc.utilerias_asistentes_id = ua.utilerias_asistentes_id 
         WHERE ua.utilerias_asistentes_id NOT IN (SELECT utilerias_asistentes_id FROM pases_abordar where tipo = 1) 
         
         
@@ -270,7 +272,6 @@ sql;
         CONCAT(ra.nombre, ' ', ra.segundo_nombre, ' ', ra.apellido_paterno, ' ', ra.apellido_materno) as nombre, ua.utilerias_asistentes_id 
         from utilerias_asistentes ua 
         INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso 
-        INNER JOIN pases_abordar pa on pa.utilerias_asistentes_id = ua.utilerias_asistentes_id and pa.tipo = 1
         WHERE ua.utilerias_asistentes_id NOT IN (SELECT utilerias_asistentes_id FROM pases_abordar where tipo = 2) 
 sql;
 

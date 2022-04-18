@@ -199,7 +199,7 @@ html;
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
                     <button class="btn bg-gradient-info btn-icon-only" type="button"><span class="fas fa-envelope"></span></button>
-                    <button class="btn bg-gradient-danger btn-icon-only" type="button"><span class="fas fa-trash"></span></button>
+                    <button class="btn bg-gradient-danger btn-icon-only" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}"><span class="fas fa-trash"></span></button>
                 </td>
                  
             </tr>
@@ -215,7 +215,8 @@ html;
     //     // var_dump($id_linea['id_linea_ejecutivo']);
     //     $vuelos_salida = VuelosDao::getSalidaByLinea($id_linea['id_linea_ejecutivo']);
     // }
-     $tabla1= '';
+     $tabla1 = '';
+     $modal_salida = '';
      foreach ($vuelos_salida as $key => $value) {
             $tabla1.= <<<html
             <tr>
@@ -246,13 +247,15 @@ html;
                  </td>
                  <td style="text-align:center; vertical-align:middle;">
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
-                    <a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
+                    <!--a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
+                    <button class="btn bg-gradient-primary btn-icon-only" type="button" data-toggle="modal" data-target="#Modal_Ver-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
                     <button class="btn bg-gradient-info btn-icon-only" type="button"><span class="fas fa-envelope"></span></button>
-                    <button class="btn bg-gradient-danger btn-icon-only" type="button"><span class="fas fa-trash"></span></button>
+                    <button class="btn bg-gradient-danger btn-icon-only" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}"><span class="fas fa-trash"></span></button>
                 </td>
                  
             </tr>
 html;
+        $modal_salida.=$this->modalPDF($value);
         }
 
     
@@ -451,6 +454,7 @@ html;
     //  View::set('idOrigenEscala',$this->getAeropuertosDestino());
      View::set('tabla',$tabla);
      View::set('tabla1',$tabla1);
+     View::set('modal_salida',$modal_salida);
      View::set('tabla_itinerarios',$tabla_itinerarios);
      View::set('totalvuelos',$totalvuelos);
      View::set('totalvueloscargadossalida',$totalvueloscargadossalida);
@@ -458,6 +462,39 @@ html;
      View::set('header',$this->_contenedor->header($extraHeader));
      View::set('footer',$extraFooter);
      View::render("vuelos_all");
+    }
+
+    public function borrarPase($id){
+
+        $delete_registrado = VuelosDao::delete($id);
+
+        echo json_encode($delete_registrado);
+    }
+
+    public function modalPDF($datos){
+        $modal = <<<html
+            <div class="modal fade" id="Modal_Ver-{$datos['id_pase_abordar']}" role="dialog" aria-labelledby="" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="Modal_Ver-Label">Editar Restaurante</h5>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input hidden id="id_pase_abordar" name="id_pase_abordar" type="text" value="{$datos['id_pase_abordar']}" readonly>
+                            <div class="form-group row">
+                                <span>123{$datos['link']}</span>
+                                <iframe src="/comprobante_vuelo_dos/{$datos['link']}" style="width:100%; height:700px;" frameborder="0" ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        html;
+
+            return $modal;
     }
 
     public function uploadVueloUno(){
@@ -515,8 +552,8 @@ html;
     
                     if ($id) {
     
-                        // $mailer = new Mailer();
-                        // $mailer->mailVuelosRegreso($msg);
+                        $mailer = new Mailer();
+                        $mailer->mailVuelosRegreso($msg);
                         echo 'success';
         
                     } else {
@@ -598,8 +635,8 @@ html;
 
                     if ($id) {
 
-                        // $mailer = new Mailer();
-                        // $mailer->mailVuelosRegreso($msg);
+                        $mailer = new Mailer();
+                        $mailer->mailVuelosRegreso($msg);
                         echo 'success';
         
                     } else {

@@ -1030,6 +1030,8 @@
         </div>
 
     </main>
+
+    <?php echo $modal_salida; ?>
 </body>
 
 <?php echo $footer; ?>
@@ -1037,6 +1039,58 @@
 <script src="//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 <script>
+    function borrarPaseAbordar(dato){
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn bg-gradient-info mx-2',
+                cancelButton: 'btn bg-gradient-danger mx-2'
+            },
+            buttonsStyling: false
+        })
+        swalWithBootstrapButtons.fire({
+            title: '¿Está seguro de eliminar este pase?',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No',
+            }).
+        then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: "/Vuelos/borrarPase/"+dato,
+                    type: "POST",
+                    dataType: 'json',
+                    beforeSend: function() {
+                        console.log("Procesando....");
+                        // alert('Se está borrando');
+                        
+                    },
+                    success: function(respuesta) {
+                        console.log(respuesta);
+                        console.log('despues de borrar');
+                        // alert('Bien borrado');
+                        Swal.fire("¡Se borró correctamente!", "", "success").
+                        then((value) => {
+                            $("#codigo_registro").focus();
+                            window.location.reload();
+                        });
+                    },
+                    error: function(respuesta) {
+                        console.log(respuesta);
+                        // alert('Error');
+                        Swal.fire("¡Ha ocurrido un error al intentar borrar el pase!", "", "error").
+                        then((value) => {
+                            $("#codigo_registro").focus();
+                        });
+                    }
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+        
+    }
     $(document).ready(function() {
 
         $('#tiene_escala').on('change', function(){
