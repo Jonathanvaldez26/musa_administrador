@@ -75,31 +75,36 @@ html;
                   {
                      console.log(value);
                   }
-                  $.ajax({
-                      url:"/Vuelos/uploadVueloUno",
-                      type: "POST",
-                      data: formData,
-                      cache: false,
-                      contentType: false,
-                      processData: false,
-                      beforeSend: function(){
-                      console.log("Procesando....");
-                  },
-                  success: function(respuesta){
-                      if(respuesta == 'success'){
-                         // $('#modal_payment_ticket').modal('toggle');
-                         
-                          swal("¡El vuelo se Cargo Correctamente!", "", "success").
-                          then((value) => {
-                              window.location.replace("/Vuelos/");
-                          });
-                      }
+                $.ajax({
+                    url:"/Vuelos/uploadVueloUno",
+                    type: "POST",
+                    data: formData,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    beforeSend: function(){
+                    console.log("Procesando....");
+                },
+                success: function(respuesta){
+                    if(respuesta == 'success'){
+                        // $('#modal_payment_ticket').modal('toggle');
+                        
+                        Swal.fire("¡El Vuelo de llegada al evento se Cargo Correctamente!", "", "success").
+                        then((value) => {
+                            window.location.replace("/Vuelos/");
+                        });
+                    } else {
+                        Swal.fire("¡Lo sentimos no se pudo Agregar el Vuelo de Ida al Evento!", "", "warning").
+                        then((value) => {
+                            // window.location.replace("/Vuelos/");
+                        });
+                    }
                       console.log(respuesta);
-                  },
-                  error:function (respuesta)
-                  {
-                      console.log(respuesta);
-                  }
+                },
+                error:function (respuesta)
+                {
+                    console.log(respuesta);
+                }
                 });
           });
 
@@ -125,7 +130,7 @@ html;
                     if(respuesta == 'success'){
                        // $('#modal_payment_ticket').modal('toggle');
                        
-                        swal("¡El vuelo se Cargo Correctamente!", "", "success").
+                        Swal.fire("¡El Vuelo de Regreso a Casa se Cargo Correctamente!", "", "success").
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
@@ -161,42 +166,43 @@ html;
     //   }
     //  var_dump($id_linea);
      $tabla= '';
-//      foreach ($vuelos as $key => $value) {
-//             $tabla.= <<<html
-//             <tr>
-//                  <td>
-//                       <div class="d-flex px-3 py-1">
-//                           <div class="d-flex flex-column justify-content-center">
-//                               <h6 class="mb-0 text-sm"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} <span class="badge badge-sm bg-gradient-success"> Activo</span></h6>
-//                               <p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-calendar" style="font-size: 13px"></span> {$value['fecha_alta']}</p>
-//                               <p class="text-sm mb-0"><span class="fa fa-plane" style="color: #125a16; font-size: 13px"></span> {$value['aeropuerto_llegada']}</p>
-//                               <p class="text-sm mb-0"><span class="fa fa-flag" style="color: #353535; font-size: 13px"></span> {$value['aeropuerto_salida']}</p>
-//                               <p class="text-sm mb-0"><span class="fa fa-ticket" style="color: #1a8fdd; font-size: 13px"></span> Número de Vuelo: <strong>{$value['numero_vuelo']}</strong></p>
-//                               <p class="text-sm mb-0"><span class="fa fa-clock-o" font-size: 13px"></span> Hora Estimada de Llegada: {$value['hora_llegada_destino']}</p>
-//                               <hr>
-//                               <p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-sticky-note" style="font-size: 13px"></span> {$value['nota']}</p>
-//                           </div>
-//                       </div>
-//                  </td>
-//                  <td>
-//                       <div class="d-flex px-3 py-1">
-//                           <div class="d-flex flex-column justify-content-center">
-//                               <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['email']}</h6></a></u>
-//                               <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
-//                           </div>
-//                       </div>
-//                  </td>
-//                  <td class="align-middle text-center text-sm">
-//                      <p class="text-sm font-weight-bold mb-0 text-dark">{$value['nombre_registro']}</p><span class="badge badge-info" style="background-color: {$value['color']}; color: white;">{$value['nombre_linea_ejecutivo']}</span>
+     foreach ($vuelos as $key => $value) {
+            $tabla.= <<<html
+            <tr>
+                 <td>
+                      <div class="d-flex px-3 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                              <h6 class="mb-0 text-sm"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} <span class="badge badge-sm bg-gradient-success"> Activo</span></h6>
+                              <!--p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-calendar" style="font-size: 13px"></span> {$value['fecha_alta']}</p>
+                              <p class="text-sm mb-0"><span class="fa fa-plane" style="color: #125a16; font-size: 13px"></span> {$value['aeropuerto_llegada']}</p>
+                              <p class="text-sm mb-0"><span class="fa fa-flag" style="color: #353535; font-size: 13px"></span> {$value['aeropuerto_salida']}</p>
+                              <p class="text-sm mb-0"><span class="fa fa-ticket" style="color: #1a8fdd; font-size: 13px"></span> Número de Vuelo: <strong>{$value['numero_vuelo']}</strong></p>
+                              <p class="text-sm mb-0"><span class="fa fa-clock-o" font-size: 13px"></span> Hora Estimada de Llegada: {$value['hora_llegada_destino']}</p-->
+                              <hr>
+                              <p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-sticky-note" style="font-size: 13px"></span> {$value['nota']}</p>
+                          </div>
+                      </div>
+                 </td>
+                 <td>
+                      <div class="d-flex px-3 py-1">
+                          <div class="d-flex flex-column justify-content-center">
+                              <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['email']}</h6></a></u>
+                              <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
+                          </div>
+                      </div>
+                 </td>
+                 <td class="align-middle text-center text-sm">
+                     <p class="text-sm font-weight-bold mb-0 text-dark">{$value['nombre_registro']}</p><span class="badge badge-info" style="background-color: {$value['color']}; color: white;">{$value['nombre_linea_ejecutivo']}</span>
                      
-//                  </td>
-//                 <td style="text-align:center; vertical-align:middle;">
-//                     <a href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
-//                 </td>
+                 </td>
+                <td style="text-align:center; vertical-align:middle;">
+                    <!--a href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
+                    <a href="/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
+                </td>
                  
-//             </tr>
-// html;
-//         }
+            </tr>
+html;
+        }
 
     $vuelos_salida = VuelosDao::getAllSalida();
 
@@ -215,11 +221,11 @@ html;
                       <div class="d-flex px-3 py-1">
                           <div class="d-flex flex-column justify-content-center">
                               <h6 class="mb-0 text-sm"><span class="fa fa-user-md" style="font-size: 13px"></span> {$value['nombre']} <span class="badge badge-sm bg-gradient-success"> Activo</span> </h6>
-                              <p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-calendar" style="font-size: 13px"></span> {$value['fecha_alta']}</p>
+                              <!--p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-calendar" style="font-size: 13px"></span> {$value['fecha_alta']}</p>
                               <p class="text-sm mb-0"><span class="fa fa-plane" style="color: #125a16; font-size: 13px"></span> {$value['aeropuerto_llegada']}</p>
                               <p class="text-sm mb-0"><span class="fa fa-flag" style="color: #353535; font-size: 13px"></span> {$value['aeropuerto_salida']}</p>
                               <p class="text-sm mb-0"><span class="fa fa-ticket" style="color: #1a8fdd; font-size: 13px"></span> Número de Vuelo: <strong>{$value['numero_vuelo']}</strong></p>
-                              <p class="text-sm mb-0"><span class="fa fa-clock-o" font-size: 13px"></span> Hora Estimada de Llegada: {$value['hora_llegada_destino']}</p>
+                              <p class="text-sm mb-0"><span class="fa fa-clock-o" font-size: 13px"></span> Hora Estimada de Llegada: {$value['hora_llegada_destino']}</p-->
                               <hr>
                               <p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-sticky-note" style="font-size: 13px"></span> {$value['nota']}</p>
                           </div>
@@ -237,7 +243,8 @@ html;
                      <p class="text-sm font-weight-bold mb-0 text-dark">{$value['nombre_registro']}</p><span class="badge badge-info" style="background-color: {$value['color']}; color: white;">{$value['nombre_linea_ejecutivo']}</span>
                  </td>
                  <td style="text-align:center; vertical-align:middle;">
-                    <a href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
+                    <!--a href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
+                    <a href="/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
                 </td>
                  
             </tr>
@@ -465,39 +472,14 @@ html;
             $clave = $this->generateClave();
             $documento->_clave = $clave;
 
-            $id_aeropuerto_origen = $_POST['id_origen'];
-            $documento->_id_aeropuerto_origen = $id_aeropuerto_origen;
-
-            $id_aeropuerto_destino = $_POST['id_destino'];
-            $documento->_id_aeropuerto_destino = $id_aeropuerto_destino;
-
-            $numero_vuelo = $_POST['numero_vuelo'];
-            $documento->_numero_vuelo = $numero_vuelo;
-
-            $hora_llegada = $_POST['hora_llegada'];
-            $documento->_hora_llegada = $hora_llegada;
-
-            //Escala
-
-            $id_aeropuerto_origen_escala = $_POST['id_origen_escala'];
-            $documento->_id_aeropuerto_origen_escala = $id_aeropuerto_origen_escala;
-
-            $id_aeropuerto_destino_escala = $_POST['id_destino_escala'];
-            $documento->_id_aeropuerto_destino_escala = $id_aeropuerto_destino_escala;
-
-            $numero_vuelo_escala = $_POST['numero_vuelo_escala'];
-            $documento->_numero_vuelo_escala = $numero_vuelo_escala;
-
-            $hora_llegada_escala = $_POST['hora_llegada_escala'];
-            $documento->_hora_llegada_escala = $hora_llegada_escala;
+            $escala = $_POST["tiene_escala"];
+            $documento->_escala = $escala;
 
             $file = $_FILES["file_"];
             $pdf = $this->generateRandomString();
             move_uploaded_file($file["tmp_name"], "comprobante_vuelo_uno/".$pdf.'.pdf');
 
             $documento->_url = $pdf.'.pdf';
-
-            $notas = $_POST['notas'];
 
             $email = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['email'];
             $nombre = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['nombre_completo'];
@@ -513,6 +495,7 @@ html;
             ];
 
             $notas = $_POST['notas'];
+            // var_dump($notas);
             if ($notas == '') {
                 $notas = 'Sin notas';
             }
@@ -576,8 +559,6 @@ html;
 
             $documento->_url = $pdf.'.pdf';
 
-            $notas = $_POST['notas'];
-
             $email = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['email'];
             $nombre = VuelosDao::getAsistentebyUAId($utilerias_asistentes_id)[0]['nombre_completo'];
 
@@ -589,7 +570,7 @@ html;
                 'url'=>'https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/'.$pdf.'.pdf'
             ];
 
-            $notas = $_POST['notas'];
+            $notas = $_POST['notas_salida'];
             if ($notas == '') {
                 $notas = 'Sin notas';
             }

@@ -407,7 +407,7 @@
                                 </div>
                                 <div class="ps-4">
                                     <div class="panel-body" <?php echo $visible; ?>></div>
-                                    <button type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3" data-toggle="modal" data-target="#Modal_Add_Salidas"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3" data-toggle="modal" data-target="#Modal_Add"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                     <a style="background: #1C6C42; color: #ffffff;" href="/Vuelos/Add/" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-file-excel" aria-hidden="true"></i></a>
                                     <a style="background: #9A1622; color: #ffffff;" href="/Vuelos/Add/" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-file-pdf" aria-hidden="true"></i></a>
                                     <button type="button" class="btn bg-gradient-secondary btn-icon-only mb-0 mt-3" data-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Todo cambio que usted realice en el sistema será guardado con fecha, usuario y transacción.">
@@ -440,7 +440,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php //echo //$tabla; ?>
+                                                    <?php echo $tabla; ?>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -603,80 +603,8 @@
                                 </div>
                                 <br>
                                 
-                                <div class="row mb-3" id="pase_escala" hidden>
-                                    <hr>
-                                    <h4>Escala</h4>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_origen_escala">Seleccione el Origen de la Ciudad (¿De Donde Sale?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control select_2" name="id_origen_escala" id="id_origen_escala">
-                                                <option value="0" selected>Seleccione una Opción</option>
-                                                <?php echo $idAeropuertoOrigen; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_destino_escala">Seleccione el Destino de la Ciudad (¿A Donde Llega?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control select_2" name="id_destino_escala" id="id_destino_escala">
-                                                <option value="0" selected>Seleccione una Opción</option>    
-                                                <?php echo $idAeropuertoOrigen; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Número de Vuelo *</label>
-                                        <div class="input-group">
-                                            <input id="numero_vuelo_escala" name="numero_vuelo_escala" minlength="6" maxlength="8" class="form-control" type="text" placeholder="OKL018" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Hora de Llegada (Local) *</label>
-                                        <div class="input-group">
-                                            <input id="hora_llegada_escala" name="hora_llegada_escala" maxlength="29" class="form-control" type="time" placeholder="hora llegada" style="text-transform:uppercase;">
-                                        </div>
-                                    </div>
-                                </div>
                                 <hr>
                                 <div class="row mb-3" id="pase_normal" hidden>
-                                    <h4>Tramo 2 Pase Rumbo a la Convención</h4>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_origen">Seleccione el Origen de la Ciudad (¿De Donde Sale?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control" name="id_origen" id="id_origen" required>
-                                                <option selected disabled>Seleccione una Opción</option>
-                                                <?php echo $idAeropuertoOrigen; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_destino">Seleccione el Destino de la Ciudad (¿A Donde Llega?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control " name="id_destino" id="id_destino" required>
-                                                <?php echo $idAeropuertoDestino; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Número de Vuelo *</label>
-                                        <div class="input-group">
-                                            <input id="numero_vuelo" name="numero_vuelo" minlength="6" maxlength="8" class="form-control" type="text" placeholder="OKL018" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Hora de Llegada (Local) *</label>
-                                        <div class="input-group">
-                                            <input id="hora_llegada" name="hora_llegada" maxlength="29" class="form-control" type="time" placeholder="hora llegada" required="" style="text-transform:uppercase;">
-                                        </div>
-                                    </div>
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-12 col-sm-12 col-xs-12" for="file_">Ticket en Formato .PDF: <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">
@@ -757,7 +685,7 @@
                                     <div class="col-12 col-lg-12">
                                         <label class="form-label">Notas para Grupo LAHE (Opcional)</label>
                                         <div class="input-group">
-                                            <textarea id="notas" name="notas" maxlength="1000" class="form-control" placeholder="Añade Alguna Nota de Importancia"></textarea>
+                                            <textarea id="notas_salida" name="notas_salida" maxlength="1000" class="form-control" placeholder="Añade Alguna Nota de Importancia"></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" id="user_salida" name="user_salida" value="<?= $_SESSION["utilerias_administradores_id"] ?>">

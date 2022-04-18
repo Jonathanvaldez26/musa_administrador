@@ -106,13 +106,8 @@ sql;
             utilerias_asistentes_id, 
             utilerias_administradores_id, 
             clave,
-            numero_vuelo, 
-            hora_llegada_destino,
-            numero_vuelo_escala,
-            hora_llegada_escala, 
-            fecha_alta, 
-            url, 
-            status, 
+            tiene_escala,
+            url,
             nota, 
             tipo)
 
@@ -121,25 +116,16 @@ sql;
             :utilerias_asistentes_id, 
             :utilerias_administradores_id, 
             :clave, 
-            :numero_vuelo, 
-            :hora_llegada_destino,
-            :numero_vuelo_escala,
-            :hora_llegada_escala,
-            NOW(), 
-            :url, 
-            1, 
+            :escala, 
+            :url,
             :nota, 
-            1);
+            1)
 sql;
         $parametros = array(
             ':utilerias_asistentes_id'=>$data->_utilerias_asistentes_id,
             ':utilerias_administradores_id'=>$data->_utilerias_administradores_id,
             ':clave'=>$data->_clave,
-            ':numero_vuelo'=>$data->_numero_vuelo,
-            ':hora_llegada_destino'=>$data->_hora_llegada,
-            ':numero_vuelo_escala'=>$data->_numero_vuelo_escala,
-            ':hora_llegada_escala'=>$data->_hora_llegada_escala,
-
+            ':escala'=>$data->_escala,
             ':url'=>$data->_url,
             ':nota'=>$data->_notas
         );
@@ -268,7 +254,7 @@ sql;
         INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso 
         INNER JOIN comprobante_vacuna cv on cv.utilerias_asistentes_id = ua.utilerias_asistentes_id
         INNER JOIN prueba_covid pc on pc.utilerias_asistentes_id = ua.utilerias_asistentes_id 
-        WHERE ua.utilerias_asistentes_id NOT IN (SELECT utilerias_asistentes_id FROM pases_abordar) 
+        WHERE ua.utilerias_asistentes_id NOT IN (SELECT utilerias_asistentes_id FROM pases_abordar where tipo = 1) 
         
         
 sql;
@@ -281,12 +267,19 @@ sql;
         $mysqli = Database::getInstance();
         $query=<<<sql
         SELECT ra.id_registro_acceso, 
-        CONCAT(ra.nombre, ' ', ra.segundo_nombre, ' ', ra.apellido_paterno, ' ', ra.apellido_materno) as nombre, 
-         ua.utilerias_asistentes_id 
-        FROM utilerias_asistentes ua 
+        CONCAT(ra.nombre, ' ', ra.segundo_nombre, ' ', ra.apellido_paterno, ' ', ra.apellido_materno) as nombre, ua.utilerias_asistentes_id 
+        from utilerias_asistentes ua 
         INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso 
-        ORDER BY `nombre` ASC;      
+        INNER JOIN pases_abordar pa on pa.utilerias_asistentes_id = ua.utilerias_asistentes_id and pa.tipo = 1
+        WHERE ua.utilerias_asistentes_id NOT IN (SELECT utilerias_asistentes_id FROM pases_abordar where tipo = 2) 
 sql;
+
+// SELECT ra.id_registro_acceso, 
+// CONCAT(ra.nombre, ' ', ra.segundo_nombre, ' ', ra.apellido_paterno, ' ', ra.apellido_materno) as nombre, 
+//  ua.utilerias_asistentes_id 
+// FROM utilerias_asistentes ua 
+// INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso 
+// ORDER BY `nombre` ASC;      
 
         // AND cv.status = 1 AND pc.status = 2
         return $mysqli->queryAll($query);
