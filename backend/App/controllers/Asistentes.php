@@ -232,105 +232,8 @@ html;
 html;
         }
 
-        if ($detalles_registro[0]['alergias'] == 'otro') {
-            $alergias_a = <<<html
-            <div class="col-md-4">
-                <label class="form-label mt-4">Alergias *</label>
-                <input class="form-control" name="alergias" id="alergias" maxlength="149" name="alergias" data-color="dark" type="text" value="{$detalles_registro[0]['alergias']}" placeholder="" />
-            
-                <label class="form-label mt-4">Alergias Otro *</label>
-                <input class="form-control" name="alergias_otro" id="alergias_otro" maxlength="149" name="alergias" data-color="dark" type="text" value="<?= {$detalles_registro[0]['alergias']} ?>" placeholder="" />
-            </div>
-html;
-        } else {
-            $alergias_a = <<<html
-            <div class="col-md-4">
-                <label class="form-label mt-4">Alergias *</label>
-                <input class="form-control" name="alergias" id="alergias" maxlength="149" name="alergias" data-color="dark" type="text" value="{$detalles_registro[0]['alergias']}" placeholder="" />
-            
-                <label class="form-label mt-4">Alergias Otro *</label>
-                <input class="form-control" name="alergias_otro" id="alergias_otro" maxlength="149" name="alergias" data-color="dark" type="text" value="{$detalles_registro[0]['alergias_otro']}" placeholder="" />
-            </div>
-html;
-        }
-
-        if ($detalles_registro[0]['alergia_medicamento'] == '') {
-            $alergia_medicamento_cual = <<<html
-            <div class="col-md-4 col-sm-12">
-                <label class="form-label mt-4">¿Es usted alérgico a un medicamento?</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="confirm_alergia" id="confirm_alergia_si" value="si">
-                    <label class="form-check-label" for="confirm_alergia_si">
-                        Si
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="confirm_alergia" id="confirm_alergia_no" value="no" checked>
-                    <label class="form-check-label" for="confirm_alergia_no">
-                        No
-                    </label>
-                </div>
-                <div class="col-md-12 col-sm-12 medicamento_cual" style="display: none!important;">
-                    <label class="form-label mt-4">
-                        ¿Cual?
-                        </label>
-                    <input id="alergia_medicamento_cual" name="alergia_medicamento_cual" maxlength="29" pattern="[a-zA-Z0-9]*" class="form-control" type="text" placeholder="Escriba a que medicamento es alérgico" value="">
-                </div>
-            </div>
-html;
-        } else {
-            if ($detalles_registro[0]['alergia_medicamento'] == 'si') {
-                $alergia_medicamento_cual = <<<html
-                <div class="col-md-4 col-sm-12">
-                    <label class="form-label mt-4">¿Es usted alérgico a un medicamento?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="confirm_alergia" id="confirm_alergia_si" value="si" checked>
-                        <label class="form-check-label" for="confirm_alergia_si">
-                            Si
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="confirm_alergia" id="confirm_alergia_no" value="no">
-                        <label class="form-check-label" for="confirm_alergia_no">
-                            No
-                        </label>
-                    </div>
-                    <div class="col-md-12 col-sm-12 medicamento_cual" >
-                        <label class="form-label mt-4">
-                            ¿Cual?
-                            </label>
-                        <input id="alergia_medicamento_cual" name="alergia_medicamento_cual" maxlength="29" pattern="[a-zA-Z0-9]*" class="form-control" type="text" placeholder="Escriba a que medicamento es alérgico" value="{$detalles_registro[0]['alergia_medicamento_cual']}">
-                    </div>
-                </div>
-html;
-            } else {
-                $alergia_medicamento_cual = <<<html
-                <div class="col-md-4 col-sm-12">
-                    <label class="form-label mt-4">¿Es usted alérgico a un medicamento?</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="confirm_alergia" id="confirm_alergia_si" value="si">
-                        <label class="form-check-label" for="confirm_alergia_si">
-                            Si
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="confirm_alergia" id="confirm_alergia_no" value="no" checked>
-                        <label class="form-check-label" for="confirm_alergia_no">
-                            No
-                        </label>
-                    </div>
-                    <div class="col-md-12 col-sm-12 medicamento_cual" style="display: none!important;">
-                        <label class="form-label mt-4">
-                            ¿Cual?
-                            </label>
-                        <input id="alergia_medicamento_cual" name="alergia_medicamento_cual" maxlength="29" pattern="[a-zA-Z0-9]*" class="form-control" type="text" placeholder="Escriba a que medicamento es alérgico" value="{$detalles_registro[0]['alergia_medicamento_cual']}">
-                    </div>
-                </div>
-html;
-            }
-        }
-
-        if ($detalles_registro[0]['restricciones_alimenticias'] == '') {
+        // var_dump($detalles_registro[0]['alergia']);
+        if ($detalles_registro[0]['alergia'] == '') {
             $res_alimenticias = <<<html
             <div class="col-md-4 col-sm-12">
                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
@@ -365,7 +268,7 @@ html;
             </div>
 html;
         } else {
-            if ($detalles_registro[0]['restricciones_alimenticias'] == 'otro') {
+            if ($detalles_registro[0]['alergia'] == 'otro') {
                 $res_alimenticias = <<<html
             <div class="col-md-4 col-sm-12">
                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
@@ -395,13 +298,13 @@ html;
                 </div>
                 <div class="col-md-12 col-sm-12 restricciones_alimenticias" >
                     <label class="form-label mt-4">¿Cual?</label>
-                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['restricciones_alimenticias_cual']}">
+                    <input id="restricciones_alimenticias_cual" name="restricciones_alimenticias_cual" maxlength="45" class="form-control" type="text" placeholder="Escriba su restricción" value="{$detalles_registro[0]['alergia_cual']}">
                 </div>
             </div>
 html;
             }
 
-            if ($detalles_registro[0]['restricciones_alimenticias'] == 'ninguna') {
+            if ($detalles_registro[0]['alergia'] == 'ninguna') {
                 $res_alimenticias = <<<html
             <div class="col-md-4 col-sm-12">
                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
@@ -437,7 +340,7 @@ html;
 html;
             }
 
-            if ($detalles_registro[0]['restricciones_alimenticias'] == 'vegano') {
+            if ($detalles_registro[0]['alergia'] == 'vegano') {
                 $res_alimenticias = <<<html
             <div class="col-md-4 col-sm-12">
                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
@@ -473,7 +376,7 @@ html;
 html;
             }
 
-            if ($detalles_registro[0]['restricciones_alimenticias'] == 'vegetariano') {
+            if ($detalles_registro[0]['alergia'] == 'vegetariano') {
                 $res_alimenticias = <<<html
             <div class="col-md-4 col-sm-12">
                 <label class="form-label mt-4">Restricciones Alimentarias *</label>
@@ -539,13 +442,6 @@ html;
             $btn_genQr = <<<html
             <!--button type="button" id="generar_clave" title="Generar Ticket Virtual" class="btn bg-gradient-dark mb-0"><i class="fas fa-qrcode"></i></button-->
 html;
-        } else {
-            
-            $msg_clave = '';
-            $btn_genQr = '';
-            $btn_clave = <<<html
-                <!--button id="show_ticket" type="button" class="btn bg-gradient-info mb-0" title="Ver Ticket Virtual"><i class="fas fa-eye"></i></button-->
-html;
         }
 
         $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info'><i class='fa fal fa-address-card' style='font-size: 18px;'></i>Presione esté botón para descargar el gafete</a>";
@@ -591,9 +487,9 @@ html;
         View::set('asideMenu',$this->_contenedor->asideMenu());
         View::set('btn_clave', $btn_clave);
         View::set('btn_genQr', $btn_genQr);
-        View::set('alergias_a', $alergias_a);
+        // View::set('alergias_a', $alergias_a);
         View::set('res_alimenticias', $res_alimenticias);
-        View::set('alergia_medicamento_cual', $alergia_medicamento_cual);
+        // View::set('alergia_medicamento_cual', $alergia_medicamento_cual);
         View::set('detalles_registro', $detalles_registro[0]);
         View::set('header', $this->_contenedor->header($extraHeader));
         View::set('footer', $this->_contenedor->footer($extraFooter));
@@ -650,8 +546,8 @@ html;
             $fecha_nacimiento = $_POST['fecha_nacimiento'];
             $email = $_POST['email'];
             $telefono = $_POST['telefono'];
-            $alergias = $_POST['select_alergico'];
-            $alergias_otro = $_POST['alergias_otro'];
+            // $alergias = $_POST['select_alergico'];
+            // $alergias_otro = $_POST['alergias_otro'];
             $alergia_medicamento = $_POST['confirm_alergia'];
             if (isset($_POST['alergia_medicamento_cual'])) {
                 $alergia_medicamento_cual = $_POST['alergia_medicamento_cual'];
@@ -669,13 +565,14 @@ html;
             $documento->_fecha_nacimiento = $fecha_nacimiento;
             $documento->_email = $email;
             $documento->_telefono = $telefono;
-            $documento->_alergias = $alergias;
-            $documento->_alergias_otro = $alergias_otro;
-            $documento->_alergia_medicamento = $alergia_medicamento;
-            $documento->_alergia_medicamento_cual = $alergia_medicamento_cual;
+            // $documento->_alergias = $alergias;
+            // $documento->_alergias_otro = $alergias_otro;
+            // $documento->_alergia_medicamento = $alergia_medicamento;
+            // $documento->_alergia_medicamento_cual = $alergia_medicamento_cual;
             $documento->_restricciones_alimenticias = $restricciones_alimenticias;
             $documento->_restricciones_alimenticias_cual = $restricciones_alimenticias_cual;
 
+            // var_dump($documento);
             $id = AsistentesDao::update($documento);
 
             if ($id) {

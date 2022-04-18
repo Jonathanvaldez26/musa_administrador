@@ -354,7 +354,7 @@
                 <div class="card card-body mt-n6 overflow-hidden">
                     <div class="row gx-4">
                         <div class="col-auto">
-                            <div class="bg-gradient-red avatar avatar-xl position-relative">
+                            <div class="bg-gradient-musa avatar avatar-xl position-relative">
                                 <!-- <img src="../../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm"> -->
                                 <span class="fa fa-plane" style="font-size: xx-large;"></span>
                             </div>
@@ -543,7 +543,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php echo $tabla_itinerarios; ?>
+                                                    <?php echo $tabla_itinerarios; ?> 
                                                 </tbody>
                                             </table>
                                         </div>
@@ -745,81 +745,9 @@
                                 </div>
                                 <br>
                                 
-                                <div class="row mb-3" id="pase_escala_salida" hidden>
-                                    <hr>
-                                    <h4>Escala</h4>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_origen_escala_salida">Seleccione el Origen de la Ciudad (¿De Donde Sale?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control select_2_salida" name="id_origen_escala_salida" id="id_origen_escala_salida">
-                                                <option value="0" selected>Seleccione una Opción</option>
-                                                <?php echo $idOrigenEscala; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_destino_escala_salida">Seleccione el Destino de la Ciudad (¿A Donde Llega?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control select_2_salida" name="id_destino_escala_salida" id="id_destino_escala_salida">
-                                                <option value="0" selected>Seleccione una Opción</option>    
-                                                <?php echo $idAeropuertoOrigen; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Número de Vuelo *</label>
-                                        <div class="input-group">
-                                            <input id="numero_vuelo_escala_salida" name="numero_vuelo_escala_salida" minlength="6" maxlength="8" class="form-control" type="text" placeholder="OKL018" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Hora de Llegada (Local) *</label>
-                                        <div class="input-group">
-                                            <input id="hora_llegada_escala_salida" name="hora_llegada_escala_salida" maxlength="29" class="form-control" type="time" placeholder="hora llegada" style="text-transform:uppercase;">
-                                        </div>
-                                    </div>
-                                </div>
                                 <hr>
                                 <div class="row mb-3" id="pase_normal_salida" hidden>
-                                    <h4>Tramo 2 Pase de Regreso a Casa</h4>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_origen_salida">Seleccione el Origen de la Ciudad (¿De Donde Sale?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control" name="id_origen_salida" id="id_origen_salida" required>
-                                                <option selected disabled>Seleccione una Opción</option>
-                                                <?php echo $idAeropuertoDestino; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_destino_salida">Seleccione el Destino de la Ciudad (¿A Donde Llega?) <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                            <select class="form-control " name="id_destino_salida" id="id_destino_salida" required>
-                                                
-                                                <?php echo $idAeropuertoOrigen; ?>
-                                            </select>
-                                        </div>
-                                        <span id="availability_"></span>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Número de Vuelo *</label>
-                                        <div class="input-group">
-                                            <input id="numero_vuelo_salida" name="numero_vuelo_salida" minlength="6" maxlength="8" class="form-control" type="text" placeholder="OKL018" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label class="form-label">Hora de Llegada (Local) *</label>
-                                        <div class="input-group">
-                                            <input id="hora_llegada_salida" name="hora_llegada_salida" maxlength="29" class="form-control" type="time" placeholder="hora llegada" required="" style="text-transform:uppercase;">
-                                        </div>
-                                    </div>
+                                    <!-- <h4>Tramo 2 Pase de Regreso a Casa</h4> -->
                                     <div class="form-group col-md-12">
                                         <label class="control-label col-md-12 col-sm-12 col-xs-12" for="file_salida">Ticket en Formato .PDF: <span class="required">*</span></label>
                                         <div class="col-md-12 col-sm-12 col-xs-12">

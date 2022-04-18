@@ -570,10 +570,6 @@
 
                                     <?php echo $res_alimenticias; ?>
 
-                                    <?php echo $alergia_medicamento_cual; ?>
-
-                                    <!-- <?php echo $alergias_a; ?> -->
-
                                     <!-- <div class="col-md-4">
                                         <label class="form-label mt-4">Alergias *</label>
                                         <input class="form-control" name="alergias" id="alergias" maxlength="149" name="alergias" data-color="dark" type="text" value="<?= $detalles_registro['alergias'] ?>" placeholder="" />
@@ -784,14 +780,24 @@
                 },
                 success: function(respuesta) {
                     // alert("Successs");
-
+                    console.log(respuesta)
                     if (respuesta == 'success') {
-                        swal("!Se actualizaron tus datos correctamente!", "", "success").
+                        Swal.fire({
+                            title: "!Se actualizaron tus datos correctamente!",
+                            html: '',
+                            icon:"success",
+                            timer: 1250,
+                        }).
                         then((value) => {
                             window.location.reload();
                         });
                     } else {
-                        swal("!Usted No Actualizó Nada!", "", "warning").
+                        Swal.fire({
+                            title: '!Usted No Actualizó Nada!',
+                            html: '',
+                            icon: 'warning',
+                            timer: 1000,
+                        }).
                         then((value) => {
                             //window.location.replace("/Asistentes")
                         });
@@ -803,54 +809,6 @@
 
             });
         });
-
-
-
-        // $("#generar_clave").on("click", function(event) {
-        //     // event.preventDefault();
-
-        //     alert("Hola");
-
-        // var formData = new FormData(document.getElementById("generar_clave"));
-        // for (var value of formData.values()) {
-        //     console.log(value);
-        // }
-
-        // console.log(formData);
-
-        // $.ajax({
-        //     url: "/Asistentes/Actualizar",
-        //     type: "POST",
-        //     data: formData,
-        //     cache: false,
-        //     contentType: false,
-        //     processData: false,
-        //     beforeSend: function() {
-        //         console.log("Procesando....");
-
-
-        //     },
-        //     success: function(respuesta) {
-        //         // alert("Successs");
-
-        //         if (respuesta == 'success') {
-        //             swal("!Se actualizaron tus datos correctamente!", "", "success").
-        //             then((value) => {
-        //                 window.location.reload();
-        //             });
-        //         } else {
-        //             swal("!Usted No Actualizó Nada!", "", "warning").
-        //             then((value) => {
-        //                 //window.location.replace("/Asistentes")
-        //             });
-        //         }
-        //     },
-        //     error: function(respuesta) {
-        //         console.log(respuesta);
-        //     }
-
-        // });
-        // });
 
 
         $('input:radio[name="confirm_alergia"]').change(function() {

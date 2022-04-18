@@ -146,14 +146,14 @@ html;
 
     $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
 
-    //  $vuelos = VuelosDao::getAllLlegada();
-     if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $vuelos = VuelosDao::getAllLlegada();
-      }else{
-        $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
-        // var_dump($id_linea['id_linea_ejecutivo']);
-        $vuelos = VuelosDao::getLlegadaByLinea($id_linea['id_linea_ejecutivo']);
-      }
+     $vuelos = VuelosDao::getAllLlegada();
+    //  if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    //     $vuelos = VuelosDao::getAllLlegada();
+    //   }else{
+    //     $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+    //     // var_dump($id_linea['id_linea_ejecutivo']);
+    //     // $vuelos = VuelosDao::getLlegadaByLinea($id_linea['id_linea_ejecutivo']);
+    //   }
     //  var_dump($id_linea);
      $tabla= '';
 //      foreach ($vuelos as $key => $value) {
@@ -193,15 +193,15 @@ html;
 // html;
 //         }
 
-    //  $vuelos = VuelosDao::getAllSalida();
+    $vuelos_salida = VuelosDao::getAllSalida();
 
-    if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $vuelos_salida = VuelosDao::getAllSalida();
-    }else{
-        $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
-        // var_dump($id_linea['id_linea_ejecutivo']);
-        $vuelos_salida = VuelosDao::getSalidaByLinea($id_linea['id_linea_ejecutivo']);
-    }
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    //     $vuelos_salida = VuelosDao::getAllSalida();
+    // }else{
+    //     $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+    //     // var_dump($id_linea['id_linea_ejecutivo']);
+    //     $vuelos_salida = VuelosDao::getSalidaByLinea($id_linea['id_linea_ejecutivo']);
+    // }
      $tabla1= '';
      foreach ($vuelos_salida as $key => $value) {
             $tabla1.= <<<html
@@ -242,14 +242,15 @@ html;
     
     $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
     
-    if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $itienerarios = VuelosDao::getItinerarios();
-    }else{
-        $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
-        $itienerarios = VuelosDao::getItinerariosByLinea($id_linea['id_linea_ejecutivo']);
-    }
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    //     $itienerarios = VuelosDao::getItinerarios();
+    // }else{
+    //     $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+    //     $itienerarios = VuelosDao::getItinerariosByLinea($id_linea['id_linea_ejecutivo']);
+    // }
 
     //$itienerarios = VuelosDao::getItinerarios();
+    $itienerarios = [0];
     $tabla_itinerarios = '';
 
     foreach ($itienerarios as $key => $value) {
@@ -272,9 +273,6 @@ html;
                   <hr>
 
                     <!--p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br></p-->
-
-                    <!--p class="text-sm font-weight-bold mb-0 "><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span><b> </b>{$value['telefono']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-mail-bulk" style="font-size: 13px;"></span><b>  </b><a "mailto:{$value['email']}">{$value['email']}</a></p-->
 
                     <div class="d-flex flex-column justify-content-center">
                         <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['email']}</h6></a></u>
@@ -349,9 +347,6 @@ html;
 
                     <!--p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br></p-->
 
-                    <!--p class="text-sm font-weight-bold mb-0 "><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span><b> </b>{$value['telefono']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-mail-bulk" style="font-size: 13px;"></span><b>  </b><a "mailto:{$value['email']}">{$value['email']}</a></p-->
-
                     <div class="d-flex flex-column justify-content-center">
                         <u><a href="mailto:{$value['email']}"><h6 class="mb-0 text-sm"><span class="fa fa-mail-bulk" style="font-size: 13px"></span> {$value['email']}</h6></a></u>
                         <u><a href="https://api.whatsapp.com/send?phone=52{$value['telefono']}&text=Buen%20d%C3%ADa,%20te%20contacto%20de%20parte%20del%20Equipo%20Grupo%20LAHE%20%F0%9F%98%80" target="_blank"><p class="text-sm font-weight-bold text-secondary mb-0"><span class="fa fa-whatsapp" style="font-size: 13px; color:green;"></span> {$value['telefono']}</p></a></u>
@@ -381,7 +376,7 @@ html;
         
     }
 
-    $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+    // $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
 
     // var_dump($id_linea);
 
@@ -428,16 +423,16 @@ html;
      View::set('configuracionHidden', $configuracionHidden);
      View::set('utileriasHidden', $utileriasHidden);
 
-     View::set('aerolineas', $this->getAerolineas());
-     View::set('aeropuertos', $this->getAeropuertosAll());
-     View::set('asistentesItinerartio', $this->getAsistentesItinerario());     
+    //  View::set('aerolineas', $this->getAerolineas());
+    //  View::set('aeropuertos', $this->getAeropuertosAll());
+    //  View::set('asistentesItinerartio', $this->getAsistentesItinerario());     
      
 
      View::set('idAsistente',$this->getAsistentes());
      View::set('idAsistenteSalida',$this->getAsistentesSalida());
-     View::set('idAeropuertoOrigen',$this->getAeropuertosOrigen());
-     View::set('idAeropuertoDestino',$this->getAeropuertosDestino());
-     View::set('idOrigenEscala',$this->getAeropuertosDestino());
+    //  View::set('idAeropuertoOrigen',$this->getAeropuertosOrigen());
+    //  View::set('idAeropuertoDestino',$this->getAeropuertosDestino());
+    //  View::set('idOrigenEscala',$this->getAeropuertosDestino());
      View::set('tabla',$tabla);
      View::set('tabla1',$tabla1);
      View::set('tabla_itinerarios',$tabla_itinerarios);
@@ -555,17 +550,8 @@ html;
             $clave = $this->generateClave();
             $documento->_clave = $clave;
 
-            $id_aeropuerto_origen = $_POST['id_origen_salida'];
-            $documento->_id_aeropuerto_origen = $id_aeropuerto_origen;
-
-            $id_aeropuerto_destino = $_POST['id_destino_salida'];
-            $documento->_id_aeropuerto_destino = $id_aeropuerto_destino;
-
-            $numero_vuelo = $_POST['numero_vuelo_salida'];
-            $documento->_numero_vuelo = $numero_vuelo;
-
-            $hora_llegada = $_POST['hora_llegada_salida'];
-            $documento->_hora_llegada = $hora_llegada;
+            $escala = $_POST["tiene_escala"];
+            $documento->_escala = $escala;
 
             //Escala
 
@@ -657,55 +643,55 @@ html;
         return $asistentes;
     }
 
-    public function getAsistentesItinerario(){
-        $asistentes = '';
-        foreach (VuelosDao::getAsistenteNombreItinerario($_SESSION['utilerias_administradores_id']) as $key => $value) {
-            $asistentes .=<<<html
-            <option value="{$value['utilerias_asistentes_id']}">{$value['nombre']}</option>
-html;
-        }
-        return $asistentes;
-    }
+//     public function getAsistentesItinerario(){
+//         $asistentes = '';
+//         foreach (VuelosDao::getAsistenteNombreItinerario($_SESSION['utilerias_administradores_id']) as $key => $value) {
+//             $asistentes .=<<<html
+//             <option value="{$value['utilerias_asistentes_id']}">{$value['nombre']}</option>
+// html;
+//         }
+//         return $asistentes;
+//     }
 
-    public function getAeropuertosOrigen(){
-        $aeropuertos = '';
-        foreach (VuelosDao::getAeropuertoOrigen() as $key => $value) {
-            $aeropuertos .=<<<html
-      <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
-html;
-        }
-        return $aeropuertos;
-    }
+//     public function getAeropuertosOrigen(){
+//         $aeropuertos = '';
+//         foreach (VuelosDao::getAeropuertoOrigen() as $key => $value) {
+//             $aeropuertos .=<<<html
+//       <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
+// html;
+//         }
+//         return $aeropuertos;
+//     }
 
-    public function getAeropuertosDestino(){
-        $aeropuertos = '';
-        foreach (VuelosDao::getAeropuertoDestino() as $key => $value) {
-            $aeropuertos .=<<<html
-      <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
-html;
-        }
-        return $aeropuertos;
-    }
+//     public function getAeropuertosDestino(){
+//         $aeropuertos = '';
+//         foreach (VuelosDao::getAeropuertoDestino() as $key => $value) {
+//             $aeropuertos .=<<<html
+//       <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
+// html;
+//         }
+//         return $aeropuertos;
+//     }
 
-    public function getAeropuertosAll(){
-        $aeropuertos = '';
-        foreach (VuelosDao::getAeropuertosAll() as $key => $value) {
-            $aeropuertos .=<<<html
-      <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
-html;
-        }
-        return $aeropuertos;
-    }
+//     public function getAeropuertosAll(){
+//         $aeropuertos = '';
+//         foreach (VuelosDao::getAeropuertosAll() as $key => $value) {
+//             $aeropuertos .=<<<html
+//       <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
+// html;
+//         }
+//         return $aeropuertos;
+//     }
 
-    public function getAerolineas(){
-        $aerolineas = '';
-        foreach (VuelosDao::getAerolineas() as $key => $value) {
-            $aerolineas .=<<<html
-      <option value="{$value['id_aerolinea']}"> {$value['nombre']} </option>
-html;
-        }
-        return $aerolineas;
-    }
+//     public function getAerolineas(){
+//         $aerolineas = '';
+//         foreach (VuelosDao::getAerolineas() as $key => $value) {
+//             $aerolineas .=<<<html
+//       <option value="{$value['id_aerolinea']}"> {$value['nombre']} </option>
+// html;
+//         }
+//         return $aerolineas;
+//     }
 
     public function itinerario(){
 

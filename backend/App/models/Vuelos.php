@@ -11,51 +11,41 @@ class Vuelos{
     public static function getAllLlegada(){
         $mysqli = Database::getInstance();
         $query=<<<sql
-            SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, pa.fecha_alta, CONCAT(ae.iata, " - ",ae.aeropuerto) as aeropuerto_salida, CONCAT(aeo.iata, " - ",aeo.aeropuerto) as aeropuerto_llegada , pa.numero_vuelo, pa.hora_llegada_destino, le.nombre AS nombre_linea_ejecutivo,
-            pa.nota , ua.nombre as nombre_registro, ra.email, ra.telefono, le.color, pa.url AS link
+            SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre,
+            pa.nota, ua.nombre as nombre_registro, ra.email, ra.telefono, pa.url AS link
             FROM pases_abordar pa
-            INNER JOIN aeropuertos ae on ae.id_aeropuerto = pa.id_aeropuerto_origen
-            INNER JOIN aeropuertos aeo on aeo.id_aeropuerto = pa.id_aeropuerto_destino
             INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
             INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
             INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
-            INNER JOIN asigna_linea al on al.utilerias_administradores_id_linea_asignada = ua.utilerias_administradores_id
-            INNER JOIN linea_ejecutivo le on le.id_linea_ejecutivo = al.id_linea_ejecutivo
-            WHERE tipo = 1 ORDER BY pa.fecha_alta DESC
+            WHERE tipo = 1 
 sql;
         return $mysqli->queryAll($query);
     }
 
-    public static function getLlegadaByLinea($id_linea){
-        $mysqli = Database::getInstance(true);
-        $query =<<<sql
+//     public static function getLlegadaByLinea($id_linea){
+//         $mysqli = Database::getInstance(true);
+//         $query =<<<sql
         
 
-            SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, pa.fecha_alta, CONCAT(ae.iata, " - ",ae.aeropuerto) as aeropuerto_salida, CONCAT(aeo.iata, " - ",aeo.aeropuerto) as aeropuerto_llegada , pa.numero_vuelo, pa.hora_llegada_destino, le.nombre AS nombre_linea_ejecutivo,
-            pa.nota , ua.nombre as nombre_registro, ra.email, ra.telefono, le.color, pa.url AS link
-            FROM pases_abordar pa
-            INNER JOIN aeropuertos ae on ae.id_aeropuerto = pa.id_aeropuerto_origen
-            INNER JOIN aeropuertos aeo on aeo.id_aeropuerto = pa.id_aeropuerto_destino
-            INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
-            INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
-            INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
-            INNER JOIN asigna_linea al on al.utilerias_administradores_id_linea_asignada = ua.utilerias_administradores_id
-            INNER JOIN linea_ejecutivo le on le.id_linea_ejecutivo = al.id_linea_ejecutivo
-            WHERE tipo = 1 and le.id_linea_ejecutivo = $id_linea
-            ORDER BY pa.fecha_alta DESC
-sql;
+//             SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, pa.fecha_alta, pa.numero_vuelo, pa.hora_llegada_destino, le.nombre AS nombre_linea_ejecutivo,
+//             pa.nota , ua.nombre as nombre_registro, ra.email, ra.telefono, le.color, pa.url AS link
+//             FROM pases_abordar pa
+//             INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
+//             INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
+//             INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
+//             WHERE tipo = 1 and le.id_linea_ejecutivo = $id_linea
+//             ORDER BY pa.fecha_alta DESC
+// sql;
 
-        return $mysqli->queryAll($query);
-    }
+//         return $mysqli->queryAll($query);
+//     }
 
     public static function getSalidaByLinea($id_linea){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, pa.fecha_alta, CONCAT(ae.iata, " - ",ae.aeropuerto) as aeropuerto_salida, CONCAT(aeo.iata, " - ",aeo.aeropuerto) as aeropuerto_llegada , pa.numero_vuelo, pa.hora_llegada_destino,
+        SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre,
             pa.nota , ua.nombre as nombre_registro, ra.email, ra.telefono,  pa.url AS link
             FROM pases_abordar pa
-            INNER JOIN aeropuertos ae on ae.id_aeropuerto = pa.id_aeropuerto_origen
-            INNER JOIN aeropuertos aeo on aeo.id_aeropuerto = pa.id_aeropuerto_destino
             INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
             INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
             INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
@@ -94,15 +84,13 @@ sql;
     public static function getAllSalida(){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, pa.fecha_alta, CONCAT(ae.iata, " - ",ae.aeropuerto) as aeropuerto_salida, CONCAT(aeo.iata, " - ",aeo.aeropuerto) as aeropuerto_llegada , pa.numero_vuelo, pa.hora_llegada_destino,
+        SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, 
             pa.nota , ua.nombre as nombre_registro, ra.email, ra.telefono,  pa.url AS link
             FROM pases_abordar pa
-            INNER JOIN aeropuertos ae on ae.id_aeropuerto = pa.id_aeropuerto_origen
-            INNER JOIN aeropuertos aeo on aeo.id_aeropuerto = pa.id_aeropuerto_destino
             INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
             INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
             INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
-            WHERE pa.tipo = 2 ORDER BY pa.fecha_alta DESC
+            WHERE pa.tipo = 2
 sql;
         return $mysqli->queryAll($query);
     }
@@ -117,13 +105,9 @@ sql;
             id_pase_abordar, 
             utilerias_asistentes_id, 
             utilerias_administradores_id, 
-            clave, 
-            id_aeropuerto_origen, 
-            id_aeropuerto_destino,
+            clave,
             numero_vuelo, 
             hora_llegada_destino,
-            id_aeropuerto_origen_escala,
-            id_aeropuerto_destino_escala,
             numero_vuelo_escala,
             hora_llegada_escala, 
             fecha_alta, 
@@ -137,12 +121,8 @@ sql;
             :utilerias_asistentes_id, 
             :utilerias_administradores_id, 
             :clave, 
-            :id_aeropuerto_origen, 
-            :id_aeropuerto_destino,
             :numero_vuelo, 
             :hora_llegada_destino,
-            :id_aeropuerto_origen_escala,
-            :id_aeropuerto_destino_escala,
             :numero_vuelo_escala,
             :hora_llegada_escala,
             NOW(), 
@@ -155,12 +135,8 @@ sql;
             ':utilerias_asistentes_id'=>$data->_utilerias_asistentes_id,
             ':utilerias_administradores_id'=>$data->_utilerias_administradores_id,
             ':clave'=>$data->_clave,
-            ':id_aeropuerto_origen'=>$data->_id_aeropuerto_origen,
-            ':id_aeropuerto_destino'=>$data->_id_aeropuerto_destino,
             ':numero_vuelo'=>$data->_numero_vuelo,
             ':hora_llegada_destino'=>$data->_hora_llegada,
-            ':id_aeropuerto_origen_escala'=>$data->_id_aeropuerto_origen_escala,
-            ':id_aeropuerto_destino_escala'=>$data->_id_aeropuerto_destino_escala,
             ':numero_vuelo_escala'=>$data->_numero_vuelo_escala,
             ':hora_llegada_escala'=>$data->_hora_llegada_escala,
 
@@ -188,18 +164,9 @@ sql;
             id_pase_abordar, 
             utilerias_asistentes_id, 
             utilerias_administradores_id, 
-            clave, 
-            id_aeropuerto_origen, 
-            id_aeropuerto_destino,
-            numero_vuelo, 
-            hora_llegada_destino,
-            id_aeropuerto_origen_escala,
-            id_aeropuerto_destino_escala,
-            numero_vuelo_escala,
-            hora_llegada_escala, 
-            fecha_alta, 
-            url, 
-            status, 
+            clave,
+            tiene_escala,
+            url,
             nota, 
             tipo)
 
@@ -207,18 +174,9 @@ sql;
             null, 
             :utilerias_asistentes_id, 
             :utilerias_administradores_id, 
-            :clave, 
-            :id_aeropuerto_origen, 
-            :id_aeropuerto_destino,
-            :numero_vuelo, 
-            :hora_llegada_destino,
-            :id_aeropuerto_origen_escala,
-            :id_aeropuerto_destino_escala,
-            :numero_vuelo_escala,
-            :hora_llegada_escala,
-            NOW(), 
-            :url, 
-            2, 
+            :clave,
+            1,
+            :url,
             :nota, 
             2);
 sql;
@@ -226,15 +184,6 @@ sql;
             ':utilerias_asistentes_id'=>$data->_utilerias_asistentes_id,
             ':utilerias_administradores_id'=>$data->_utilerias_administradores_id,
             ':clave'=>$data->_clave,
-            ':id_aeropuerto_origen'=>$data->_id_aeropuerto_origen,
-            ':id_aeropuerto_destino'=>$data->_id_aeropuerto_destino,
-            ':numero_vuelo'=>$data->_numero_vuelo,
-            ':hora_llegada_destino'=>$data->_hora_llegada,
-            ':id_aeropuerto_origen_escala'=>$data->_id_aeropuerto_origen_escala,
-            ':id_aeropuerto_destino_escala'=>$data->_id_aeropuerto_destino_escala,
-            ':numero_vuelo_escala'=>$data->_numero_vuelo_escala,
-            ':hora_llegada_escala'=>$data->_hora_llegada_escala,
-
             ':url'=>$data->_url,
             ':nota'=>$data->_notas
         );
@@ -268,8 +217,8 @@ sql;
     public static function insertItinerario($data){
         $mysqli = Database::getInstance(1);
         $query=<<<sql
-        INSERT INTO itinerario (id_itinerario, aerolinea_origen, aerolinea_escala_origen, aerolinea_destino, aerolinea_escala_destino, fecha_salida, fecha_escala_salida, hora_salida, hora_escala_salida, fecha_regreso, fecha_escala_regreso, hora_regreso, hora_escala_regreso, aeropuerto_salida, aeropuerto_escala_salida, aeropuerto_regreso, aeropuerto_escala_regreso, nota, utilerias_asistentes_id, utilerias_administradores_id, status, fecha_alta) 
-        VALUES (null, :aerolinea_origen, :aerolinea_escala_origen,:aerolinea_destino, :aerolinea_escala_destino,:fecha_salida, :fecha_escala_salida,:hora_salida, :hora_escala_salida,:fecha_regreso, :fecha_escala_regreso,:hora_regreso, :hora_escala_regreso,:aeropuerto_salida, :aeropuerto_escala_salida, :aeropuerto_regreso, :aeropuerto_escala_regreso,:nota, :utilerias_asistentes_id, :utilerias_administradores_id, 1, NOW());
+        INSERT INTO itinerario (id_itinerario, aerolinea_origen, aerolinea_escala_origen, aerolinea_destino, aerolinea_escala_destino, fecha_salida, fecha_escala_salida, hora_salida, hora_escala_salida, fecha_regreso, fecha_escala_regreso, hora_regreso, hora_escala_regreso, nota, utilerias_asistentes_id, utilerias_administradores_id, status, fecha_alta) 
+        VALUES (null, :aerolinea_origen, :aerolinea_escala_origen,:aerolinea_destino, :aerolinea_escala_destino,:fecha_salida, :fecha_escala_salida,:hora_salida, :hora_escala_salida,:fecha_regreso, :fecha_escala_regreso,:hora_regreso, :hora_escala_regreso, :nota, :utilerias_asistentes_id, :utilerias_administradores_id, 1, NOW());
 sql;
         $parametros = array(
             ':aerolinea_origen'=>$data->_aerolinea_origen,
@@ -284,10 +233,6 @@ sql;
             ':fecha_escala_regreso'=>$data->_fecha_escala_regreso,
             ':hora_regreso'=>$data->_hora_regreso,
             ':hora_escala_regreso'=>$data->_hora_escala_regreso,
-            ':aeropuerto_salida'=>$data->_aeropuerto_salida,
-            ':aeropuerto_escala_salida'=>$data->_aeropuerto_escala_salida,
-            ':aeropuerto_regreso'=>$data->_aeropuerto_regreso,
-            ':aeropuerto_escala_regreso'=>$data->_aeropuerto_escala_regreso,
             ':nota'=>$data->_nota_itinerario,
             ':utilerias_asistentes_id'=>$data->_utilerias_asistentes_id,
             ':utilerias_administradores_id'=>$data->_utilerias_administradores_id
@@ -374,20 +319,12 @@ sql;
         i.fecha_regreso, 
         i.hora_regreso,
         i.nota, 
-        a.aeropuerto as aeropuerto_salida, 
-        ae.aeropuerto as aeropuerto_escala_salida, 
-        aa.aeropuerto as aeropuerto_regreso,
-        aea.aeropuerto as aeropuerto_escala_regreso,
         concat(ra.nombre, " ", ra.segundo_nombre, " ", ra.apellido_paterno, " ", ra.apellido_materno) as nombre_completo
         FROM itinerario i 
         INNER JOIN catalogo_aerolinea cao on cao.id_aerolinea = i.aerolinea_origen 
         LEFT JOIN catalogo_aerolinea caeo on caeo.id_aerolinea = i.aerolinea_escala_origen
         INNER JOIN catalogo_aerolinea cad on cad.id_aerolinea = i.aerolinea_destino
         LEFT JOIN catalogo_aerolinea caed on caed.id_aerolinea = i.aerolinea_escala_destino
-        INNER JOIN aeropuertos a on a.id_aeropuerto = i.aeropuerto_salida 
-        LEFT JOIN aeropuertos ae on ae.id_aeropuerto = i.aeropuerto_escala_salida
-        INNER JOIN aeropuertos aa on aa.id_aeropuerto = i.aeropuerto_regreso 
-        LEFT JOIN aeropuertos aea on aea.id_aeropuerto = i.aeropuerto_escala_regreso
         INNER JOIN utilerias_asistentes ua on ua.utilerias_asistentes_id = i.utilerias_asistentes_id 
         INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso
         INNER JOIN utilerias_asistentes u ON u.id_registro_acceso = ra.id_registro_acceso
@@ -429,20 +366,12 @@ sql;
         i.fecha_regreso, 
         i.hora_regreso,
         i.nota, 
-        a.aeropuerto as aeropuerto_salida, 
-        ae.aeropuerto as aeropuerto_escala_salida, 
-        aa.aeropuerto as aeropuerto_regreso,
-        aea.aeropuerto as aeropuerto_escala_regreso,
         concat(ra.nombre, " ", ra.segundo_nombre, " ", ra.apellido_paterno, " ", ra.apellido_materno) as nombre_completo
         FROM itinerario i 
         INNER JOIN catalogo_aerolinea cao on cao.id_aerolinea = i.aerolinea_origen 
         LEFT JOIN catalogo_aerolinea caeo on caeo.id_aerolinea = i.aerolinea_escala_origen
         INNER JOIN catalogo_aerolinea cad on cad.id_aerolinea = i.aerolinea_destino
         LEFT JOIN catalogo_aerolinea caed on caed.id_aerolinea = i.aerolinea_escala_destino
-        INNER JOIN aeropuertos a on a.id_aeropuerto = i.aeropuerto_salida 
-        LEFT JOIN aeropuertos ae on ae.id_aeropuerto = i.aeropuerto_escala_salida
-        INNER JOIN aeropuertos aa on aa.id_aeropuerto = i.aeropuerto_regreso 
-        LEFT JOIN aeropuertos aea on aea.id_aeropuerto = i.aeropuerto_escala_regreso
         INNER JOIN utilerias_asistentes ua on ua.utilerias_asistentes_id = i.utilerias_asistentes_id 
         INNER JOIN registros_acceso ra on ra.id_registro_acceso = ua.id_registro_acceso
         INNER JOIN utilerias_asistentes u ON u.id_registro_acceso = ra.id_registro_acceso
@@ -465,19 +394,11 @@ sql;
         from utilerias_asistentes ua 
 		JOIN comprobante_vacuna cv
         JOIN registros_acceso ra
-        JOIN bu b
         JOIN linea_principal lp
-        JOIN posiciones p
-        JOIN linea_ejecutivo le
-        JOIN asigna_linea al
         JOIN utilerias_administradores uad    
         ON cv.utilerias_asistentes_id = ua.utilerias_asistentes_id
         and ua.id_registro_acceso = ra.id_registro_acceso
-        and b.id_bu = ra.id_bu
         and lp.id_linea_principal = ra.id_linea_principal
-        and p.id_posicion = ra.id_posicion
-        and le.id_linea_ejecutivo = lp.id_linea_ejecutivo
-        and al.id_linea_ejecutivo = le.id_linea_ejecutivo
         and uad.utilerias_administradores_id = al.utilerias_administradores_id_linea_asignada
         WHERE cv.validado = 1 AND ua.utilerias_asistentes_id
         NOT IN (SELECT utilerias_asistentes_id FROM itinerario);
@@ -545,7 +466,7 @@ sql;
     public static function getCountVuelosLlegada(){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT COUNT(*) as total FROM `pases_abordar` where status = 1 and tipo = 1;
+        SELECT COUNT(*) as total FROM `pases_abordar` where tipo = 1;
 sql;
         return $mysqli->queryAll($query);
     }
@@ -553,7 +474,7 @@ sql;
     public static function getCountVuelosSalida(){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT COUNT(*) as total FROM `pases_abordar` where status = 2 and tipo = 2;
+        SELECT COUNT(*) as total FROM `pases_abordar` where tipo = 2;
 sql;
         return $mysqli->queryAll($query);
     }
