@@ -507,17 +507,12 @@ html;
                 'url'=>'https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/'.$pdf.'.pdf'
             ];
 
-            if($notas == '')
-            {
-                $notas = 'Sin Notas';
-                $documento->_notas = $notas;
+            $notas = $_POST['notas'];
+            if ($notas == '') {
+                $notas = 'Sin notas';
             }
-            else
-            {
-                $notas = $_POST['notas'];
-                $documento->_notas = $notas;
-            }
-
+            $documento->_notas = $notas;
+            
             $id = VuelosDao::insert($documento);
 
             if ($id) {
@@ -588,16 +583,11 @@ html;
                 'url'=>'https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/'.$pdf.'.pdf'
             ];
 
-            if($notas == '')
-            {
-                $notas = 'Sin Notas';
-                $documento->_notas = $notas;
+            $notas = $_POST['notas'];
+            if ($notas == '') {
+                $notas = 'Sin notas';
             }
-            else
-            {
-                $notas = $_POST['notas_salida'];
-                $documento->_notas = $notas;
-            }
+            $documento->_notas = $notas;
 
             $id = VuelosDao::insertSalida($documento);
 

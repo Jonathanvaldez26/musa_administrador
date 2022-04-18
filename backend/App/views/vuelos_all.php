@@ -757,7 +757,7 @@
                                     <div class="col-12 col-lg-12">
                                         <label class="form-label">Notas para Grupo LAHE (Opcional)</label>
                                         <div class="input-group">
-                                            <textarea id="notas_salida" name="notas_salida" maxlength="1000" class="form-control" placeholder="Añade Alguna Nota de Importancia"></textarea>
+                                            <textarea id="notas" name="notas" maxlength="1000" class="form-control" placeholder="Añade Alguna Nota de Importancia"></textarea>
                                         </div>
                                     </div>
                                     <input type="hidden" id="user_salida" name="user_salida" value="<?= $_SESSION["utilerias_administradores_id"] ?>">
