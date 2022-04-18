@@ -200,8 +200,8 @@ html;
                 <td style="text-align:center; vertical-align:middle;">
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
-                    <button class="btn bg-gradient-info btn-icon-only" type="button"><span class="fas fa-envelope"></span></button>
-                    <button class="btn bg-gradient-danger btn-icon-only" type="button"><span class="fas fa-trash"></span></button>
+                    <button class="btn bg-gradient-info btn-icon-only send_mail" value="{$value['id_pase_abordar']}" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title=""  data-bs-original-title="Enviar Pase de Abordar"><span class="fas fa-envelope"></span></button>
+                    <button class="btn bg-gradient-danger btn-icon-only" type="button" ><span class="fas fa-trash"></span></button>
                 </td>
                  
             </tr>
@@ -249,7 +249,7 @@ html;
                  <td style="text-align:center; vertical-align:middle;">
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a>
-                    <button class="btn bg-gradient-info btn-icon-only" type="button"><span class="fas fa-envelope"></span></button>
+                    <button class="btn bg-gradient-info btn-icon-only send_mail" value="{$value['id_pase_abordar']}" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" title=""  data-bs-original-title="Enviar Pase de Abordar"><span class="fas fa-envelope"></span></button>
                     <button class="btn bg-gradient-danger btn-icon-only" type="button"><span class="fas fa-trash"></span></button>
                 </td>
                  

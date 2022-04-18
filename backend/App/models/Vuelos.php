@@ -481,4 +481,18 @@ sql;
         return $mysqli->queryAll($query);
     }
 
+    public static function getPaseById($id){
+        $mysqli = Database::getInstance();
+        $query=<<<sql
+        SELECT pa.id_pase_abordar, pa.clave, CONCAT(ra.nombre," ", ra.segundo_nombre," ", ra.apellido_paterno," ", ra.apellido_materno) as nombre, 
+            pa.nota , ua.nombre as nombre_registro, ra.email, ra.telefono,  pa.url AS link, pa.tipo
+            FROM pases_abordar pa
+            INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
+            INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
+            INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
+            WHERE pa.id_pase_abordar = $id
+sql;
+        return $mysqli->queryAll($query);
+    }
+
 }
