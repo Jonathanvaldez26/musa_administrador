@@ -94,11 +94,13 @@ html;
                             window.location.replace("/Vuelos/");
                         });
                     } else {
-                        Swal.fire("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : \\n1) Compruebe su conexión a internet \\n2) El archivo debe de ser formato pdf \\n3) El archivo excede el tamaño de 3mb ", "error").
+                        Swal.fire("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : <br>1) Compruebe su conexión a internet <br>2) El archivo debe de ser formato pdf <br>3) El archivo excede el tamaño de 3mb ", "error").
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
-                    }
+
+
+               }
                       console.log(respuesta);
                 },
                 error:function (respuesta)
@@ -135,7 +137,7 @@ html;
                             window.location.replace("/Vuelos/");
                         });
                     }else{
-                        Swal.fire("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : \\n1) Compruebe su conexión a internet \\n2) El archivo debe de ser formato pdf \\n3) El archivo excede el tamaño de 3mb ", "error").
+                        Swal.fire("¡Hubo un error al cargar el archivo!", "Podria deberse a algunos de los siguinetes puntos : <br>1) Compruebe su conexión a internet <br>2) El archivo debe de ser formato pdf <br>3) El archivo excede el tamaño de 3mb ", "error").
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
