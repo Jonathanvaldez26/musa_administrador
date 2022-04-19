@@ -111,23 +111,23 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">Comprobante Vacunación</span>
                     </a>
                 </li>
-                <!--<li id="pruebas_usuario" class="nav-item" {$pruebasHidden};>
+                <li id="pruebas_usuario" class="nav-item" {$pruebasHidden};>
                     <a href="/PruebasCovidUsuarios/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-virus-slash morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Pruebas Covid Usuarios</span>
                     </a>
-                </li>-->
+                </li>
 
-                <li id="pruebas_sitio" class="nav-item" {$pruebasHidden};>
+                <!-- <li id="pruebas_sitio" class="nav-item" {$pruebasHidden};>
                     <a href="/PruebasCovidEnSitio/" class="nav-link" aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-virus morado-musa-text" ></span>
                         </div>
                         <span class="nav-link-text ms-1">Pruebas Covid En Sitio</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li id="config" class="nav-item" {$permisos}>
                     <hr class="horizontal dark" />
