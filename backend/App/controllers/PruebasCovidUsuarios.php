@@ -55,6 +55,7 @@ html;
       //$id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
       //var_dump( $id_linea);
 
+
       foreach ($pruebas as $key => $value) {
 
         if ($value['status_prueba'] == 1) {

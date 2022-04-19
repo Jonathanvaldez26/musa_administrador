@@ -23,7 +23,8 @@ class ComprobantesVacunacion implements Crud{
         JOIN utilerias_administradores uad    
         ON cv.utilerias_asistentes_id = u.utilerias_asistentes_id
         and u.id_registro_acceso = ra.id_registro_acceso
-        and lp.id_linea_principal = ra.especialidad;
+        and lp.id_linea_principal = ra.especialidad
+        and uad.utilerias_administradores_id = lp.utilerias_administradores_id
 sql;
 
         return $mysqli->queryAll($query);
