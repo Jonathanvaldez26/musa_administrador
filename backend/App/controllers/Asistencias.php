@@ -321,7 +321,7 @@ html;
         <td class="text-center"><i class='fa-alarm-clock'></i>{$value['hora_asistencia_fin']}</td>
         <td class="text-center">
         <a href='{$value['url']}' style=''><i class='fas fa-globe'></i></a>
-        <a href='https://asistencias.foromusa.com/?asistencia={$value['clave']}' style=''><i class='fas fa-mobile-alt'></i></a>
+        <a href='https://asistencias.foromusa.com/?asistencia={$value['clave']}' class='mx-3' style='' target='_blank'><i class='fas fa-mobile-alt'></i></a>
         </td>
       </tr>
  
