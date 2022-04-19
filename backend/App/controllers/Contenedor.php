@@ -74,14 +74,14 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">Vuelos</span>
                     </a>
                 </li>
-                <li id="pickup" class="nav-item" {$pickUpHidden};>
+                <!--<li id="pickup" class="nav-item" {$pickUpHidden};>
                     <a href="/PickUp/" class="nav-link " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-bus morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">PickUp</span>
                     </a>
-                </li>
+                </li>-->
                 <li id="habitaciones" class="nav-item" {$habitacionesHidden};>
                     <a href="/Habitaciones/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">

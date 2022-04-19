@@ -1433,7 +1433,7 @@
                         success: function(respuesta) {
                             console.log(respuesta);
                             if (respuesta == 'success') {
-
+                                
                                 Swal.fire(
                                 'Pase de Abordar enviado!',
                                 'El documento ha sido enviado',
@@ -1441,6 +1441,9 @@
                                 ).then((data) =>{
                                     // console.log();
                                     $('#btn-borrar-'+id_btn).attr('hidden',true);
+                                    $('#btn-enviar_email-'+id_btn).attr('hidden',true);                                  
+                                    
+                                    //$(this).attr('hidden',true);
                                 })
 
                             }

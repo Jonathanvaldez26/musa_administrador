@@ -483,8 +483,11 @@ class Mailer
             $mail->CharSet = 'UTF-8';
 
             $mail->send();
-           //echo 'El mensaje ha sido enviado';
+           
+
+           VuelosDao::updateEmail($id_pase_abordar);
            echo 'success';
+           //echo 'El mensaje ha sido enviado';
         } catch (Exception $e) {
             echo 'fail';
            //echo "No se pudo enviar el email: {$mail->ErrorInfo}";
