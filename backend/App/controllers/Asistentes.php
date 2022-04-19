@@ -191,7 +191,7 @@ html;
                     var modal_id = $(this).attr('data-target');
                   
                     if($(modal_id+" iframe").length == 0){
-                        $(modal_id+" .iframe").append('<iframe src="https://www.convencionasofarma2022.mx/comprobante_vacunacion/'+documento+'" style="width:100%; height:700px;" frameborder="0" ></iframe>');
+                        $(modal_id+" .iframe").append('<iframe src="https://registro.foromusa.com/comprobante_vacunacion/'+documento+'" style="width:100%; height:700px;" frameborder="0" ></iframe>');
                     }          
                   });
 
@@ -200,7 +200,7 @@ html;
                     var modal_id = $(this).attr('data-target');
                   
                     if($(modal_id+" iframe").length == 0){
-                        $(modal_id+" .iframe").append('<iframe src="https://www.convencionasofarma2022.mx/pruebas_covid/'+documento+'" style="width:100%; height:700px;" frameborder="0" ></iframe>');
+                        $(modal_id+" .iframe").append('<iframe src="https://registro.foromusa.com/pruebas_covid/'+documento+'" style="width:100%; height:700px;" frameborder="0" ></iframe>');
                     }          
                   });
 
@@ -233,7 +233,7 @@ html;
 html;
         } else {
             $img_asistente = <<<html
-            <img src="https://convencionasofarma2022.mx/img/users_conave/{$detalles_registro[0]['img']}" class="avatar avatar-xxl me-3" title="{$detalles_registro[0]['usuario']}" alt="{$detalles_registro[0]['usuario']}">
+            <img src="https://registro.foromusa.com/img/users_musa/{$detalles_registro[0]['img']}" class="avatar avatar-xxl me-3" title="{$detalles_registro[0]['usuario']}" alt="{$detalles_registro[0]['usuario']}">
 html;
         }
 
@@ -449,7 +449,7 @@ html;
 html;
         }
 
-        $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-original-title='Imprimir Gafetes'><i class='fa fal fa-address-card' style='font-size: 18px;'></i>Presione esté botón para descargar el gafete</a>";
+        $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-original-title='Imprimir Gafetes'><i class='fa fal fa-address-card' style='font-size: 18px;'> </i> Presione esté botón para descargar el gafete</a>";
         // $btn_etiquetas = "<a href='/RegistroAsistencia/abrirpdf/{$clave_user['clave']}' target='_blank' id='a_abrir_etiqueta' class='btn btn-info'>Imprimir etiquetas</a>";
         $this->generaterQr($tv);
 
@@ -674,7 +674,7 @@ html;
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
             } else {
-                $img_user = "https://convencionasofarma2022.mx/img/users_conave/{$value['img']}";
+                $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
             }
 
             $estatus = '';
@@ -891,7 +891,7 @@ html;
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
             } else {
-                $img_user = "https://convencionasofarma2022.mx/img/users_conave/{$value['img']}";
+                $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
             }
 
             $estatus = '';
@@ -1168,7 +1168,7 @@ html;
                 <div class="row">
                   <div class="col-md-8 col-12">
                     <div class="card card-body mb-4 iframe">
-                      <!--<iframe src="https://www.convencionasofarma2022.mx/comprobante_vacunacion/{$value['documento']}" style="width:100%; height:700px;" frameborder="0" >
+                      <!--<iframe src="https://registro.foromusa.com/comprobante_vacunacion/{$value['documento']}" style="width:100%; height:700px;" frameborder="0" >
                       </iframe>-->
                     </div>
                   </div>
@@ -1523,7 +1523,7 @@ html;
             $textypos = 5;
             $pdf->setY(2);
 
-            $pdf->Image('https://convencionasofarma2022.mx/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
+            $pdf->Image('https://registro.foromusa.com/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
             $pdf->SetFont('Arial', '', 5);    //Letra Arial, negrita (Bold), tam. 20
 
             $pdf->SetXY(8.3, 9);

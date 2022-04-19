@@ -449,32 +449,38 @@
                                                             <h3><?php echo $msg_clave; ?></h3>
                                                             <div class="row">
                                                                 <a href='' target='_blank' style='display:none;' id='a_abrir_etiqueta'>abrir</a>
-                                                                <div class="col-md-3">
-                                                                    <?php echo $btn_gafete; ?>
-                                                                </div>
-
-                                                                <form action="" id="form_etiquetas">
+                                                                
+                                                                <div class="col-12 col-md-6">
                                                                     <div class="row">
-                                                                        <input type="hidden" id="clave_ra" name="clave_ra" value="<?php echo $clave_ra; ?>">
-
-                                                                        <div class="col-md-3">
-                                                                            <label>Número de Habitación</label>
-                                                                            <input type="number" id="no_habitacion" name="no_habitacion" class="form-control" />
-                                                                        </div>
-
-                                                                        <div class="col-md-3">
-                                                                            <label>Número de etiquetas</label>
-                                                                            <input type="number" id="no_etiquetas" name="no_etiquetas" class="form-control" />
-                                                                        </div>
-
-                                                                        <div class="col-md-3">
-                                                                            <button id="btn_imprimir_etiquetas" class="btn btn-info mt-4" type="submit">Imprimir Etiquetas</button>
+                                                                        <div class="col-12 col-md-10">
+                                                                            <h4>Gafete</h4>
+                                                                            <?php echo $btn_gafete; ?>
                                                                         </div>
                                                                     </div>
+                                                                </div>
 
-                                                                </form>
+                                                                <div class="col-12 col-md-6">
+                                                                    <form action="" id="form_etiquetas">
+                                                                        <div class="row">
+                                                                            <input type="hidden" id="clave_ra" name="clave_ra" value="<?php echo $clave_ra; ?>">
+                                                                            <h4>Etiquetas</h4>
+                                                                            <div class="col-md-6">
+                                                                                <label>Número de Habitación</label>
+                                                                                <input type="number" id="no_habitacion" name="no_habitacion" class="form-control" />
+                                                                            </div>
 
+                                                                            <div class="col-md-6">
+                                                                                <label>Número de etiquetas</label>
+                                                                                <input type="number" id="no_etiquetas" name="no_etiquetas" class="form-control" />
+                                                                            </div>
 
+                                                                            <div class="col-md-4 m-auto">
+                                                                                <button id="btn_imprimir_etiquetas" class="btn btn-info mt-4" type="submit">Imprimir Etiquetas</button>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </form>
+                                                                </div>
                                                             </div>
                                                         </li>
                                                     </ul>
