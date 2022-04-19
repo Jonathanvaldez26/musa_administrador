@@ -35,7 +35,7 @@ class Mailer
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($msg['email'], 'Conave 2022 Asofarma');
+            $mail->setFrom($msg['email'], 'MUSA 2022 Asofarma');
             $mail->addAddress($msg['email'], $msg['name']);     //Add a recipient
 
 
@@ -147,7 +147,7 @@ class Mailer
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($msg['email'], 'Conave 2022 Asofarma');
+            $mail->setFrom($msg['email'], 'MUSA 2022 Asofarma');
             $mail->addAddress($msg['email'], $msg['name']);     //Add a recipient
 
 
@@ -210,7 +210,7 @@ class Mailer
                 </p>
                 <br>
                 <p style="text-align: justify;">
-                    Le informamos que sus pases de abordar rumbo a la CONAVE 2022, fueron cargados con éxito, usted puede consultarlos en su app móvil en la sección de Pases de Abordar que ya se encuentra activa o a través del siguiente link para consulta automática
+                    Le informamos que sus pases de abordar rumbo a la MUSA 2022, fueron cargados con éxito, usted puede consultarlos en su app móvil en la sección de Pases de Abordar que ya se encuentra activa o a través del siguiente link para consulta automática
                     <br> <br><a href="'.$msg['url'].'"></a>'.$msg['url'].'<br> <br>
                     Si usted necesita ayuda, comuníquese a la línea de soporte a través de WhatsApp en el siguiente enlace 
                     <br>
@@ -234,7 +234,7 @@ class Mailer
 
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'PASE DE ABORDAR RUMBO A LA CONAVE.';
+            $mail->Subject = 'PASE DE ABORDAR RUMBO A LA MUSA.';
             $mail->Body    = $html;
             $mail->CharSet = 'UTF-8';
 
@@ -261,7 +261,7 @@ class Mailer
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($msg['email'], 'Conave 2022 Asofarma');
+            $mail->setFrom($msg['email'], 'MUSA 2022 Asofarma');
             $mail->addAddress($msg['email'], $msg['name']);     //Add a recipient
 
 
@@ -368,11 +368,13 @@ class Mailer
         $pase = VuelosDao::getPaseById($id_pase_abordar)[0];
 
         if($pase['tipo'] == 1){
-            $titulo_pase = 'Pase de abordar de llegada';
+            $titulo_pase = 'PASE DE ABORDAR RUMBO MUSA.';
             $link = 'comprobante_vuelo_uno/'.$pase['link'];
+            // $link = 'comprobante_vuelo_uno/'.$pase['link'];
         }else{
-            $titulo_pase = 'Pase de abordar de salida';
-            $link = 'comprobante_vuelo_dos/'.$pase['link'];
+            $titulo_pase = 'PASE DE ABORDAR REGRESO A CASA.';
+            $link = 'comprobante_vuelo_dos/'.$pase['link'];            
+            // $link = 'comprobante_vuelo_dos/'.$pase['link'];
         }
 
         $mail = new PHPMailer(true);
@@ -390,7 +392,7 @@ class Mailer
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($pase['email'], $titulo_pase);
+            $mail->setFrom($pase['email'], 'MUSA 2022');
             $mail->addAddress($pase['email'], $pase['nombre']);     //Add a recipient
 
 
@@ -453,11 +455,11 @@ class Mailer
                 </p>
                 <br>
                 <p style="text-align: justify;">
-                    Le informamos que sus pases de abordar rumbo a la CONAVE 2022, fueron cargados con éxito, usted puede consultarlos en su app móvil en la sección de Pases de Abordar que ya se encuentra activa o a través del siguiente link para consulta automática
-                    <br> <br><a href="'.$link.'"></a>'.$link.'<br> <br>
+                    Le informamos que sus pases de abordar rumbo a la MUSA 2022, fueron cargados con éxito, usted puede consultarlos en su app móvil en la sección de Pases de Abordar que ya se encuentra activa o a través del siguiente link para consulta automática
+                    <br> <br><a href="https://admin.foromusa.com/'.$link.'">https://admin.foromusa.com/'.$link.'</a><br> <br>
                     Si usted necesita ayuda, comuníquese a la línea de soporte a través de WhatsApp en el siguiente enlace 
                     <br>
-                    <br><a href="shorturl.at/afsuQ">shorturl.at/afsuQ<a/>
+                    <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh<a/>
                 </p>
                 <p>
                     

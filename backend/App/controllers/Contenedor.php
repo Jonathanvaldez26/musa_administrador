@@ -82,22 +82,15 @@ class Contenedor extends Controller{
                         <span class="nav-link-text ms-1">PickUp</span>
                     </a>
                 </li>-->
-                <li id="habitaciones" class="nav-item" {$habitacionesHidden};>
+               <!-- <li id="habitaciones" class="nav-item" {$habitacionesHidden};>
                     <a href="/Habitaciones/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-hotel morado-musa-text"></span>
                         </div>
                         <span class="nav-link-text ms-1">Habitaciones</span>
                     </a>
-                </li>
-                <li id="cenas" class="nav-item" {$cenasHidden};>
-                    <a href="/Cenas/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-coffee morado-musa-text"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Cenas</span>
-                    </a>
-                </li>
+                </li>-->
+                
                 <li id="asistencias" class="nav-item" {$aistenciasHidden};>
                     <a href="/Asistencias/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -127,14 +120,14 @@ class Contenedor extends Controller{
                     </a>
                 </li>
 
-                <li id="pruebas_sitio" class="nav-item" {$pruebasHidden};>
+                <!-- <li id="pruebas_sitio" class="nav-item" {$pruebasHidden};>
                     <a href="/PruebasCovidEnSitio/" class="nav-link" aria-controls="basicExamples" role="button" aria-expanded="false">
                         <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
                             <span class="fa fa-virus morado-musa-text" ></span>
                         </div>
                         <span class="nav-link-text ms-1">Pruebas Covid En Sitio</span>
                     </a>
-                </li>
+                </li>-->
 
                 <li id="config" class="nav-item" {$permisos}>
                     <hr class="horizontal dark" />

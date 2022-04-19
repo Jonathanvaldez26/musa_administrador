@@ -581,9 +581,7 @@ html;
                     $id = VuelosDao::insert($documento);
     
                     if ($id) {
-    
-                        $mailer = new Mailer();
-                        $mailer->mailVuelosRegreso($msg);
+                
                         echo 'success';
          
                     } else {
@@ -665,8 +663,6 @@ html;
 
                     if ($id) {
 
-                        $mailer = new Mailer();
-                        $mailer->mailVuelosRegreso($msg);
                         echo 'success';
         
                     } else {

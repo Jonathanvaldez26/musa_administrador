@@ -841,7 +841,7 @@ html;
           var modal_id = $(this).attr('data-target');
         
           if($(modal_id+" iframe").length == 0){
-              $(modal_id+" .iframe").append('<iframe src="https://www.convencionasofarma2022.mx/pruebas_covid/'+documento+'" style="width:100%; height:700px;" frameborder="0" ></iframe>');
+              $(modal_id+" .iframe").append('<iframe src="https://registro.foromusa.com/pruebas_covid/'+documento+'" style="width:100%; height:700px;" frameborder="0" ></iframe>');
           }          
         });
 
