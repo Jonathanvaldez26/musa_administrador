@@ -584,7 +584,7 @@ html;
                         $mailer = new Mailer();
                         $mailer->mailVuelosRegreso($msg);
                         echo 'success';
-        
+         
                     } else {
                         echo 'fail';
                     }
