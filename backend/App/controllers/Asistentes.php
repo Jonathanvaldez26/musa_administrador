@@ -1081,7 +1081,7 @@ html;
 
                                         <div class="col-md-12">
                                             <label>Número de Habitación</label>
-                                            <input type="text" id="clave_ra_{$datos['id_registro_acceso']}" name="clave_ra_{$datos['id_registro_acceso']}" value="{$datos['clave']}" readonly>
+                                            <input type="hidden" id="clave_ra_{$datos['id_registro_acceso']}" name="clave_ra_{$datos['id_registro_acceso']}" value="{$datos['clave']}" readonly>
                                         </div>
 
                                         <div class="col-md-6">
