@@ -233,7 +233,7 @@ html;
 html;
         } else {
             $img_asistente = <<<html
-            <img src="https://convencionasofarma2022.mx/img/users_musa/{$detalles_registro[0]['img']}" class="avatar avatar-xxl me-3" title="{$detalles_registro[0]['usuario']}" alt="{$detalles_registro[0]['usuario']}">
+            <img src="https://registro.foromusa.com/img/users_musa/{$detalles_registro[0]['img']}" class="avatar avatar-xxl me-3" title="{$detalles_registro[0]['usuario']}" alt="{$detalles_registro[0]['usuario']}">
 html;
         }
 
@@ -674,7 +674,7 @@ html;
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
             } else {
-                $img_user = "https://convencionasofarma2022.mx/img/users_musa/{$value['img']}";
+                $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
             }
 
             $estatus = '';
@@ -891,7 +891,7 @@ html;
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
             } else {
-                $img_user = "https://convencionasofarma2022.mx/img/users_musa/{$value['img']}";
+                $img_user = "https://registro.foromusa.com/img/users_musa/{$value['img']}";
             }
 
             $estatus = '';
@@ -1523,7 +1523,7 @@ html;
             $textypos = 5;
             $pdf->setY(2);
 
-            $pdf->Image('https://convencionasofarma2022.mx/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
+            $pdf->Image('https://registro.foromusa.com/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
             $pdf->SetFont('Arial', '', 5);    //Letra Arial, negrita (Bold), tam. 20
 
             $pdf->SetXY(8.3, 9);
