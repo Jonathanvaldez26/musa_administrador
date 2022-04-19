@@ -1,149 +1,7 @@
 <?php echo $header; ?>
 
 <body class="g-sidenav-show  bg-gray-100">
-    <aside class="bg-white-aside sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
-        <div class="sidenav-header" style="margin-bottom: 30px;">
-            <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-
-            <a class="navbar-brand m-0" href="/Principal/" target="_blank">
-                <img src="/assets/img/favicon.png" class="navbar-brand-img h-100" alt="main_logo">
-                <span class="ms-1 font-weight-bold"></span>
-                <p style="margin-top: 15px;"><span class="fa fa-user" style="color: #344767"></span> <?php echo $_SESSION['nombre'];?></p>
-            </a>
-
-
-        </div>
-        <hr class="horizontal dark mt-0">
-
-
-        <div class="collapse navbar-collapse  w-auto h-auto h-100" id="sidenav-collapse-main">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="/Principal/" class="nav-link" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-home" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Principal</span>
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item" <?= $asistentesHidden; ?>>
-                    <a href="/Asistentes/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-users" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Asistentes</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $vuelosHidden; ?>>
-                    <a href="" class="nav-link active" aria-controls="applicationsExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-plane" style="color: white"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Vuelos</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $pickUpHidden; ?>>
-                    <a href="/PickUp/" class="nav-link " aria-controls="ecommerceExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-bus" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">PickUp</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $habitacionesHidden; ?>>
-                    <a href="/Habitaciones/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-hotel" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Habitaciones</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $cenasHidden; ?>>
-                    <a href="/Cenas/" class="nav-link " aria-controls="authExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-coffee" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Cenas</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $aistenciasHidden; ?>>
-                    <a href="/Asistencias/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-bell" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Asistencias</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $vacunacionHidden; ?>>
-                    <hr class="horizontal dark" />
-                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">SALUD</h6>
-                </li>
-                <li class="nav-item" <?= $vacunacionHidden; ?>>
-                    <a href="/ComprobantesVacunacion/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-shield-virus" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Comprobante Vacunación</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $pruebasHidden; ?>>
-                    <a href="/PruebasCovidUsuarios/" class="nav-link " aria-controls="basicExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-virus-slash" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Pruebas Covid Usuarios</span>
-                    </a>
-                </li>
-
-                <li class="nav-item" <?= $configuracionHidden; ?>>
-                    <hr class="horizontal dark" />
-                    <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">OTROS</h6>
-                </li>
-                <li class="nav-item" <?= $configuracionHidden; ?>>
-                    <a href="/Configuracion/" class="nav-link " aria-controls="applicationsExamples" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-tools" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Configuración</span>
-                    </a>
-                </li>
-                <li class="nav-item" <?= $utileriasHidden; ?>>
-                    <a data-bs-toggle="collapse" onclick="utilerias()" href="#utilerias" class="nav-link " aria-controls="utilerias" role="button" aria-expanded="false">
-                        <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
-                            <span class="fa fa-user-circle-o" style="color: #344767"></span>
-                        </div>
-                        <span class="nav-link-text ms-1">Utilerias</span>
-                    </a>
-                    <div class="collapse " id="utilerias" hidden>
-                        <ul class="nav ms-4 ps-3">
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Administradores/">
-                                    <span class="sidenav-mini-icon"> A </span>
-                                    <span class="sidenav-normal">Administradores</span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Perfiles/">
-                                    <span class="sidenav-mini-icon"> P </span>
-                                    <span class="sidenav-normal"> Perfiles </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link " href="/Log/">
-                                    <span class="sidenav-mini-icon"> L </span>
-                                    <span class="sidenav-normal"> Log </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-
-    </aside>
+    <?php echo $asideMenu;?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
@@ -372,16 +230,16 @@
                             <div class="nav-wrapper position-relative end-0">
                                 <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                                     
-                                <li class="nav-item">
-                                        <a class="nav-link mb-0 px-0 py-1 active" href="#vuelos_salida" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
-                                            <span class="fa fa-plane-departure"></span>
-                                            <span class="ms-1">Vuelos Salida</span>
+                                    <li class="nav-item">
+                                        <a class="nav-link mb-0 px-0 py-1 active" href="#vuelos_llegada" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                                            <span class="fa fa-plane-arrival"></span>
+                                            <span class="ms-1">Vuelos Llegada</span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link mb-0 px-0 py-1 " href="#vuelos_llegada" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
-                                            <span class="fa fa-plane-arrival"></span>
-                                            <span class="ms-1">Vuelos Llegada</span>
+                                        <a class="nav-link mb-0 px-0 py-1 " href="#vuelos_salida" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                                            <span class="fa fa-plane-departure"></span>
+                                            <span class="ms-1">Vuelos Salida</span>
                                         </a>
                                     </li>
                                     <!-- <li class="nav-item">
@@ -399,7 +257,7 @@
 
             <div class="card-body p-1 mt-1">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show position-relative height-350 border-radius-lg" id="vuelos_llegada" role="tabpanel" aria-labelledby="vuelos_llegada">
+                    <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="vuelos_llegada" role="tabpanel" aria-labelledby="vuelos_llegada">
                         <div class="d-flex m-1">
                             <div class="ms-auto d-flex">
                                 <div class="pe-4 mt-1 position-relative">
@@ -450,7 +308,7 @@
                         </div>
                     </div>
 
-                    <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="vuelos_salida" role="tabpanel" aria-labelledby="vuelos_salida">
+                    <div class="tab-pane fade show position-relative  height-350 border-radius-lg" id="vuelos_salida" role="tabpanel" aria-labelledby="vuelos_salida">
                         <div class="d-flex m-1">
                             <div class="ms-auto d-flex">
                                 <div class="pe-4 mt-1 position-relative">
@@ -1092,6 +950,9 @@
         
     }
     $(document).ready(function() {
+
+        $('#vuelos a').addClass('active');
+        $('#vuelos .fa-plane').addClass('text-white');
 
         $('#tiene_escala').on('change', function(){
             console.log($('#tiene_escala').val());
