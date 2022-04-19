@@ -161,7 +161,7 @@
                             <div class="nav-wrapper position-relative end-0">
                                 <ul class="nav nav-pills nav-fill p-1 bg-transparent" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link mb-0 px-0 py-1 active" href="#asistentes" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                        <a class="nav-link mb-0 px-0 py-1 active" href="#asistentes_vac" data-bs-toggle="tab" role="tab" aria-selected="true">
                                             <span class="fa fa-handshake-o"></span>
                                             <span class="ms-1">APROBADOS</span>
                                         </a>
@@ -187,7 +187,7 @@
 
             <div class="card-body p-1 mt-1">
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="asistentes" role="tabpanel" aria-labelledby="cam1" style="background-image: url('../../assets/img/miercoles.jpeg'); background-size:cover;">
+                    <div class="tab-pane fade show position-relative active height-350 border-radius-lg" id="asistentes_vac" role="tabpanel" aria-labelledby="cam1" style="background-image: url('../../assets/img/miercoles.jpeg'); background-size:cover;">
                         <!-- <div class="d-flex m-1">
                             <div class="ms-auto d-flex">
                                 <div class="pe-4 mt-1 position-relative">
