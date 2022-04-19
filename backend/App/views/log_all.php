@@ -295,8 +295,8 @@
 
 
 
-        <div class="right_col">
-            <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12">
+        <div class="right_col d-flex justify-content-center">
+            <div class="col-md-10 col-sm-10 col-xs-10 col-lg-10">
                 <div class="panel panel-default">
                     <div class="x_title">
                         <br><br>
@@ -312,7 +312,7 @@
                         <div class="x_content">
                             <div class="form-group col-md-9 col-sm-9 col-xs-12">
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <fieldset>
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="descripcion">Fecha Inicio</label>
                                         <div class="control-group">
@@ -338,11 +338,11 @@
                                             </div>
                                         </div>
                                     </fieldset>
-                                </div>
+                                </div> -->
 
-                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                <!-- <div class="col-md-6 col-sm-6 col-xs-6">
                                     <button class="btn btn-success col-md-3 col-sm-3 col-xs-3" type="button" id="btnFiltro">Filtrar</button>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
