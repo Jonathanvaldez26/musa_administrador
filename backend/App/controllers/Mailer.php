@@ -369,11 +369,11 @@ class Mailer
 
         if($pase['tipo'] == 1){
             $titulo_pase = 'PASE DE ABORDAR RUMBO MUSA.';
-            $link = 'https://admin.foromusa.com/comprobante_vuelo_uno/'.$pase['link'];
+            $link = 'comprobante_vuelo_uno/'.$pase['link'];
             // $link = 'comprobante_vuelo_uno/'.$pase['link'];
         }else{
             $titulo_pase = 'PASE DE ABORDAR REGRESO A CASA.';
-            $link = 'https://admin.foromusa.com/comprobante_vuelo_dos/'.$pase['link'];            
+            $link = 'comprobante_vuelo_dos/'.$pase['link'];            
             // $link = 'comprobante_vuelo_dos/'.$pase['link'];
         }
 
