@@ -368,11 +368,13 @@ class Mailer
         $pase = VuelosDao::getPaseById($id_pase_abordar)[0];
 
         if($pase['tipo'] == 1){
-            $titulo_pase = 'Pase de abordar de llegada';
-            $link = 'comprobante_vuelo_uno/'.$pase['link'];
+            $titulo_pase = 'PASE DE ABORDAR RUMBO MUSA.';
+            $link = 'https://admin.foromusa.com/comprobante_vuelo_uno/'.$pase['link'];
+            // $link = 'comprobante_vuelo_uno/'.$pase['link'];
         }else{
-            $titulo_pase = 'Pase de abordar de salida';
-            $link = 'comprobante_vuelo_dos/'.$pase['link'];
+            $titulo_pase = 'PASE DE ABORDAR REGRESO A CASA.';
+            $link = 'https://admin.foromusa.com/comprobante_vuelo_dos/'.$pase['link'];            
+            // $link = 'comprobante_vuelo_dos/'.$pase['link'];
         }
 
         $mail = new PHPMailer(true);
@@ -390,7 +392,7 @@ class Mailer
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
             //Recipients
-            $mail->setFrom($pase['email'], $titulo_pase);
+            $mail->setFrom($pase['email'], 'MUSA 2022');
             $mail->addAddress($pase['email'], $pase['nombre']);     //Add a recipient
 
 
@@ -457,7 +459,7 @@ class Mailer
                     <br> <br><a href="'.$link.'"></a>'.$link.'<br> <br>
                     Si usted necesita ayuda, comuníquese a la línea de soporte a través de WhatsApp en el siguiente enlace 
                     <br>
-                    <br><a href="shorturl.at/afsuQ">shorturl.at/afsuQ<a/>
+                    <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh<a/>
                 </p>
                 <p>
                     
