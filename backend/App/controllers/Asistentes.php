@@ -45,14 +45,19 @@ class Asistentes extends Controller
     }
 
     //Metodo para reaslizar busqueda de usuarios, sin este metodo no podemos obtener informacion en la vista
-    public function Usuario()
-    {
-        $search = $_POST['search'];        
+    public function Usuario() {
+        $search = $_POST['search'];       
 
         $all_ra = AsistentesDao::getAllRegistrosAcceso();
         $this->setTicketVirtual($all_ra);
         $this->setClaveRA($all_ra);
+
+        $modal = '';
+        foreach (GeneralDao::getAllColaboradoresByName($search) as $key => $value) {
+            $modal .= $this->generarModal($value);
+        }
         
+        View::set('modal',$modal);    
         View::set('tabla', $this->getAllColaboradoresAsignadosByName($search));
         View::set('asideMenu',$this->_contenedor->asideMenu());    
         View::render("asistentes_all");
@@ -444,7 +449,7 @@ html;
 html;
         }
 
-        $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info'><i class='fa fal fa-address-card' style='font-size: 18px;'></i>Presione esté botón para descargar el gafete</a>";
+        $btn_gafete = "<a href='/RegistroAsistencia/abrirpdfGafete/{$clave_user['clave']}/{$clave_user['clave_ticket']}' target='_blank' id='a_abrir_gafete' class='btn btn-info' data-bs-toggle='tooltip' data-bs-placement='top' data-bs-original-title='Imprimir Gafetes'><i class='fa fal fa-address-card' style='font-size: 18px;'></i>Presione esté botón para descargar el gafete</a>";
         // $btn_etiquetas = "<a href='/RegistroAsistencia/abrirpdf/{$clave_user['clave']}' target='_blank' id='a_abrir_etiqueta' class='btn btn-info'>Imprimir etiquetas</a>";
         $this->generaterQr($tv);
 
@@ -835,8 +840,8 @@ html;
           
           <td style="text-align:center; vertical-align:middle;">
             <a href="/Asistentes/Detalles/{$value['clave']}" hidden><i class="fa fa-eye"></i></a>
-            <button class="btn bg-pink btn-icon-only morado-musa-text" title="imprimir"><i class="fas fa-print"></i></button>
-            <button class="btn bg-turquoise btn-icon-only text-white" title="imprimir"><i class="fas fa-tag"></i></button>
+            <button class="btn bg-pink btn-icon-only morado-musa-text" title="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Imprimir Gafetes"><i class="fas fa-print"></i></button>
+            <button class="btn bg-turquoise btn-icon-only text-white" title="" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Imprimir Etiquetas"><i class="fas fa-tag"></i></button>
             <!--button type="button" class="btn btn-outline-primary btn_qr" value="{$value['id_ticket_virtual']}"><span class="fa fa-qrcode" style="padding: 0px;"> {$ticket_virtual[0]['clave']}</span></button-->
           </td>
         </tr>
@@ -845,8 +850,7 @@ html;
         return $html;
     }
 
-    public function getAllColaboradoresAsignadosByName($name)
-    {
+    public function getAllColaboradoresAsignadosByName($name){
 
         $html = "";
         foreach (GeneralDao::getAllColaboradoresByName($name) as $key => $value) {
@@ -1028,8 +1032,10 @@ html;
           </td>
           
           <td style="text-align:center; vertical-align:middle;">
-            <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="imprimir" target="_blank"><i class="fas fa-print"> </i></a>            
-            <button class="btn bg-turquoise btn-icon-only text-white" title="Imprimir Etiquetas para Maletas"><i class="fas fa-tag"></i></button>
+            <a href="/RegistroAsistencia/abrirpdfGafete/{$value['clave']}/{$value['ticket_virtual']}" class="btn bg-pink btn-icon-only morado-musa-text" title="Imprimir Gafetes" data-bs-placement="top" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Imprimir Gafetes" target="_blank"><i class="fas fa-print"> </i></a>     
+
+            <button class="btn bg-turquoise btn-icon-only text-white" data-toggle="modal" data-target="#modal-etiquetas-{$value['id_registro_acceso']}" id="btn-etiqueta-{$value['id_registro_acceso']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Imprimir Etiquetas" title="Imprimir Etiquetas"><i class="fas fa-tag"></i></button>
+            
             <!--button type="button" class="btn btn-outline-primary btn_qr" value="{$value['id_ticket_virtual']}"><span class="fa fa-qrcode" style="padding: 0px;"> {$ticket_virtual[0]['clave']}</span></button-->
           </td>
         </tr>
@@ -1037,6 +1043,70 @@ html;
         }
        
         return $html;
+    }
+
+    public function generarModal($datos){
+        $modal = <<<html
+            <div class="modal fade" id="modal-etiquetas-{$datos['id_registro_acceso']}" role="dialog" aria-labelledby="" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal-ver-pdf-Label">Etiquetas para {$datos['nombre']} {$datos['segundo_nombre']} {$datos['apellido_paterno']} {$datos['apellido_materno']} - {$datos['id_registro_acceso']}</h5>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <input hidden id="id_registro_acceso" name="id_registro_acceso" type="text" value="{$datos['id_registro_acceso']}" readonly>
+                            <div class="row">
+                                <!--form action="" id="form_etiquetas"-->
+                                    <div class="row">
+                                    
+                                        <script>
+                                        $(document).ready(function() {
+                                            
+
+                                            $('#btn_imprimir_etiquetas_{$datos['id_registro_acceso']}').on("click", function(event) {
+                                                no_habitacion_{$datos['id_registro_acceso']} = $("#no_habitacion_{$datos['id_registro_acceso']}").val();
+                                                clave_ra_{$datos['id_registro_acceso']} = $("#clave_ra_{$datos['id_registro_acceso']}").val();
+                                                no_etiquetas_{$datos['id_registro_acceso']} = $("#no_etiquetas_{$datos['id_registro_acceso']}").val();
+
+                                                console.log(no_habitacion_{$datos['id_registro_acceso']});
+                                                console.log(no_etiquetas_{$datos['id_registro_acceso']});
+                                                console.log(clave_ra_{$datos['id_registro_acceso']});
+                                                $('#btn_imprimir_etiquetas_{$datos['id_registro_acceso']}').attr("href", "/Asistentes/abrirpdf/" + clave_ra_{$datos['id_registro_acceso']} + "/" + no_etiquetas_{$datos['id_registro_acceso']} + "/" + no_habitacion_{$datos['id_registro_acceso']});
+                                            });
+                                        });
+                                        </script>
+
+                                        <div class="col-md-12">
+                                            <label>Número de Habitación</label>
+                                            <input type="text" id="clave_ra_{$datos['id_registro_acceso']}" name="clave_ra_{$datos['id_registro_acceso']}" value="{$datos['clave']}" readonly>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label>Número de Habitación</label>
+                                            <input type="number" id="no_habitacion_{$datos['id_registro_acceso']}" name="no_habitacion_{$datos['id_registro_acceso']}" class="form-control">
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label>Número de etiquetas</label>
+                                            <input type="number" id="no_etiquetas_{$datos['id_registro_acceso']}" name="no_etiquetas_{$datos['id_registro_acceso']}" class="form-control">
+                                        </div>
+
+                                        <div class="col-md-3 m-auto">
+                                            <a href="" id="btn_imprimir_etiquetas_{$datos['id_registro_acceso']}" target="_blank" class="btn btn-info mt-4" type="submit">Imprimir Etiquetas</a>
+                                        </div>
+                                    </div>
+                                <!--/form-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+html;
+
+        return $modal;
     }
 
     public function getComprobanteVacunacionById($id)

@@ -250,7 +250,7 @@ html;
         $id_asigna_habitacion = '';
 
         $user_clave = RegistroAsistenciaDao::getInfo($clave)[0];
-        $linea_principal = RegistroAsistenciaDao::getLineaPrincipial();
+        $linea_principal = RegistroAsistenciaDao::getEspecialidades();
         $bu = RegistroAsistenciaDao::getBu();
         $posiciones = RegistroAsistenciaDao::getPosiciones();
         $asistencia = RegistroAsistenciaDao::getIdRegistrosAsistenciasByCode($code)[0];

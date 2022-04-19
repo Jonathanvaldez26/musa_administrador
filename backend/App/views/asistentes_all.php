@@ -209,6 +209,7 @@
             </footer>
 
     </main>
+    <?php echo $modal;?>
 </body>
 
 <?php echo $footer; ?>
@@ -224,6 +225,23 @@
 
 <script>
     $(document).ready(function() {
+
+        $("#form_etiquetas").on("click", function(event) {
+            event.preventDefault();
+            var formData = new FormData(document.getElementById("form_etiquetas"));
+
+            no_habitacion = $("#no_habitacion").val();
+            clave_ra = $("#clave_ra").val();
+            no_etiquetas = $("#no_etiquetas").val();
+
+            console.log(no_habitacion);
+            console.log(clave_ra);
+            console.log(no_etiquetas);
+
+            $("#a_abrir_etiqueta").attr("href", "/Asistentes/abrirpdf/" + clave_ra + "/" + no_etiquetas + "/" + no_habitacion);
+            $("#a_abrir_etiqueta")[0].click();
+
+        });
 
         $('#asistentes a').addClass('active');
         $('#asistentes .fa-users').addClass('text-white');

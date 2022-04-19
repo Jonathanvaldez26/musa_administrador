@@ -625,8 +625,6 @@
             console.log(clave_ra);
             console.log(no_etiquetas);
 
-
-
             $("#a_abrir_etiqueta").attr("href", "/Asistentes/abrirpdf/" + clave_ra + "/" + no_etiquetas + "/" + no_habitacion);
             $("#a_abrir_etiqueta")[0].click();
 
