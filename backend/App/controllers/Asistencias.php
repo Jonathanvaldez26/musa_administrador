@@ -336,6 +336,7 @@ html;
 
       // View::set('lineas',$lineas);
       View::set('tabla',$tabla);
+      View::set('asideMenu',$this->_contenedor->asideMenu());
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
       View::render("asistencias_all");
