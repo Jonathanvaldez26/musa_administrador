@@ -131,6 +131,7 @@ sql;
         );
 
         $id = $mysqli->insert($query,$parametros);
+
         $accion = new \stdClass();
         $accion->_sql= $query;
         $accion->_id_asistente = $data->_utilerias_asistentes_id;
@@ -138,6 +139,13 @@ sql;
         $accion->_descripcion = 'Un ejecutivo ha cargado su '.$accion->_titulo;
         $accion->_id = $id;
         UtileriasNotificacionesLog::addAccion($accion);
+
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $parametros;
+        $log->_id = $id;
+
+        UtileriasLog::addAccion($log);
         
         return $id;
 
@@ -183,6 +191,13 @@ sql;
         $accion->_descripcion = 'Un ejecutivo ha cargado su '.$accion->_titulo;
         $accion->_id = $id;
         UtileriasNotificacionesLog::addAccion($accion);
+
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $parametros;
+        $log->_id = $id;
+
+        UtileriasLog::addAccion($log);
         
         return $id;
 
@@ -256,6 +271,13 @@ sql;
         $query=<<<sql
         DELETE FROM pases_abordar WHERE id_pase_abordar = $id 
 sql;
+
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $id;
+        $log->_id = $id;
+        UtileriasLog::addAccion($log);
+        
         return $mysqli->delete($query);
     }
 

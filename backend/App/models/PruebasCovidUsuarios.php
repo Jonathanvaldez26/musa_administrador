@@ -69,6 +69,12 @@ sql;
         $accion->_descripcion = 'Un ejecutivo ha validado su '.$accion->_titulo. ' exitosamente';
         UtileriasNotificacionesLog::addAccion($accion);
 
+        $accion = new \stdClass();
+        $accion->_sql= $query;
+        $accion->_parametros = $parametros;
+        $accion->_id = $data->_id_prueba_covid;
+        UtileriasLog::addAccion($accion);
+
         return $mysqli->update($query,$parametros);
     }
 
@@ -92,6 +98,12 @@ sql;
         $accion->_descripcion = 'Un ejecutivo ha rechazado su '.$accion->_titulo;
         UtileriasNotificacionesLog::addAccion($accion);
 
+        $accion = new \stdClass();
+        $accion->_sql= $query;
+        $accion->_parametros = $parametros;
+        $accion->_id = $data->_id_prueba_covid;
+        UtileriasLog::addAccion($accion);
+
         return $mysqli->update($query,$parametros);
 
     }
@@ -112,7 +124,7 @@ sql;
         $accion->_sql= $query;
         $accion->_parametros = $parametros;
         $accion->_id = $data->_administrador_id;
-        // UtileriasLog::addAccion($accion);
+        UtileriasLog::addAccion($accion);
         return $mysqli->update($query, $parametros);
 
     }
