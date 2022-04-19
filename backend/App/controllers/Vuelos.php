@@ -459,6 +459,7 @@ html;
 
      View::set('idAsistente',$this->getAsistentes());
      View::set('idAsistenteSalida',$this->getAsistentesSalida());
+     View::set('asideMenu',$this->_contenedor->asideMenu());
     //  View::set('idAeropuertoOrigen',$this->getAeropuertosOrigen());
     //  View::set('idAeropuertoDestino',$this->getAeropuertosDestino());
     //  View::set('idOrigenEscala',$this->getAeropuertosDestino());
