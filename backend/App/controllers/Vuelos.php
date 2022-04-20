@@ -17,8 +17,8 @@ class Vuelos extends Controller{
         $this->_contenedor = new Contenedor;
         View::set('header',$this->_contenedor->header());
         View::set('footer',$this->_contenedor->footer());
-        if(Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos",1) == 0)
-          header('Location: /Principal/');
+        // if(Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos",1) == 0)
+        //   header('Location: /Principal/');
     }
 
     public function getUsuario(){
@@ -89,7 +89,7 @@ html;
                     if(respuesta == 'success'){
                         // $('#modal_payment_ticket').modal('toggle');
                         
-                        Swal.fire("¡El Vuelo de llegada al evento se Cargo Correctamente!", "", "success").
+                        Swal.fire("¡El Vuelo de llegada al evento se Cargó Correctamente!", "", "success").
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
@@ -132,7 +132,7 @@ html;
                     if(respuesta == 'success'){
                        // $('#modal_payment_ticket').modal('toggle');
                        
-                        Swal.fire("¡El Vuelo de Regreso a Casa se Cargo Correctamente!", "", "success").
+                        Swal.fire("¡El Vuelo de Regreso a Casa se Cargó Correctamente!", "", "success").
                         then((value) => {
                             window.location.replace("/Vuelos/");
                         });
