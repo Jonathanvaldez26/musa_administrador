@@ -790,6 +790,59 @@
     </main>
 </body>
 <script>
+    function pendientePrueba(dato){
+        const SwalBootstrapEliminar = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn bg-gradient-info mx-2',
+                cancelButton: 'btn bg-gradient-danger mx-2'
+            },
+            buttonsStyling: false
+        })
+        SwalBootstrapEliminar.fire({
+            title: '¿Está seguro de cambiar el estado este pase?',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No',
+            }).
+        then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: "/PruebasCovidUsuarios/changeStatus/",
+                    type: "POST",
+                    dataType: 'json',
+                    data: {dato},
+                    beforeSend: function() {
+                        console.log("Procesando....");
+                        // alert('Se está borrando');
+                        
+                    },
+                    success: function(respuesta) {
+                        console.log(respuesta);
+                        console.log('despues de borrar');
+                        // alert('Bien borrado');
+                        Swal.fire("¡Se movió a pendientes correctamente!", "", "success").
+                        then((value) => {
+                            $("#codigo_registro").focus();
+                            window.location.reload();
+                        });
+                    },
+                    error: function(respuesta) {
+                        console.log(respuesta);
+                        // alert('Error');
+                        Swal.fire("¡Ha ocurrido un error al intentar cambiar a pendientes la prueba!", "", "error").
+                        then((value) => {
+                            $("#codigo_registro").focus();
+                        });
+                    }
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+        
+    }
     $(document).ready(function (){
         $('#pruebas_usuario a').addClass('active');
         $('#pruebas_usuario .fa-virus-slash').addClass('text-white');
