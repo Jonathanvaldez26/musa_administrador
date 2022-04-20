@@ -365,6 +365,8 @@ html;
           alert("Asistencia Registrada con exito");
           window.location.href = "/Asistencias";
         </script>';
+
+       
       }else{
         // $this->alerta($id,'error');
         echo '<script>
