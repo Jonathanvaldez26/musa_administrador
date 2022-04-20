@@ -176,8 +176,8 @@
                             </div>
                         </div>
                         <div class="card-body p-3 pt-0">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3 col-12">
+                            <div class="row d-flex justify-content-center">
+                                <!-- <div class="col-lg-3 col-md-3 col-12">
                                     <h6 class="mb-3">Log</h6>
                                     <div class="timeline timeline-one-side scroll-log">
                                         <div class="timeline-block mb-4">
@@ -229,7 +229,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-9 col-12">
                                     <hr class="horizontal dark mt-0 mb-4">
                                     <div class="row">
