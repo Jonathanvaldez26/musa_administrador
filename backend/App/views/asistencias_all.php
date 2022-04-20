@@ -358,61 +358,11 @@
                                         <input id="hora_asistencia_fin" name="hora_asistencia_fin" maxlength="29" class="form-control" type="time" required="" onfocus="focused(this)" onfocusout="defocused(this)"" style=" text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
                                     </div>
                                 </div>
-
-                                <!-- <div class="row mb-3">
-                                    <label class="form-label">Es CheckIn *</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="checkin" id="checkin_si" value="1">
-                                        <label class="form-check-label" for="checkin_si">
-                                            Si
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="checkin" id="checkin_no" value="0" checked>
-                                        <label class="form-check-label" for="checkin_no">
-                                            No
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3" id="cont_plenaria_individual">
-                                    <label class="form-label">¿Es Plenaria Individual?*</label>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="plenaria" id="plenaria_si" value="1">
-                                        <label class="form-check-label" for="plenaria_si">
-                                            Si
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="plenaria" id="plenaria_no" value="0" checked>
-                                        <label class="form-check-label" for="plenaria_no">
-                                            No
-                                        </label>
-                                    </div>
-
-                                    <div id="cont_select_linea" style="display: none;">
-                                        <label class="form-label">¿De que línea es la plenaria? *</label>
-                                        <select class="form-control" name="id_linea" id="id_linea" required>
-                                            <option selected disabled>Seleccione una Opción</option>
-                                            <?php echo $lineas; ?>
-                                        </select>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="row mb-3">
-                                    <label class="form-label">¿De que línea es la plenaria? *</label>
-                                    <div class="input-group">
-                                        <input id="nombre_plenaria" name="nombre_plenaria" class="form-control" type="text" placeholder="U" onfocus="focused(this)" onfocusout="defocused(this)" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">
-                                    </div>
-                                </div> -->
-
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <div class="modal-footer">
-                                <button type="submit" class="btn bg-gradient-success" id="btn_upload" name="btn_upload">Aceptar</button>
-                                <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Cancelar</button>
-                            </div>
+                            <button type="submit" class="btn bg-gradient-success" id="btn_upload" name="btn_upload">Aceptar</button>
+                            <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Cancelar</button>
                         </div>
                     </form>
                 </div>
