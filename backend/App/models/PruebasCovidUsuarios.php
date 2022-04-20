@@ -36,8 +36,32 @@ sql;
     public static function update($data){
         
     }
+    public static function updateStatus($id){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        UPDATE prueba_covid SET status = 0 WHERE id_prueba_covid = $id
+sql;       
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $id;
+        $log->_id = $id;
+        // UtileriasLog::addAccion($log);
+
+        return $mysqli->update($query);
+    }
     public static function delete($id){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        DELETE FROM prueba_covid WHERE id_prueba_covid = $id 
+sql;
+
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $id;
+        $log->_id = $id;
+        UtileriasLog::addAccion($log);
         
+        return $mysqli->delete($query);
     }
 
     public static function insertLog($ua_id,$fecha_doc,$fecha_prueba,$tipo_prueba,$doc,$nota){

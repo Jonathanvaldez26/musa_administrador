@@ -94,8 +94,11 @@ html;
 
               </td>
               <td class="text-center">
-                <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
+                <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                   <i class="fas fa-eye"></i>
+                </button>
+                <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendientePrueba({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
+                  <span class="fas fa-clock"></span>
                 </button>
               </td>
             </tr>
@@ -263,8 +266,11 @@ html;
 
                 </td>
                 <td class="text-center">
-                  <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
+                  <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
+                  </button>
+                  <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendientePrueba({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
+                    <span class="fas fa-clock"></span>
                   </button>
                 </td>
               </tr>
@@ -431,7 +437,7 @@ html;
 
                 </td>
                 <td class="text-center">
-                  <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
+                  <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
                 </td>
@@ -1068,6 +1074,14 @@ html;
       View::set('footer',$this->_contenedor->footer($extraFooter));
       View::render("pruebascovidusuarios_all");
     }
+
+    public function changeStatus(){
+
+      $id = $_POST['dato'];
+      $update_prueba = PruebasCovidUsuariosDao::updateStatus($id);
+
+      echo json_encode($update_prueba);
+  }
 
     public function Validar(){
 
