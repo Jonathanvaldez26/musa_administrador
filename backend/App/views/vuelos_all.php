@@ -908,7 +908,7 @@
             buttonsStyling: false
         })
         SwalBootstrapEliminar.fire({
-            title: '¿Está seguro de eliminar este pase?',
+            title: '¿Está Seguro de Eliminar Este Pase de Abordar?',
             showCancelButton: true,
             confirmButtonText: 'Si',
             cancelButtonText: 'No',
@@ -1276,13 +1276,13 @@
             })
 
             SwalBootstrapMail.fire({
-                title: 'Estas seguro?',
-                text: "Una vez enviado ya no se podra borrar, por favor verifica que todos los datos sean correctos!",
+                title: '¿Estas seguro de enviar el email?',
+                text: "Una vez enviado ya no se podrá borrar, ¡por favor verifique que todos los datos sean correctos!",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonText: 'Cancelar',
-                confirmButtonText: 'Si, enviar!'
+                confirmButtonText: 'Si, ¡enviar!'
                 }).then((result) => {
                 if (result.isConfirmed) {
                     let id_btn = $(this).val();
@@ -1299,7 +1299,7 @@
                             if (respuesta == 'success') {
                                 
                                 Swal.fire(
-                                'Pase de Abordar enviado!',
+                                '¡Pase de Abordar enviado!',
                                 'El documento ha sido enviado',
                                 'success'
                                 ).then((data) =>{

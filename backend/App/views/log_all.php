@@ -304,10 +304,10 @@
                         <div class="clearfix"></div>
                     </div>
                     <form name="all" id="all" action="" method="POST">
-                        <div class="panel-body" <?php echo $visible; ?>>
+                        <!-- <div class="panel-body" <?php echo $visible; ?>>
                             <button id="export_pdf" type="button" class="btn btn-info btn-circle"><i class="fa fa-file-pdf-o"> <b>Exportar a PDF</b></i></button>
                             <button id="export_excel" type="button" class="btn btn-success btn-circle"><i class="fa fa-file-excel-o"> <b>Exportar a Excel</b></i></button>
-                        </div>
+                        </div> -->
 
                         <div class="x_content">
                             <div class="form-group col-md-9 col-sm-9 col-xs-12">

@@ -317,7 +317,7 @@
         <div class="modal fade" id="Modal_Add" role="dialog" aria-labelledby="asignar_habitacionLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <form class="form-horizontal" id="add" action="/Asistencias/asistenciasAdd">
+                    <form class="form-horizontal" id="add" action="/Asistencias/asistenciasAdd" method="POST">
                         <div class="modal-header">
                             <h5 class="modal-title" id="asignar_habitacionLabel">Generar Lista de Asistencia</h5>
                             <button type="button" class="btn bg-gradient-danger" data-dismiss="modal" aria-label="Close">

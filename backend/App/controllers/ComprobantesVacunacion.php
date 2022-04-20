@@ -54,6 +54,7 @@ html;
       //   $comprobantes = ComprobantesVacunacionDao::getComprobatesByLinea($id_linea['id_linea_ejecutivo']);
       // }
 
+      $permiso_eliminar = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? "style=\"display:none;\"" : "";
 
       foreach ($comprobantes as $key => $value) {
 
@@ -66,7 +67,7 @@ html;
                 <span class="badge badge-danger"> <i class="fas fa-times"> </i> Rechazado</span> <br>
                 <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v'] }</span>
                  <!--<hr>-->
-                 <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>->
+                 <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                     
               </td>
               <td>
@@ -95,7 +96,10 @@ html;
               <td class="text-center">
                 <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                   <i class="fas fa-eye"></i>
-                </button>                
+                </button>       
+                <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendienteComprobante({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
+                      <span class="fas fa-clock"></span>
+                  </button>         
               </td>
             </tr>
   
@@ -267,6 +271,9 @@ html;
                   <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
+                    <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendienteComprobante({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
+                      <span class="fas fa-clock"></span>
+                  </button>
                 </td>
               </tr>
   
@@ -435,7 +442,7 @@ html;
                   <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
-                  <button type="button" class="btn bg-gradient-danger btn-icon-only" onclick="borrarComprobante({$value['id_c_v']})">
+                  <button type="button" class="btn bg-gradient-danger"{$permiso_eliminar} onclick="borrarComprobante({$value['id_c_v']})">
                     <i class="fa fa-solid fa-trash"></i>
                   </button>
                   
@@ -1126,4 +1133,12 @@ html;
 
       echo json_encode($delete_registrado);
     }
+
+    public function changeStatus(){
+
+      $id = $_POST['dato'];
+      $update_comprobante = ComprobantesVacunacionDao::updateStatus($id);
+
+      echo json_encode($update_comprobante);
+  }
 }

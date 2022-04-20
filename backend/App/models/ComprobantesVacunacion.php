@@ -364,4 +364,18 @@ sql;
 
         return $mysqli->queryAll($query);
     }
+
+    public static function updateStatus($id){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        UPDATE comprobante_vacuna SET validado = 0, status = 1 WHERE id_comprobante_vacuna = $id
+sql;       
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $id;
+        $log->_id = $id;
+        // UtileriasLog::addAccion($log);
+
+        return $mysqli->update($query);
+    }
 }
