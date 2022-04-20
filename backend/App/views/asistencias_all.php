@@ -462,6 +462,9 @@
 <script>
     $(document).ready(function() {
 
+        console.log($('#descripcion_asistencia').html());
+
+        //Pintar el boton de asistencias
         $('#asistencias a').addClass('active');
         $('#asistencias .fa-bell').addClass('text-white');
 
