@@ -32,6 +32,12 @@ sql;
     
     
     public static function getById($id){
+        $mysqli = Database::getInstance(true);
+        $query =<<<sql
+        SELECT * FROM comprobante_vacuna WHERE id_comprobante_vacuna  = '$id'
+sql;
+
+        return $mysqli->queryAll($query);
         
     }
     public static function insert($data){
@@ -55,7 +61,18 @@ sql;
         
     }
     public static function delete($id){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        DELETE FROM comprobante_vacuna WHERE id_comprobante_vacuna = $id 
+sql;
+
+        $log = new \stdClass();
+        $log->_sql= $query;
+        $log->_parametros = $id;
+        $log->_id = $id;
+        UtileriasLog::addAccion($log);
         
+        return $mysqli->delete($query);
     }
 
     public static function contarComprobantesValidos(){
@@ -287,7 +304,6 @@ sql;
         return $mysqli->queryAll($query);
    
     }
-
     ////PENDIENTE CONSULTA CORRECTA
     public static function getComprobatesByLinea($id_linea){
         $mysqli = Database::getInstance(true);

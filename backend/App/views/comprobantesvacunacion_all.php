@@ -813,6 +813,59 @@
 </body>
 
 <script>
+
+    function borrarComprobante(dato){
+        
+        const SwalBootstrapEliminar = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn bg-gradient-info mx-2',
+                cancelButton: 'btn bg-gradient-danger mx-2'
+            },
+            buttonsStyling: false
+        })
+        SwalBootstrapEliminar.fire({
+            title: '¿Está seguro de eliminar este comprobante?',
+            showCancelButton: true,
+            confirmButtonText: 'Si',
+            cancelButtonText: 'No',
+            }).
+        then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+
+                $.ajax({
+                    url: "/ComprobantesVacunacion/borrarComprobante",
+                    type: "POST",
+                    data:{dato},
+                    dataType: 'json',
+                    beforeSend: function() {
+                        console.log("Procesando....");
+                        // alert('Se está borrando');
+                        
+                    },
+                    success: function(respuesta) {
+                        console.log(respuesta);
+                        
+                        //alert('Bien borrado');
+                        Swal.fire("¡Se borró correctamente!", "", "success").
+                        then((value) => {
+                            // $("#codigo_registro").focus();
+                            window.location.reload();
+                        });
+                    },
+                    error: function(respuesta) {
+                        console.log(respuesta);
+                        // alert('Error');
+                        Swal.fire("¡Ha ocurrido un error al intentar borrar el comprobante!", "", "error");
+                    }
+                })
+            } else if (result.isDenied) {
+                Swal.fire('Changes are not saved', '', 'info')
+            }
+        })
+        
+    }
+
     $(document).ready(function (){
         $('#vacunacion a').addClass('active');
         $('#vacunacion .fa-shield-virus').addClass('text-white');
