@@ -315,7 +315,7 @@ html;
       $tabla.=<<<html
       <tr>
         <td>{$value['nombre']}</td>
-        <td>{$value['descripcion']}</td>
+        <td id="descripcion_asistencia" width="20">{$value['descripcion']}</td>
         <td class="text-center">{$value['fecha_asistencia']}</td>
         <td class="text-center">{$value['hora_asistencia_inicio']}</td>
         <td class="text-center"><i class='fa-alarm-clock'></i>{$value['hora_asistencia_fin']}</td>
