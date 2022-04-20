@@ -95,7 +95,7 @@ html;
               <td class="text-center">
                 <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                   <i class="fas fa-eye"></i>
-                </button>
+                </button>                
               </td>
             </tr>
   
@@ -436,6 +436,10 @@ html;
                   <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
+                  <button type="button" class="btn bg-gradient-danger" onclick="borrarComprobante({$value['id_c_v']})">
+                    <i class="fa fa-solid fa-trash"></i>
+                  </button>
+                  
                 </td>
               </tr>
   
@@ -1109,5 +1113,18 @@ html;
             echo 'fail REQUEST';
         }
 
-  }
+    }
+
+    public function borrarComprobante(){
+
+      $id = $_POST['dato'];
+
+      $getData = ComprobantesVacunacionDao::getById($id)[0];     
+
+      //unlink("https://registro.foromusa.com/comprobante_vacunacion/".$getData['documento']);
+
+      $delete_registrado = ComprobantesVacunacionDao::delete($id);
+
+      echo json_encode($delete_registrado);
+    }
 }
