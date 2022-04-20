@@ -94,7 +94,7 @@ html;
                   <p class="text-center" style="font-size: small;"><span class="fa fa-cubes" style="font-size: 13px;"></span> <strong>Marca: {$value['marca_dosis']}</strong></p>
                 </td>
               <td class="text-center">
-                <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
+                <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                   <i class="fas fa-eye"></i>
                 </button>       
                 <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendienteComprobante({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
@@ -268,7 +268,7 @@ html;
                   <p class="text-center" style="font-size: small;"><span class="fa fa-cubes" style="font-size: 13px;"></span> <strong>Marca: {$value['marca_dosis']}</strong></p>
                 </td>
                 <td class="text-center">
-                  <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
+                  <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
                     <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendienteComprobante({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
@@ -439,7 +439,7 @@ html;
                   <p class="text-center" style="font-size: small;"><span class="fa fa-cubes" style="font-size: 13px;"></span> <strong>Marca: {$value['marca_dosis']}</strong></p>
                 </td>
                 <td class="text-center">
-                  <button type="button" class="btn bg-gradient-primary btn_iframe" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
+                  <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
                   <button type="button" class="btn bg-gradient-danger"{$permiso_eliminar} onclick="borrarComprobante({$value['id_c_v']})">

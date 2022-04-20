@@ -409,75 +409,76 @@ html;
 
     // var_dump($id_linea);
 
-     $totalvuelos = '';
-     foreach (VuelosDao::getCountVuelos() as $key => $value)
-     {
-         $totalvuelos  = $value['usuarios'];
-     }
+        $totalvuelos = '';
+        foreach (VuelosDao::getCountVuelos() as $key => $value)
+        {
+            $totalvuelos  = $value['usuarios'];
+        }
 
-     $totalvueloscargadosllegada = '';
-     foreach (VuelosDao::getCountVuelosLlegada() as $key => $value)
-     {
-         $totalvueloscargadosllegada  = $value['total'];
-     }
+        $totalvueloscargadosllegada = '';
+        foreach (VuelosDao::getCountVuelosLlegada() as $key => $value)
+        {
+            $totalvueloscargadosllegada  = $value['total'];
+        }
 
-     $totalvueloscargadossalida = '';
-     foreach (VuelosDao::getCountVuelosSalida() as $key => $value)
-     {
-         $totalvueloscargadossalida  = $value['total'];
-     }
+        $totalvueloscargadossalida = '';
+        foreach (VuelosDao::getCountVuelosSalida() as $key => $value)
+        {
+            $totalvueloscargadossalida  = $value['total'];
+        }
 
-     $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
-     $asistentesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistentes", 1) == 0) ? "style=\"display:none;\"" : "";
-     $vuelosHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos", 1) == 0) ? "style=\"display:none;\"" : "";
-     $pickUpHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pickup", 1) == 0) ? "style=\"display:none;\"" : "";
-     $habitacionesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_habitaciones", 1) == 0) ? "style=\"display:none;\"" : "";
-     $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
-     $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
-     $aistenciasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistencias", 1) == 0) ? "style=\"display:none;\"" : "";
-     $vacunacionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vacunacion", 1) == 0) ? "style=\"display:none;\"" : "";
-     $pruebasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pruebas_covid", 1) == 0) ? "style=\"display:none;\"" : "";
-     $configuracionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_configuracion", 1) == 0) ? "style=\"display:none;\"" : "";
-     $utileriasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_utilerias", 1) == 0) ? "style=\"display:none;\"" : "";
+        $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
+        $asistentesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistentes", 1) == 0) ? "style=\"display:none;\"" : "";
+        $vuelosHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos", 1) == 0) ? "style=\"display:none;\"" : "";
+        $pickUpHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pickup", 1) == 0) ? "style=\"display:none;\"" : "";
+        $habitacionesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_habitaciones", 1) == 0) ? "style=\"display:none;\"" : "";
+        $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
+        $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
+        $aistenciasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistencias", 1) == 0) ? "style=\"display:none;\"" : "";
+        $vacunacionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vacunacion", 1) == 0) ? "style=\"display:none;\"" : "";
+        $pruebasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pruebas_covid", 1) == 0) ? "style=\"display:none;\"" : "";
+        $configuracionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_configuracion", 1) == 0) ? "style=\"display:none;\"" : "";
+        $utileriasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_utilerias", 1) == 0) ? "style=\"display:none;\"" : "";
 
-     View::set('permisoGlobalHidden', $permisoGlobalHidden);
-     View::set('asistentesHidden', $asistentesHidden);
-     View::set('vuelosHidden', $vuelosHidden);
-     View::set('pickUpHidden', $pickUpHidden);
-     View::set('habitacionesHidden', $habitacionesHidden);
-     View::set('cenasHidden', $cenasHidden);
-     View::set('aistenciasHidden', $aistenciasHidden);
-     View::set('vacunacionHidden', $vacunacionHidden);
-     View::set('pruebasHidden', $pruebasHidden);
-     View::set('configuracionHidden', $configuracionHidden);
-     View::set('utileriasHidden', $utileriasHidden);
+        View::set('permisoGlobalHidden', $permisoGlobalHidden);
+        View::set('asistentesHidden', $asistentesHidden);
+        View::set('vuelosHidden', $vuelosHidden);
+        View::set('pickUpHidden', $pickUpHidden);
+        View::set('habitacionesHidden', $habitacionesHidden);
+        View::set('cenasHidden', $cenasHidden);
+        View::set('aistenciasHidden', $aistenciasHidden);
+        View::set('vacunacionHidden', $vacunacionHidden);
+        View::set('pruebasHidden', $pruebasHidden);
+        View::set('configuracionHidden', $configuracionHidden);
+        View::set('utileriasHidden', $utileriasHidden);
 
     //  View::set('aerolineas', $this->getAerolineas());
     //  View::set('aeropuertos', $this->getAeropuertosAll());
     //  View::set('asistentesItinerartio', $this->getAsistentesItinerario());     
      
 
-     View::set('idAsistente',$this->getAsistentes());
-     View::set('idAsistenteSalida',$this->getAsistentesSalida());
-     View::set('asideMenu',$this->_contenedor->asideMenu());
+        View::set('idAsistente',$this->getAsistentes());
+        View::set('idAsistenteSalida',$this->getAsistentesSalida());
+        View::set('asideMenu',$this->_contenedor->asideMenu());
     //  View::set('idAeropuertoOrigen',$this->getAeropuertosOrigen());
     //  View::set('idAeropuertoDestino',$this->getAeropuertosDestino());
     //  View::set('idOrigenEscala',$this->getAeropuertosDestino());
-     View::set('tabla',$tabla);
-     View::set('tabla1',$tabla1);
-    View::set('modal_salida',$modal_salida);
-    View::set('modal',$modal);
-     View::set('tabla_itinerarios',$tabla_itinerarios);
-     View::set('totalvuelos',$totalvuelos);
-     View::set('totalvueloscargadossalida',$totalvueloscargadossalida);
-     View::set('totalvueloscargadosllegada',$totalvueloscargadosllegada);
-     View::set('header',$this->_contenedor->header($extraHeader));
-     View::set('footer',$extraFooter);
-     View::render("vuelos_all");
+        View::set('tabla',$tabla);
+        View::set('tabla1',$tabla1);
+        View::set('modal_salida',$modal_salida);
+        View::set('modal',$modal);
+        View::set('tabla_itinerarios',$tabla_itinerarios);
+        View::set('totalvuelos',$totalvuelos);
+        View::set('totalvueloscargadossalida',$totalvueloscargadossalida);
+        View::set('totalvueloscargadosllegada',$totalvueloscargadosllegada);
+        View::set('header',$this->_contenedor->header($extraHeader));
+        View::set('footer',$this->_contenedor->footer($extraFooter));
+        View::render("vuelos_all");
     }
 
-    public function borrarPase($id){
+    public function borrarPase(){
 
+        $id = $_POST['dato'];
         $delete_registrado = VuelosDao::delete($id);
 
         echo json_encode($delete_registrado);

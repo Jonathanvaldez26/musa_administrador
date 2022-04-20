@@ -318,6 +318,14 @@
             </div>
 
             <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="card card-plain">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" >
                 <div class="col-12 col-lg-6 col-md-4 position-relative z-index-2">
                     <div class="card card-plain">
                         <div class="card-body p-3">
@@ -415,12 +423,11 @@
                     </div>
                 </div>
             </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-lg-6 col-md-4 position-relative z-index-2">
-                    <div class="card card-plain">
-                        <div class="card-body p-3">
-                            <div class="row">
+            <div class="row mt-2 position-relative z-index-2">
+                <class class="col-12-col-md-6">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="row z-index-2">
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="row m-4">
@@ -446,8 +453,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </class>
             </div>
+            
             <div class="row mt-4">
                 <div class="col-lg-5 mb-lg-0 mb-4">
                     <div class="card z-index-2">
@@ -488,21 +496,6 @@
             </div>
 
             <br>
-            <!-- <footer class="footer pt-3  ">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                        <div class="copyright text-center text-sm text-muted text-lg-start">
-                            © <script>
-                                document.write(new Date().getFullYear())
-                            </script> - 2022,
-                            made with <i class="fa fa-heart" aria-hidden="true"></i> by
-                            <a href="" class="font-weight-bold" target="_blank">Creative Grupo LAHE</a>.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer> -->
         </div>
     </main>
 </body>

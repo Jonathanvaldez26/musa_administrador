@@ -440,6 +440,9 @@ html;
                   <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
+                  <button type="button" class="btn bg-gradient-danger btn-icon-only" onclick="borrarPrueba({$value['id_c_v']})">
+                    <i class="fa fa-solid fa-trash"></i>
+                  </button>
                 </td>
               </tr>
 
@@ -1077,11 +1080,19 @@ html;
 
     public function changeStatus(){
 
-      $id = $_POST['dato'];
-      $update_prueba = PruebasCovidUsuariosDao::updateStatus($id);
+        $id = $_POST['dato'];
+        $update_prueba = PruebasCovidUsuariosDao::updateStatus($id);
 
-      echo json_encode($update_prueba);
-  }
+        echo json_encode($update_prueba);
+    }
+
+    public function borrarPrueba(){
+
+        $id = $_POST['dato'];
+        $delete_prueba = PruebasCovidUsuariosDao::delete($id);
+
+        echo json_encode($delete_prueba);
+    }
 
     public function Validar(){
 

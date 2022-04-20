@@ -918,9 +918,10 @@
             if (result.isConfirmed) {
 
                 $.ajax({
-                    url: "/Vuelos/borrarPase/"+dato,
+                    url: "/Vuelos/borrarPase/",
                     type: "POST",
                     dataType: 'json',
+                    data: {dato},
                     beforeSend: function() {
                         console.log("Procesando....");
                         // alert('Se está borrando');
