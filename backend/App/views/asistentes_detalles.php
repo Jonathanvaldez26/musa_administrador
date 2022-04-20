@@ -336,7 +336,7 @@
                                                                 <div class="col-md-12 col-12 text-center">
                                                                     <div id="main_ticket" hidden>
                                                                         <canvas id="canvas_ticket" width="1220" height="457" name="ticket-<?php echo $clave_user; ?>" alt="ticket-<?php echo $clave_user; ?>" style="background: white; width: -webkit-fill-available;">
-                                                                            <img src="/img/boleto.png" alt="">
+                                                                            <img src="/img/boleto_musa.jpg" alt="">
                                                                         </canvas> <!--  background-image: url('/img/ticket.jpg'); -->
                                                                     </div>
                                                                 </div>
@@ -641,7 +641,7 @@
             context = canvas.getContext('2d');
 
             var imgTicketFondo = new Image();
-            imgTicketFondo.src = '/img/boleto.png';
+            imgTicketFondo.src = '/img/boleto_musa.jpg';
 
             imgTicketFondo.onload = function() {
                 context.drawImage(imgTicketFondo, 0, 0);
@@ -655,7 +655,7 @@
             public.loadPicture = function() {
 
                 // var imgTicketFondo = new Image();
-                // imgTicketFondo.src = '/img/boleto.png';
+                // imgTicketFondo.src = '/img/boleto_musa.jpg';
 
                 // imgTicketFondo.onload = function() {
                 //     context.drawImage(imgTicketFondo, 0, 0);
@@ -669,22 +669,22 @@
                 imgCodeQr.onload = function() {
                     context.drawImage(imgTicketFondo, 0, 0);
                     context.drawImage(imgCodeQr, 870, 90);
+                
 
-
-                    var centerX = canvas.width / 2;
-                    var centerY = canvas.height / 2;
+                    var centerX = canvas.width/2;
+                    var centerY = canvas.height/2;
 
                     context = canvas.getContext('2d');
 
-                    context.font = "20pt Verdana";
-                    context.fillStyle = "white";
+                    context.font="20pt Verdana";
+                    context.fillStyle = "black";
 
-                    context.fillText($('#nombre-canvas').val(), 430, centerY - 50);
+                    context.fillText($('#nombre-canvas').val(),280, centerY+80);
 
-                    context.font = "20pt Verdana";
-                    context.fillStyle = "white";
+                    context.font="20pt Verdana";
+                    context.fillStyle = "black";
 
-                    context.fillText($('#apellidos-canvas').val(), 430, centerY);
+                    context.fillText($('#apellidos-canvas').val(),280, centerY+110);
                 }
 
             };
