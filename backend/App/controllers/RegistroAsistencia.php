@@ -350,7 +350,7 @@ html;
             $textypos = 5;
             $pdf->setY(2);
 
-            $pdf->Image('https://convencionasofarma2022.mx/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
+            // $pdf->Image('https://convencionasofarma2022.mx/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
             $pdf->SetFont('Arial', '', 5);    //Letra Arial, negrita (Bold), tam. 20
 
             $pdf->SetXY(8.3, 9);
