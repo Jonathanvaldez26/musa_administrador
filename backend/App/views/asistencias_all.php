@@ -143,7 +143,7 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body p-3 position-relative">
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Inicio barrita -->
 

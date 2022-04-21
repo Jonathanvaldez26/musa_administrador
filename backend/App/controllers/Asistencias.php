@@ -331,6 +331,7 @@ html;
 
     $num_asistencias = AsistenciasDao::getNumAsistencias()['total'];
     $date = date("Y").'-'.date("m").'-'.date("d");
+    
     // echo ($date);
 
 //       $lineas = '';
