@@ -27,7 +27,8 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Principal</a></li>
+                        <li class="breadcrumb-item text-sm opacity-5 text-dark"><a href="/Principal/">Principal</a></li>
+                        <li class="breadcrumb-item text-sm opacity-10 text-dark">Vuelos</li>                    
                     </ol>
                 </nav>
                 <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">

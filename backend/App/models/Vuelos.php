@@ -488,7 +488,11 @@ sql;
     public static function getCountVuelosLlegada(){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT COUNT(*) as total FROM `pases_abordar` where tipo = 1;
+        SELECT COUNT(*) as total 
+        FROM pases_abordar pa
+        INNER JOIN utilerias_asistentes ua
+        ON pa.utilerias_asistentes_id = ua.utilerias_asistentes_id
+        WHERE tipo = 1
 sql;
         return $mysqli->queryAll($query);
     }
@@ -496,7 +500,11 @@ sql;
     public static function getCountVuelosSalida(){
         $mysqli = Database::getInstance();
         $query=<<<sql
-        SELECT COUNT(*) as total FROM `pases_abordar` where tipo = 2;
+        SELECT COUNT(*) as total 
+        FROM pases_abordar pa
+        INNER JOIN utilerias_asistentes ua
+        ON pa.utilerias_asistentes_id = ua.utilerias_asistentes_id
+        WHERE tipo = 2
 sql;
         return $mysqli->queryAll($query);
     }
