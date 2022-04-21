@@ -885,8 +885,8 @@ html;
             }
 
             
-            $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            $value['nombre'] = utf8_encode($value['nombre']);
+            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
+            // $value['nombre'] = utf8_encode($value['nombre']);
 
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
