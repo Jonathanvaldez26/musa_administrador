@@ -23,8 +23,8 @@ class Administradores extends Controller
     View::set('header', $this->_contenedor->header());
     View::set('footer', $this->_contenedor->footer());
 
-    if (Controller::getPermisosUsuario($this->__usuario, "permisos_globales", 1) == 0)
-      header('Location: /Principal/');
+    // if (Controller::getPermisosUsuario($this->__usuario, "permisos_globales", 1) == 0)
+    //   header('Location: /Principal/');
   }
 
   public function index()
@@ -37,7 +37,6 @@ class Administradores extends Controller
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
 
 
-    
       <script>
         $(document).ready(function(){
 
@@ -95,6 +94,85 @@ class Administradores extends Controller
                 alertify.confirm('Selecciona al menos uno para eliminar');
               }
             });
+
+            $("#form_add_admin").validate({
+              rules:{
+                nombre:{
+                  required: true
+                },
+                usuario:{
+                  required: true,
+                  checkUserName: true,
+                  noSpace: true
+                },
+                contrasena_1:{
+                  required: true
+                },
+                contrasena_2:{
+                  required: true,
+                  equalTo: "#contrasena_1"
+                },
+                descripcion:{
+                  required: true
+                },
+                perfil_id:{
+                  required: true
+                },
+                status:{
+                  required: true
+                },
+                planta:{
+                  required: true
+                },
+                tipo:{
+                  required: true
+                },
+                departamento:{
+                  required: true
+                },
+                identificador:{
+                  required: true
+                }
+                
+              },
+              messages:{
+                nombre:{
+                  required: "Este campo es requerido"
+                },
+                usuario:{
+                  required: "Este campo es requerido"
+                },
+                contrasena_1:{
+                  required: "Este campo es requerido"
+                },
+                contrasena_2:{
+                  required: "Este campo es requerido",
+                  equalTo: "La contraseña no es igual"
+                },
+                descripcion:{
+                  required: "Este campo es requerido"
+                },
+                perfil_id:{
+                  required: "Este campo es requerido"
+                },
+                status:{
+                  required: "Este campo es requerido"
+                },
+                planta:{
+                  required: "Este campo es requerido"
+                },
+                tipo:{
+                  required: "Este campo es requerido"
+                },
+                departamento:{
+                  required: "Este campo es requerido"
+                },
+                identificador:{
+                  required: "Este campo es requerido"
+                }
+                
+              }
+            });//fin del jquery validate
 
             $('#muestra-cupones').DataTable( {
               "drawCallback": function( settings ) {
@@ -287,7 +365,7 @@ html;
       $administrador_id = $value['administrador_id'];
       $tabla .= <<<html
                 <tr>
-                  <td style="vertical-align:middle;"><input type="checkbox" name="borrar[]" value="{$value['administrador_id']}"/></td>
+                  <td style="vertical-align:middle;"><!--<input type="checkbox" name="borrar[]" value="{$value['administrador_id']}"/>--></td>
                   <td class="mr-2" style="vertical-align:middle;">
                       <div class="mx-3">
                         <p class="text-sm font-weight-bold mb-0 text-dark">Nombre</p>
@@ -470,15 +548,15 @@ html;
       $tabla .= <<<html
                 
                 <td class="text-sm text-center">
-                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Desactivar Acceso al Administrador">
+                        <!--<a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Desactivar Acceso al Administrador">
                           <i class="fas fa-power-off text-secondary fa-1x" aria-hidden="true"></i>
-                        </a>
+                        </a>-->
                         <a href="/Administradores/edit/{$value['code']}" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Editar Administrador">
                           <i class="fas fa-user-edit text-secondary" aria-hidden="true"></i>
                         </a>
-                        <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Borrar Administrador de la Tabla (Se Desactivaran los Accesos)">
+                        <!--<a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Borrar Administrador de la Tabla (Se Desactivaran los Accesos)">
                           <i class="fas fa-trash text-secondary" aria-hidden="true"></i>
-                        </a>
+                        </a>-->
                 </td>
                 <!--<td class="text-sm text-center">
                         <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="Asignar una Línea al Administrador">
@@ -494,6 +572,13 @@ html;
     // var_dump(Controller::getPermisoUser($this->__usuario)[0]['perfil_id']);
     // var_dump(Controller::getPermisoUser($this->__usuario)['perfil_id']);
     // var_dump($permisos);
+
+    $perfiles = "";
+    foreach (AdministradoresDao::getPerfiles() as $key => $value) {
+      $perfiles .= <<<html
+            <option value="{$value['perfil_id']}">{$value['nombre']}</option>
+html;
+    }
 
     $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
     $asistentesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistentes", 1) == 0) ? "style=\"display:none;\"" : "";
@@ -521,9 +606,10 @@ html;
     View::set('utileriasHidden', $permisos);
 
     View::set('tabla', $tabla);
+    View::set('perfiles', $perfiles);
     View::set('asideMenu',$this->_contenedor->asideMenu());
-    View::set('header', $this->_contenedor->header($header));
-    View::set('footer',  $this->_contenedor->header($extraFooter));
+    View::set('header',$this->_contenedor->header());
+    View::set('footer',$this->_contenedor->footer());
     View::render("administradores_all");
   }
 
@@ -1082,6 +1168,8 @@ html;
     $administrador->_tipo = 0;
     $administrador->_code = $this->generateRandomString();
 
+
+
     $permisos = new \stdClass();
 
     if (MasterDom::getData('contrasena_1') == MasterDom::getData('contrasena_2')) {
@@ -1171,21 +1259,14 @@ html;
       // $idPermisos = AdministradoresDao::insertPermisos($permisos);
     }
 
-
+    $data = [];
     // if ($idAdministrador >= 1 && $idPermisos >= 1 && $idAsignaLinea >= 1) {
       if ($idAdministrador >= 1) {
-      // $this->alerta($id, 'add');
-      echo "<script>
-        alert('Se agrego el usuario correctamente');
-        window.location.href = '/Administradores/';
-      </script>";
-      //header('Location: /Administradores/');
+     
+      echo 'success';
     } else {
-      echo "<script>
-        alert('Error, no se pudo guardar el usuario');
-        window.location.href = '/Administradores/';
-      </script>";
-      //header('Location: /Administradores/');
+      
+      echo 'fail';
     }
   }
 
