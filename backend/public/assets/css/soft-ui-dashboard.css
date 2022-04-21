@@ -36998,3 +36998,38 @@ td#descripcion_asistencia {
   overflow: auto;
   max-width: 200px;
 }
+
+/* #descripcion_asistencia{
+  height: 25rem;
+  overflow-y: auto;
+} */
+
+#descripcion_asistencia::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+#descripcion_asistencia::-webkit-scrollbar:vertical {
+  width:10px;
+}
+
+#descripcion_asistencia::-webkit-scrollbar:hover{
+  width: px;
+}
+
+#descripcion_asistencia::-webkit-scrollbar-button:increment,#descripcion_asistencia::-webkit-scrollbar-button {
+  display: none;
+} 
+
+#descripcion_asistencia::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+#descripcion_asistencia::-webkit-scrollbar-thumb {
+  background-color: #ddd;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+#descripcion_asistencia::-webkit-scrollbar-track {
+  border-radius: 10px;  
+}
