@@ -667,9 +667,9 @@ html;
                 }
             }
 
-            $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
-            $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            $value['nombre'] = utf8_encode($value['nombre']);
+            // $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
+            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
+            // $value['nombre'] = utf8_encode($value['nombre']);
 
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
@@ -1477,9 +1477,9 @@ html;
 
             $img_user = "/img/user.png";
 
-            $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
-            $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            $value['nombre'] = utf8_encode($value['nombre']);
+            // $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
+            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
+            // $value['nombre'] = utf8_encode($value['nombre']);
 
 
 
