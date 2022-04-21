@@ -143,7 +143,7 @@
         </nav>
         <!-- End Navbar -->
         <div class="container-fluid py-4">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-sm-4">
                     <div class="card">
                         <div class="card-body p-3 position-relative">
@@ -151,7 +151,7 @@
                                 <div class="col-7 text-start">
                                     <p class="text-sm mb-1 text-capitalize font-weight-bold">Listas de Asistencias Generadas</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        <?php echo $totalvueloscargadosllegada; ?> Listas
+                                        <?php echo $num_asistencias; ?>  Listas
                                     </h5>
                                 </div>
                                 <div class="col-5">
@@ -172,7 +172,7 @@
                                 <div class="col-7 text-start">
                                     <p class="text-sm mb-1 text-capitalize font-weight-bold">Listas de Asistencias Concluidas</p>
                                     <h5 class="font-weight-bolder mb-0">
-                                        <?php echo $totalvueloscargadossalida; ?> Listas
+                                        <?php echo $num_finalizadas; ?> Listas
                                     </h5>
                                 </div>
                                 <div class="col-5">
@@ -207,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Inicio barrita -->
 
