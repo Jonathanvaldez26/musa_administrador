@@ -383,6 +383,7 @@ html;
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
 
         $nombre_completo = $datos_user['nombre'] . "\n\n" . $datos_user['apellido_paterno'] ;
+
         
 
         $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(390, 152));
@@ -404,7 +405,7 @@ html;
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(90, 10, $nombre_completo, 0, 'C');
+        $pdf->Multicell(90, 10, utf8_decode($nombre_completo), 0, 'C');
         $pdf->output();
     }
 
