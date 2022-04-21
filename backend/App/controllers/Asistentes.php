@@ -1510,6 +1510,7 @@ html;
     {
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
         $nombre_completo = $datos_user['nombre'] . " " . $datos_user['apellido_paterno'];
+       
         //$nombre_completo = utf8_decode($_POST['nombre']);
         //$datos_user['numero_habitacion']
         
@@ -1525,14 +1526,15 @@ html;
             $textypos = 5;
             $pdf->setY(2);
 
-            $pdf->Image('https://registro.foromusa.com/assets/pdf/iMAGEN_aso.png', 1, 0, 150, 40);
+            $pdf->Image('https://registro.foromusa.com/assets/pdf/iMAGEN_aso_2.png', 1, 0, 150, 40);
             $pdf->SetFont('Arial', '', 5);    //Letra Arial, negrita (Bold), tam. 20
 
-            $pdf->SetXY(8.3, 9);
+            $pdf->SetXY(12, 10);
             $pdf->SetFont('Arial', 'B', 25);
             #4D9A9B
             $pdf->SetTextColor(0, 0, 0);
             $pdf->Multicell(130, 5.5, $nombre_completo , 0, 'C');
+
  
             $textypos += 6;
             $pdf->setX(2);
