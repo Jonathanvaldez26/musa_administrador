@@ -2,8 +2,9 @@
 <title>
     Administradores - MUSA - GRUPO LAHE
 </title>
+
 <body class="bg-white-aside g-sidenav-show  bg-gray-100">
-    <?php echo $asideMenu;?>
+    <?php echo $asideMenu; ?>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
@@ -181,12 +182,12 @@
                                             <span class="ms-1">Administrador</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
+                                    <!-- <li class="nav-item">
                                         <a class="nav-link mb-0 px-0 py-1" href="#cam2" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
                                             <span class="fa fa-key"></span>
                                             <span class="ms-1">Asigna Líneas</span>
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -209,7 +210,7 @@
                                         <div class="panel-body" <?php echo $visible; ?>></div>
                                         <!-- <a href="/Administradores/Add/" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-plus"> </i></a> -->
                                         <button id="btn_add_admin" data-toggle="modal" data-target="#modal_add_admin" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-plus"> </i></button>
-                                        <button id="delete" type="button" class="btn bg-gradient-danger btn-icon-only mb-0 mt-3"><i class="fa fa-trash"> <b></b></i></button>
+                                        <!-- <button id="delete" type="button" class="btn bg-gradient-danger btn-icon-only mb-0 mt-3"><i class="fa fa-trash"> <b></b></i></button> -->
                                         <button type="button" class="btn bg-gradient-secondary btn-icon-only mb-0 mt-3" data-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Todo cambio que usted realice en el sistema será guardado con fecha, usuario y transacción.">
                                             <span class="fa fa-info"></span>
                                         </button>
@@ -230,7 +231,9 @@
                                                 <table id="table_admin" class="table align-items-center mb-0">
                                                     <thead>
                                                         <tr>
-                                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"><input type="checkbox" name="checkAll" id="checkAll" value="" /></th>
+                                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                                                <!--<input type="checkbox" name="checkAll" id="checkAll" value="" />-->
+                                                            </th>
                                                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Datos usuario</th>
                                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Permisos</th>
                                                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acciones</th>
@@ -257,91 +260,160 @@
             <!-- Fin barrita -->
         </div>
 
-    </main>
 
-    <div class="modal fade" id="modal_add_admin" role="dialog" aria-labelledby="" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="modal_add_admin" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="modal_add_adminLabel">
-                            Asistente Para Cargar Pases de Abordar (Vuelos) - 1er Vuelo
+                            Datos Generales para Agregar un Administrador
                         </h5>
 
                         <span type="button" class="btn bg-gradient-danger" data-dismiss="modal" aria-label="Close">
                             X
                         </span>
                     </div>
-                    <div class="modal-body">
-                        <p style="font-size: 12px">A continuación seleccione el nombre del Asistente y cargue unicamente un archivo PDF que contenga los datos de Vuelo del Asistente para llegar a la convención Asofarma 2022.</p>
-                        <hr>
-                        <form method="POST" enctype="multipart/form-data" id="form_vuelo_uno">
-                            <div class="form-group row">
-                                <div class="form-group col-md-12">
-                                    <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_asistente">Nombre del Invitado al que Cargaran el Pase de Abordar <span class="required">*</span></label>
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <!-- <input type="text" name="nombre_asistente" id="nombre_asistente" class="form-control col-md-7 col-xs-12" value=""> -->
-                                        <select class="form-control select_2" name="id_asistente" id="id_asistente" required>
-                                            <option selected disabled>Seleccione una Opción</option>
-                                            <?php echo $idAsistente; ?>
+                    <form id="form_add_admin">
+                        <div class="modal-body">
+                            <p style="font-size: 12px"></p>
+
+                            <div class="card-body pt-0">
+
+                                <div class="row">
+                                    <div class="form-group col-12 col-md-6 ">
+                                        <label class="form-label">Nombre del Administrador *</label>
+                                        <div class="input-group">
+                                            <input id="nombre" name="nombre" id="nombre" class="form-control" type="text" placeholder="Ej. Jonathan Valdez Martinez" required="required" onfocus="focused(this)" onfocusout="defocused(this)">
+                                        </div>
+                                    </div>
+                                    <div class="form-group  col-12 col-md-6">
+                                        <label class="form-label">Correo Electrónico *</label>
+                                        <div class="input-group">
+                                            <input id="usuario" autocomplete="off" name="usuario" id="usuario" class="form-control" type="email" placeholder="ejemplo@grupolahe.com" required onfocus="focused(this)" onfocusout="defocused(this)">
+                                        </div>
+                                        <span id="availability"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-6">
+                                        <label class="form-label">Contraseña *</label>
+                                        <div class="input-group">
+                                            <input id="contrasena_1" name="contrasena_1" id="contrasena_1" class="form-control" value="" type="password" value="" placeholder="Ingresa Contraseña" onfocus="focused(this)" onfocusout="defocused(this)" autocomplete="off">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 col-md-6">
+                                        <label class="form-label">Confirmar Contraseña *</label>
+                                        <div class="input-group">
+                                            <input id="contrasena_2" name="contrasena_2" id="contrasena_2" class="form-control" value="" type="password" value="" placeholder="Confirma Contraseña" onfocus="focused(this)" onfocusout="defocused(this)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 col-md-6">
+                                        <label class="form-label">Perfil del Administrador *</label>
+                                        <select class="form-control col-12 col-md-6" name="perfil_id" onchange="showDiv(this)">
+                                            <option value="" disabled selected>Selecciona un perfil para el este administrador</option>
+                                            <?php echo $perfiles; ?>
                                         </select>
                                     </div>
-                                    <span id="availability_"></span>
                                 </div>
-                                <div class="form-group col-md-12" id="div_escala" hidden>
-                                    <label class="control-label col-md-12 col-sm-1 col-xs-12" for="tiene_escala">Tiene Escala<span class="required">*</span></label>
-                                    <div class="col-md-12 col-sm-12 col-xs-12">
-                                        <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
-                                        <select class="form-control" name="tiene_escala" id="tiene_escala" required>
-                                            <option selected disabled>Seleccione una Opción</option>
-                                            <option value="1">Si</option>
-                                            <option value="0">No</option>
-                                        </select>
+
+                                <div class="form-group row">
+                                    <div class="col-12">
+                                        <label class="control-label col-md-2 col-sm-3 col-xs-12" for="descripcion">Descripción<span class="required"> *</span></label>
+                                        <div class="input-group">
+                                            <textarea class="form-control" name="descripcion" id="descripcion" placeholder="Descripci&oacute;n del administrador"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="form-group d-flex justify-content-end">
+                                    <div class="col-md-12 col-sm-12 col-xs-12 col-md-offset-2 col-xs-offset-3">
+                                    
+                                        <button class="btn bg-gradient-success col-md-3 col-sm-3 col-xs-5" id="btnAdd" type="submit">Agregar</button>
+                                        <a href="/Administradores/" class="btn bg-gradient-danger col-md-3 col-sm-3 col-xs-5" id="btnCancel">Cancelar</a>
                                         
                                     </div>
-                                    <span id="availability_"></span>
-                                </div>
-                                <br>
-                                
-                                <hr>
-                                <div class="row mb-3" id="pase_normal" hidden>
-                                    <div class="form-group col-md-12">
-                                        <label class="control-label col-md-12 col-sm-12 col-xs-12" for="file_">Ticket en Formato .PDF: <span class="required">*</span></label>
-                                        <div class="col-md-12 col-sm-12 col-xs-12">
-                                            <input type="file" accept="application/pdf" class="form-control" id="file_" name="file_" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-lg-12">
-                                        <label class="form-label">Notas para Grupo LAHE (Opcional)</label>
-                                        <div class="input-group">
-                                            <textarea id="notas" name="notas" maxlength="1000" class="form-control" placeholder="Añade Alguna Nota de Importancia"></textarea>
-                                        </div>
-                                    </div>
-                                    <input type="hidden" id="user_" name="user_" value="<?= $_SESSION["utilerias_administradores_id"] ?>">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn bg-gradient-success" id="btn_upload" name="btn_upload">Aceptar</button>
-                                    <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Cancelar</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                                </div> -->
 
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="modal-footer">
+
+                            <button type="submit" class="btn bg-gradient-success" id="btnAdd" name="btnAdd">Aceptar</button>
+                            <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
 
 
-    </body>
+    </main>
+
+
+</body>
 
 <script>
-    $(document).ready(function (){
+    $(document).ready(function() {
+
+
         $('#util a').addClass('active');
         $('#util .fa-user-circle-o').addClass('text-white');
         $('#administradores a').addClass('active');
         $('#administradores .fa-home').addClass('text-white');
         $('.collapse').addClass('show');
-        $('#utilerias').attr('hidden',false);
+        $('#utilerias').attr('hidden', false);
         $('#administradores').addClass('active');
+
+
+        $("#form_add_admin").on("submit", function(event) {
+            event.preventDefault();
+            var formData = new FormData(document.getElementById("form_add_admin"));
+
+            for (var value of formData.values()) {
+                console.log(value);
+            }
+
+            $.ajax({
+                url: "/Administradores/administradorAdd",
+                type: "POST",
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                beforeSend: function() {
+                    console.log("Procesando....");
+                    // alert('Se está borrando');
+
+                },
+                success: function(respuesta) {
+                    console.log(respuesta);
+
+                    if (respuesta == 'success') {
+                        Swal.fire("¡Se creo el Administrador correctamente!", "", "success").
+                        then((value) => {
+                            window.location.reload();
+                        });
+                    } else {
+                        Swal.fire("¡Hubo un error al crear el Administrador!", "", "error").
+                        then((value) => {
+                            window.location.reload();
+                        });
+                    }
+
+                },
+                error: function(respuesta) {
+                    Swal.fire("¡Hubo un error al crear el Administrador!", "", "error").
+                    then((value) => {
+                        window.location.reload();
+                    });
+                }
+            })
+        });
     });
 </script>
 
