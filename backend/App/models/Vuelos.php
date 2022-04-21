@@ -333,7 +333,7 @@ sql;
         ra.telefono,
         ra.email,
         cao.nombre as aerolinea_origen, 
-        caeo.nombre as aerolinea_escala_origen, 
+        caeo.nombre as aerolinea_escala_origen,
         cad.nombre as aerolinea_destino, 
         caed.nombre as aerolinea_escala_destino,
         i.fecha_escala_salida,

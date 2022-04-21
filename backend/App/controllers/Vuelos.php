@@ -283,7 +283,8 @@ html;
     $tabla_itinerarios = '';
 
     foreach ($itienerarios as $key => $value) {
-        if ($value['aerolinea_escala_origen'] !== 0 || $value['aerolinea_escala_destino'] !== 0 ) {
+        // echo $value['aerolinea_escala_origen']; 
+        if ($value['aerolinea_escala_origen'] != 'No aplica' || $value['aerolinea_escala_destino'] != 'No aplica' ) {
             $tabla_itinerarios .=<<<html
         <tr>
             <td class="text-center">
@@ -294,7 +295,7 @@ html;
                  
             </td>
             <td>
-                  <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>  {$value['nombre_completo']}</h6>
+                  <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>{$value['nombre_completo']}</h6>
                   <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>-->
                     <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
                     <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>-->
