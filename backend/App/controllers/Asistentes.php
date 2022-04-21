@@ -884,7 +884,7 @@ html;
                 }
             }
 
-            $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
+            
             $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
             $value['nombre'] = utf8_encode($value['nombre']);
 
