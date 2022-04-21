@@ -382,7 +382,7 @@ html;
         $this->generaterQr($clave_ticket);
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
 
-        $nombre_completo = $datos_user['nombre'] . "\n" . $datos_user['segundo_nombre'] . " " . $datos_user['apellido_paterno'] . "\n" . $datos_user['apellido_materno'];
+        $nombre_completo = $datos_user['nombre'] . "\n" . $datos_user['apellido_paterno'] ;
         
 
         $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(390, 152));

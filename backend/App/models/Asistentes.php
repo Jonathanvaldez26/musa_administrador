@@ -163,8 +163,7 @@ sql;
     $mysqli = Database::getInstance();
     $query=<<<sql
     SELECT ra.*, ra.ticket_virtual AS clave_ticket, CONCAT(ra.ticket_virtual,'.png') AS qr FROM registros_acceso ra
-    LEFT0
-     JOIN utilerias_asistentes ua
+    LEFT JOIN utilerias_asistentes ua
     ON ra.id_registro_acceso = ua.id_registro_acceso
     WHERE ra.clave = '$clave'
 sql;
