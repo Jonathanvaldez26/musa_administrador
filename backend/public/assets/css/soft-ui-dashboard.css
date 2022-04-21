@@ -36994,7 +36994,7 @@ table.dataTable.no-footer {
   color: rgb(98 56 246) ;
 }
 
-td#descripcion_asistencia {
+#descripcion_asistencia {
   overflow: auto;
   max-width: 200px;
 }
