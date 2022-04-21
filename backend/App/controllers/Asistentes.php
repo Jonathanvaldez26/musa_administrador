@@ -1506,7 +1506,7 @@ html;
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
     }
 
-    public function abrirpdf($clave, $noPages = null, $no_habitacion)
+    public function abrirpdf($clave, $noPages = null, $no_habitacion = null)
     {
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
         $nombre_completo = $datos_user['nombre'] . " " . $datos_user['segundo_nombre'] . " " . $datos_user['apellido_paterno'] . " " . $datos_user['apellido_materno'];
