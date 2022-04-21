@@ -238,7 +238,10 @@ sql;
     public static function contarPruebasTotales(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT COUNT(id_prueba_covid) FROM prueba_covid
+        SELECT COUNT(id_prueba_covid) 
+        FROM prueba_covid pc
+        INNER JOIN utilerias_asistentes ua
+        ON pc.utilerias_asistentes_id = ua.utilerias_asistentes_id
 sql;
 
         return $mysqli->queryAll($query);        

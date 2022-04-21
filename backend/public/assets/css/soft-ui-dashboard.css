@@ -36993,3 +36993,8 @@ table.dataTable.no-footer {
 .text-morado-musa{
   color: rgb(98 56 246) ;
 }
+
+td#descripcion_asistencia {
+  overflow: auto;
+  max-width: 200px;
+}
