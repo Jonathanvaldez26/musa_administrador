@@ -552,7 +552,7 @@
                                 <div class="row">
                                     <div class="col-12 col-lg-6">
                                         <label class="form-label mt-4">Fecha de Nacimiento * </label>
-                                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required="" value="<?= $detalles_registro['fecha_nacimiento'] ?>">
+                                        <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento"  value="<?= $detalles_registro['fecha_nacimiento'] ?>">
                                     </div>
 
                                     <div class="col-lg-6 col-12">

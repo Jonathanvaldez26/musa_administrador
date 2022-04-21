@@ -28,8 +28,8 @@ sql;
     $mysqli = Database::getInstance();
     $query =<<<sql
     SELECT ra.id_registro_acceso, ua.utilerias_asistentes_id, ua.status, ra.telefono, ua.usuario, ra.ticket_virtual, ra.nombre, ra.segundo_nombre, ra.apellido_paterno, ra.apellido_materno, ra.img, ra.genero, ra.alergia, ra.alergia_cual, ra.especialidad, ra.clave, lp.nombre as nombre_linea
-    FROM utilerias_asistentes ua
-    INNER JOIN registros_acceso ra ON (ra.id_registro_acceso = ua.id_registro_acceso)
+    FROM registros_acceso ra
+    LEFT JOIN utilerias_asistentes ua ON (ra.id_registro_acceso = ua.id_registro_acceso)
     INNER JOIN linea_principal lp ON (ra.especialidad = lp.id_linea_principal)
     AND CONCAT_WS(ra.email,ra.nombre,ra.segundo_nombre,ra.apellido_materno,ra.apellido_paterno,ra.ticket_virtual) LIKE '%$search%';
 sql;
