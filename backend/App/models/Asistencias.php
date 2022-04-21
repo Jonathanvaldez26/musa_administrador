@@ -51,4 +51,11 @@ sql;
     public static function delete($id){
         
     }
+    public static function getNumAsistencias(){
+      $mysqli = Database::getInstance();
+      $query=<<<sql
+      SELECT COUNT(*) AS total FROM asistencias
+sql;
+      return $mysqli->queryOne($query);
+    }
 } 

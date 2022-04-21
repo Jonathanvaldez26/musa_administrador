@@ -327,7 +327,11 @@ html;
       </tr>
  
 html;
-}
+    }
+
+    $num_asistencias = AsistenciasDao::getNumAsistencias()['total'];
+    $date = date("Y").'-'.date("m").'-'.date("d");
+    // echo ($date);
 
 //       $lineas = '';
     
@@ -340,6 +344,7 @@ html;
 
       // View::set('lineas',$lineas);
       View::set('tabla',$tabla);
+      View::set('num_asistencias',$num_asistencias);
       View::set('asideMenu',$this->_contenedor->asideMenu());
       View::set('header',$this->_contenedor->header($extraHeader));
       View::set('footer',$this->_contenedor->footer($extraFooter));
