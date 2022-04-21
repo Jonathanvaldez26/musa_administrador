@@ -1506,10 +1506,10 @@ html;
         return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length);
     }
 
-    public function abrirpdf($clave, $noPages = null, $no_habitacion)
+    public function abrirpdf($clave, $noPages = null, $no_habitacion = null)
     {
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
-        $nombre_completo = $datos_user['nombre'] . " " . $datos_user['segundo_nombre'] . " " . $datos_user['apellido_paterno'] . " " . $datos_user['apellido_materno'];
+        $nombre_completo = $datos_user['nombre'] . " " . $datos_user['apellido_paterno'];
         //$nombre_completo = utf8_decode($_POST['nombre']);
         //$datos_user['numero_habitacion']
         
@@ -1529,10 +1529,10 @@ html;
             $pdf->SetFont('Arial', '', 5);    //Letra Arial, negrita (Bold), tam. 20
 
             $pdf->SetXY(8.3, 9);
-            $pdf->SetFont('Times', 'B', 10);
+            $pdf->SetFont('Arial', 'B', 25);
             #4D9A9B
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Multicell(120, 4.2, $nombre_completo . utf8_decode(" #habitación"). " - " . $no_habitacion, 0, 'C');
+            $pdf->Multicell(130, 5.5, $nombre_completo , 0, 'C');
  
             $textypos += 6;
             $pdf->setX(2);

@@ -356,6 +356,7 @@
 
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
 
 <script>
     $(document).ready(function() {
@@ -414,6 +415,85 @@
                 }
             })
         });
+
+        $("#form_add_admin").validate({
+              rules:{
+                nombre:{
+                  required: true
+                },
+                usuario:{
+                  required: true,
+                  checkUserName: true,
+                  noSpace: true
+                },
+                contrasena_1:{
+                  required: true
+                },
+                contrasena_2:{
+                  required: true,
+                  equalTo: "#contrasena_1"
+                },
+                descripcion:{
+                  required: true
+                },
+                perfil_id:{
+                  required: true
+                },
+                status:{
+                  required: true
+                },
+                planta:{
+                  required: true
+                },
+                tipo:{
+                  required: true
+                },
+                departamento:{
+                  required: true
+                },
+                identificador:{
+                  required: true
+                }
+                
+              },
+              messages:{
+                nombre:{
+                  required: "Este campo es requerido"
+                },
+                usuario:{
+                  required: "Este campo es requerido"
+                },
+                contrasena_1:{
+                  required: "Este campo es requerido"
+                },
+                contrasena_2:{
+                  required: "Este campo es requerido",
+                  equalTo: "La contraseña no es igual"
+                },
+                descripcion:{
+                  required: "Este campo es requerido"
+                },
+                perfil_id:{
+                  required: "Este campo es requerido"
+                },
+                status:{
+                  required: "Este campo es requerido"
+                },
+                planta:{
+                  required: "Este campo es requerido"
+                },
+                tipo:{
+                  required: "Este campo es requerido"
+                },
+                departamento:{
+                  required: "Este campo es requerido"
+                },
+                identificador:{
+                  required: "Este campo es requerido"
+                }
+                
+              }
+            });//fin del jquery validate
     });
 </script>
 
