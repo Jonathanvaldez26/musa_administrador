@@ -259,25 +259,77 @@
 
     </main>
 
-    <div class="modal" id="modal_add_admin" tabindex="-1" role="dialog" aria-labelledby="modal_add_adminLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modal_add_adminLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="modal fade" id="modal_add_admin" role="dialog" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_add_adminLabel">
+                            Asistente Para Cargar Pases de Abordar (Vuelos) - 1er Vuelo
+                        </h5>
+
+                        <span type="button" class="btn bg-gradient-danger" data-dismiss="modal" aria-label="Close">
+                            X
+                        </span>
+                    </div>
+                    <div class="modal-body">
+                        <p style="font-size: 12px">A continuación seleccione el nombre del Asistente y cargue unicamente un archivo PDF que contenga los datos de Vuelo del Asistente para llegar a la convención Asofarma 2022.</p>
+                        <hr>
+                        <form method="POST" enctype="multipart/form-data" id="form_vuelo_uno">
+                            <div class="form-group row">
+                                <div class="form-group col-md-12">
+                                    <label class="control-label col-md-12 col-sm-1 col-xs-12" for="id_asistente">Nombre del Invitado al que Cargaran el Pase de Abordar <span class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <!-- <input type="text" name="nombre_asistente" id="nombre_asistente" class="form-control col-md-7 col-xs-12" value=""> -->
+                                        <select class="form-control select_2" name="id_asistente" id="id_asistente" required>
+                                            <option selected disabled>Seleccione una Opción</option>
+                                            <?php echo $idAsistente; ?>
+                                        </select>
+                                    </div>
+                                    <span id="availability_"></span>
+                                </div>
+                                <div class="form-group col-md-12" id="div_escala" hidden>
+                                    <label class="control-label col-md-12 col-sm-1 col-xs-12" for="tiene_escala">Tiene Escala<span class="required">*</span></label>
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+                                        <!-- <input type="date" name="fecha_" id="fecha_" class="form-control col-md-7 col-xs-12"> -->
+                                        <select class="form-control" name="tiene_escala" id="tiene_escala" required>
+                                            <option selected disabled>Seleccione una Opción</option>
+                                            <option value="1">Si</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                        
+                                    </div>
+                                    <span id="availability_"></span>
+                                </div>
+                                <br>
+                                
+                                <hr>
+                                <div class="row mb-3" id="pase_normal" hidden>
+                                    <div class="form-group col-md-12">
+                                        <label class="control-label col-md-12 col-sm-12 col-xs-12" for="file_">Ticket en Formato .PDF: <span class="required">*</span></label>
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <input type="file" accept="application/pdf" class="form-control" id="file_" name="file_" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-lg-12">
+                                        <label class="form-label">Notas para Grupo LAHE (Opcional)</label>
+                                        <div class="input-group">
+                                            <textarea id="notas" name="notas" maxlength="1000" class="form-control" placeholder="Añade Alguna Nota de Importancia"></textarea>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" id="user_" name="user_" value="<?= $_SESSION["utilerias_administradores_id"] ?>">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn bg-gradient-success" id="btn_upload" name="btn_upload">Aceptar</button>
+                                    <button type="button" class="btn bg-gradient-secondary" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
 
     </body>
 
