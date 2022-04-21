@@ -78,7 +78,11 @@ sql;
     public static function contarComprobantesValidos(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT COUNT(id_comprobante_vacuna) FROM comprobante_vacuna WHERE validado = 1
+        SELECT COUNT(id_comprobante_vacuna) 
+        FROM comprobante_vacuna cv
+        INNER JOIN utilerias_asistentes ua
+        ON cv.utilerias_asistentes_id = ua.utilerias_asistentes_id
+        WHERE validado = 1
 sql;
 
         return $mysqli->queryAll($query);        
