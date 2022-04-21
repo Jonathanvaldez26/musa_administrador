@@ -278,26 +278,26 @@ html;
     //     $itienerarios = VuelosDao::getItinerariosByLinea($id_linea['id_linea_ejecutivo']);
     // }
 
-    //$itienerarios = VuelosDao::getItinerarios();
-    $itienerarios = [0];
+    $itienerarios = VuelosDao::getItinerarios();
+    // $itienerarios = [0];
     $tabla_itinerarios = '';
 
     foreach ($itienerarios as $key => $value) {
-        if ($value['aerolinea_escala_origen'] != NULL || $value['aerolinea_escala_destino'] != NULL || $value['aeropuerto_escala_salida'] != NULL || $value['aeropuerto_escala_regreso'] != NULL) {
+        if ($value['aerolinea_escala_origen'] !== 0 || $value['aerolinea_escala_destino'] !== 0 ) {
             $tabla_itinerarios .=<<<html
         <tr>
             <td class="text-center">
                 <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_itinerario'] }</span>
                   <span class="badge badge-success">CON escala</span>
-                 <hr>
-                 <p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>
+                 <!--<hr>
+                 <p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                  
             </td>
             <td>
                   <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>  {$value['nombre_completo']}</h6>
-                  <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>
+                  <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>-->
                     <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>
+                    <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>-->
 
                   <hr>
 
@@ -315,7 +315,7 @@ html;
                   <h6 class="mb-0 text-sm"> <span class="fa fa-calendar"> </span>: {$value['fecha_salida']}</h6>
                   <h6 class="mb-0 text-sm"> <span class="fa fa-clock"> </span>: {$value['hora_salida']}</h6>
 html;                  
-                  if($value['aeropuerto_escala_salida'] != NULL){
+                  if($value['aeropuerto_escala_salida'] != null){
                     $tabla_itinerarios .=<<<html
                   <hr>
                   <span class="badge badge-success">Escala</span><br>
@@ -335,7 +335,7 @@ html;
                   <h6 class="mb-0 text-sm"> <span class="fa fa-calendar"> </span>: {$value['fecha_regreso']}</h6>
                   <h6 class="mb-0 text-sm"> <span class="fa fa-clock"> </span>: {$value['hora_regreso']}</h6>
 html;
-                if($value['aeropuerto_escala_regreso'] != NULL){
+                if($value['aeropuerto_escala_regreso'] != null){
                 $tabla_itinerarios .=<<<html
                   <hr>
                   <span class="badge badge-success">Escala</span><br>
@@ -362,15 +362,15 @@ html;
             <td class="text-center">
                 <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_itinerario'] }</span>
                 <span class="badge badge-primary">Sin escala</span>
-                 <hr>
-                 <p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>
+                <!-- <hr>
+                 <p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                  
             </td>
             <td>
                   <h6 class="mb-0 text-sm"> <span class="fas fa-user-md"> </span>  {$value['nombre_completo']}</h6>
-                  <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>
+                 <!-- <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-business-time" style="font-size: 13px;"></span><b> Bu: </b>{$value['nombre_bu']}</p>-->
                     <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-pills" style="font-size: 13px;"></span><b> Linea Principal: </b>{$value['nombre_linea']}</p>
-                    <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>
+                   <!-- <p class="text-sm font-weight-bold mb-0 "><span class="fa fa-hospital" style="font-size: 13px;"></span><b> Posición: </b>{$value['nombre_posicion']}</p>-->
 
                   <hr>
 
@@ -452,17 +452,17 @@ html;
         View::set('configuracionHidden', $configuracionHidden);
         View::set('utileriasHidden', $utileriasHidden);
 
-    //  View::set('aerolineas', $this->getAerolineas());
-    //  View::set('aeropuertos', $this->getAeropuertosAll());
-    //  View::set('asistentesItinerartio', $this->getAsistentesItinerario());     
+        View::set('aerolineas', $this->getAerolineas());
+        View::set('aeropuertos', $this->getAeropuertosAll());
+        View::set('asistentesItinerartio', $this->getAsistentesItinerario());  //Revisar    
      
 
         View::set('idAsistente',$this->getAsistentes());
         View::set('idAsistenteSalida',$this->getAsistentesSalida());
         View::set('asideMenu',$this->_contenedor->asideMenu());
-    //  View::set('idAeropuertoOrigen',$this->getAeropuertosOrigen());
-    //  View::set('idAeropuertoDestino',$this->getAeropuertosDestino());
-    //  View::set('idOrigenEscala',$this->getAeropuertosDestino());
+        View::set('idAeropuertoOrigen',$this->getAeropuertosOrigen());
+        View::set('idAeropuertoDestino',$this->getAeropuertosDestino());
+        View::set('idOrigenEscala',$this->getAeropuertosDestino());
         View::set('tabla',$tabla);
         View::set('tabla1',$tabla1);
         View::set('modal_salida',$modal_salida);
@@ -706,55 +706,55 @@ html;
         return $asistentes;
     }
 
-//     public function getAsistentesItinerario(){
-//         $asistentes = '';
-//         foreach (VuelosDao::getAsistenteNombreItinerario($_SESSION['utilerias_administradores_id']) as $key => $value) {
-//             $asistentes .=<<<html
-//             <option value="{$value['utilerias_asistentes_id']}">{$value['nombre']}</option>
-// html;
-//         }
-//         return $asistentes;
-//     }
+    public function getAsistentesItinerario(){
+        $asistentes = '';
+        foreach (VuelosDao::getAsistenteNombreItinerario($_SESSION['utilerias_administradores_id']) as $key => $value) {
+            $asistentes .=<<<html
+            <option value="{$value['utilerias_asistentes_id']}">{$value['nombre']}</option>
+html;
+        }
+        return $asistentes;
+    }
 
-//     public function getAeropuertosOrigen(){
-//         $aeropuertos = '';
-//         foreach (VuelosDao::getAeropuertoOrigen() as $key => $value) {
-//             $aeropuertos .=<<<html
-//       <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
-// html;
-//         }
-//         return $aeropuertos;
-//     }
+    public function getAeropuertosOrigen(){
+        $aeropuertos = '';
+        foreach (VuelosDao::getAeropuertoOrigen() as $key => $value) {
+            $aeropuertos .=<<<html
+      <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
+html;
+        }
+        return $aeropuertos;
+    }
 
-//     public function getAeropuertosDestino(){
-//         $aeropuertos = '';
-//         foreach (VuelosDao::getAeropuertoDestino() as $key => $value) {
-//             $aeropuertos .=<<<html
-//       <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
-// html;
-//         }
-//         return $aeropuertos;
-//     }
+    public function getAeropuertosDestino(){
+        $aeropuertos = '';
+        foreach (VuelosDao::getAeropuertoDestino() as $key => $value) {
+            $aeropuertos .=<<<html
+      <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
+html;
+        }
+        return $aeropuertos;
+    }
 
-//     public function getAeropuertosAll(){
-//         $aeropuertos = '';
-//         foreach (VuelosDao::getAeropuertosAll() as $key => $value) {
-//             $aeropuertos .=<<<html
-//       <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
-// html;
-//         }
-//         return $aeropuertos;
-//     }
+    public function getAeropuertosAll(){
+        $aeropuertos = '';
+        foreach (VuelosDao::getAeropuertosAll() as $key => $value) {
+            $aeropuertos .=<<<html
+      <option value="{$value['id_aeropuerto']}"> {$value['iata']} - {$value['aeropuerto']}</option>
+html;
+        }
+        return $aeropuertos;
+    }
 
-//     public function getAerolineas(){
-//         $aerolineas = '';
-//         foreach (VuelosDao::getAerolineas() as $key => $value) {
-//             $aerolineas .=<<<html
-//       <option value="{$value['id_aerolinea']}"> {$value['nombre']} </option>
-// html;
-//         }
-//         return $aerolineas;
-//     }
+    public function getAerolineas(){
+        $aerolineas = '';
+        foreach (VuelosDao::getAerolineas() as $key => $value) {
+            $aerolineas .=<<<html
+      <option value="{$value['id_aerolinea']}"> {$value['nombre']} </option>
+html;
+        }
+        return $aerolineas;
+    }
 
     public function itinerario(){
 
@@ -876,12 +876,15 @@ html;
                 $documento->_nota_itinerario = $nota_itinerario;
             }
 
+
             $id = VuelosDao::insertItinerario($documento);
 
             if ($id) {
+
+
                
-                $mailer = new Mailer();
-                $mailer->mailer($msg);
+                // $mailer = new Mailer();
+                // $mailer->mailer($msg);
                 echo 'success';
 
             } else {

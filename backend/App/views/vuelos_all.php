@@ -244,12 +244,12 @@
                                             <span class="ms-1">Vuelos Salida</span>
                                         </a>
                                     </li>
-                                    <!-- <li class="nav-item">
+                                    <li class="nav-item">
                                         <a class="nav-link mb-0 px-0 py-1 " href="#itinerario" data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
                                             <span class="fa fa-plane-arrival"></span>
                                             <span class="ms-1">Itinerario</span>
                                         </a>
-                                    </li> -->
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -1211,9 +1211,11 @@
         $("#form_itinerario").on("submit", function(event) {
             event.preventDefault();
 
+            console.log("aeropuerto salida" + $("#aeropuerto_salida").val());
+
             var formData = new FormData(document.getElementById("form_itinerario"));
             for (var value of formData.values()) {
-                //console.log(value);
+                console.log(value);
             }
 
             $.ajax({
