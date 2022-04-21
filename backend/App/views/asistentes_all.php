@@ -27,7 +27,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item text-sm opacity-5 text-dark">Principal</li>
+                        <li class="breadcrumb-item text-sm opacity-5 text-dark"><a href="/Principal/">Principal</a></li>
                         <li class="breadcrumb-item text-sm opacity-10 text-dark">Asistentes</li>
                     </ol>
                 </nav>

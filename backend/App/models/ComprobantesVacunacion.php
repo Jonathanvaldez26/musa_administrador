@@ -125,7 +125,10 @@ sql;
     public static function contarComprobantesTotales(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT COUNT(id_comprobante_vacuna) FROM comprobante_vacuna
+        SELECT COUNT(id_comprobante_vacuna) 
+        FROM comprobante_vacuna cv
+        INNER JOIN utilerias_asistentes ua
+        ON cv.utilerias_asistentes_id = ua.utilerias_asistentes_id
 sql;
 
         return $mysqli->queryAll($query);        
@@ -159,7 +162,11 @@ sql;
     public static function contarComprobantesPorRevisar(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT COUNT(id_comprobante_vacuna) FROM comprobante_vacuna WHERE validado = 0
+        SELECT COUNT(id_comprobante_vacuna)
+        FROM comprobante_vacuna cv
+        INNER JOIN utilerias_asistentes ua
+        ON cv.utilerias_asistentes_id = ua.utilerias_asistentes_id
+        WHERE validado = 0
 sql;
 
         return $mysqli->queryAll($query);        
