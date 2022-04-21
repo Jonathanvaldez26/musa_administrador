@@ -77,15 +77,17 @@ sql;
 
     public static function delete($id){
       $mysqli = Database::getInstance();
-      /*$select = <<<sql
-      SELECT e.catalogo_empresa_id FROM catalogo_empresa e JOIN catalogo_colaboradores c
-      ON e.catalogo_empresa_id = c.catalogo_empresa_id WHERE e.catalogo_empresa_id = $id
+      $select = <<<sql
+      SELECT ua.utilerias_administradores_id, ua.nombre
+      FROM utilerias_administradores ua 
+      JOIN utilerias_perfiles per 
+      ON ua.perfil_id = per.perfil_id WHERE ua.utilerias_administradores_id = $id
 sql;
 
       $sqlSelect = $mysqli->queryAll($select);
       if(count($sqlSelect) >= 1){
         return array('seccion'=>2, 'id'=>$id); // NO elimina
-      }else{*/
+      }else{
         //UPDATE catalogo_empresa SET status = '2' WHERE catalogo_empresa.catalogo_empresa_id = $id;
         $query = <<<sql
         UPDATE utilerias_perfiles SET status = 2 WHERE utilerias_perfiles.perfil_id = $id;
@@ -93,11 +95,11 @@ sql;
         $mysqli->update($query);
         $accion = new \stdClass();
         $accion->_sql= $query;
-        $accion->_parametros = $parametros;
+        $accion->_parametros = $id;
         $accion->_id = $id;
         UtileriasLog::addAccion($accion);
         return array('seccion'=>1, 'id'=>$id); // Cambia el status a eliminado
-      //}
+      }
     }
 
     public static function getById($id){

@@ -278,293 +278,293 @@ html;
     View::render("perfiles_all");
   }
 
-  public function add()
-  {
-    $extraHeader = <<<html
-      <link href="/css/switchery.min.css" rel="stylesheet">
+//   public function add()
+//   {
+//     $extraHeader = <<<html
+//       <link href="/css/switchery.min.css" rel="stylesheet">
 
-html;
-    $extraFooter = <<<html
-      <script src="/js/icheck.min.js"></script>
-      <script src="/js/switchery.min.js"></script>
-      <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-      <script src="/js/control_check.js"></script>
-      <!--script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script-->
+// html;
+//     $extraFooter = <<<html
+//       <script src="/js/icheck.min.js"></script>
+//       <script src="/js/switchery.min.js"></script>
+//       <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+//       <script src="/js/control_check.js"></script>
+//       <!--script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script-->
 
-      <script>
-        $(document).ready(function(){
+//       <script>
+//         $(document).ready(function(){
 
-          $.validator.addMethod("checkUserName",
-            function(value, element) {
-              var result = false;
-              $.ajax({
-                type:"POST",
-                async: false,
-                url: "/Perfiles/isValidateUser", // script to validate in server side
-                data: {
-                    usuario: function() {
-                      return $("#nombre").val();
-                    }},
-                success: function(data) {
-                    console.log("success::: " + data);
-                    result = (data == "true") ? false : true;
+//           $.validator.addMethod("checkUserName",
+//             function(value, element) {
+//               var result = false;
+//               $.ajax({
+//                 type:"POST",
+//                 async: false,
+//                 url: "/Perfiles/isValidateUser", // script to validate in server side
+//                 data: {
+//                     usuario: function() {
+//                       return $("#nombre").val();
+//                     }},
+//                 success: function(data) {
+//                     console.log("success::: " + data);
+//                     result = (data == "true") ? false : true;
 
-                    if(result == true){
-                      $('#availability').html('<span class="text-success glyphicon glyphicon-ok"></span>');
-                      $('#register').attr("disabled", true);
-                    }else{
-                      $('#availability').html('<span class="text-danger glyphicon glyphicon-remove"></span>');
-                      $('#register').attr("disabled", false);
-                    }
-                }
-              });
-              // return true if username is exist in database
-              return result;
-              },
-          );
+//                     if(result == true){
+//                       $('#availability').html('<span class="text-success glyphicon glyphicon-ok"></span>');
+//                       $('#register').attr("disabled", true);
+//                     }else{
+//                       $('#availability').html('<span class="text-danger glyphicon glyphicon-remove"></span>');
+//                       $('#register').attr("disabled", false);
+//                     }
+//                 }
+//               });
+//               // return true if username is exist in database
+//               return result;
+//               },
+//           );
 
 
 
-          $("#add").validate({
-            rules:{
-              nombre:{
-                required: true,
-                checkUserName: true
-              },
-              descripcion:{
-                required: true
-              },
-              status:{
-                required: true
-              }
-            },
-            messages:{
-              nombre:{
-                required: "Este campo es requerido"
-              },
-              descripcion:{
-                required: "Este campo es requerido"
-              },
-              status:{
-                required: "Este campo es requerido"
-              }
-            }
-          });
+//           $("#add").validate({
+//             rules:{
+//               nombre:{
+//                 required: true,
+//                 checkUserName: true
+//               },
+//               descripcion:{
+//                 required: true
+//               },
+//               status:{
+//                 required: true
+//               }
+//             },
+//             messages:{
+//               nombre:{
+//                 required: "Este campo es requerido"
+//               },
+//               descripcion:{
+//                 required: "Este campo es requerido"
+//               },
+//               status:{
+//                 required: "Este campo es requerido"
+//               }
+//             }
+//           });
 
-          $("#btnCancel").click(function(){
-            window.location.href = "/Perfiles/";
-          });//fin del btnAdd
+//           $("#btnCancel").click(function(){
+//             window.location.href = "/Perfiles/";
+//           });//fin del btnAdd
 
-        });//fin del document.ready
-      </script>
+//         });//fin del document.ready
+//       </script>
 
-      <script>
-      $(document).on('click', '#deshabiltar', function() {
-        $(".toggle").attr("disabled", "disabled");
-      });
-      $(document).on('click', '#habilitar', function() {
-        $(".toggle").removeAttr("disabled");
-      });
-      </script>
+//       <script>
+//       $(document).on('click', '#deshabiltar', function() {
+//         $(".toggle").attr("disabled", "disabled");
+//       });
+//       $(document).on('click', '#habilitar', function() {
+//         $(".toggle").removeAttr("disabled");
+//       });
+//       </script>
 
-<script>
-$(document).ready(function(){
+// <script>
+// $(document).ready(function(){
 
-  $('#myCheck1').change(function(){
-    if(this.checked){
-      document.getElementById("agregar1").disabled = false;
-      document.getElementById("editar1").disabled = false;
-      document.getElementById("eliminar1").disabled = false;
-    }else{
-      document.getElementById("agregar1").disabled = true;
-      document.getElementById("editar1").disabled = true ;
-      document.getElementById("eliminar1").disabled = true ;
-    }
-  });
+//   $('#myCheck1').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar1").disabled = false;
+//       document.getElementById("editar1").disabled = false;
+//       document.getElementById("eliminar1").disabled = false;
+//     }else{
+//       document.getElementById("agregar1").disabled = true;
+//       document.getElementById("editar1").disabled = true ;
+//       document.getElementById("eliminar1").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck2').change(function(){
-    if(this.checked){
-      document.getElementById("agregar2").disabled = false;
-      document.getElementById("editar2").disabled = false;
-      document.getElementById("eliminar2").disabled = false;
-    }else{
-      document.getElementById("agregar2").disabled = true;
-      document.getElementById("editar2").disabled = true ;
-      document.getElementById("eliminar2").disabled = true ;
-    }
-  });
+//   $('#myCheck2').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar2").disabled = false;
+//       document.getElementById("editar2").disabled = false;
+//       document.getElementById("eliminar2").disabled = false;
+//     }else{
+//       document.getElementById("agregar2").disabled = true;
+//       document.getElementById("editar2").disabled = true ;
+//       document.getElementById("eliminar2").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck3').change(function(){
-    if(this.checked){
-      document.getElementById("agregar3").disabled = false;
-      document.getElementById("editar3").disabled = false;
-      document.getElementById("eliminar3").disabled = false;
-    }else{
-      document.getElementById("agregar3").disabled = true;
-      document.getElementById("editar3").disabled = true ;
-      document.getElementById("eliminar3").disabled = true ;
-    }
-  });
+//   $('#myCheck3').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar3").disabled = false;
+//       document.getElementById("editar3").disabled = false;
+//       document.getElementById("eliminar3").disabled = false;
+//     }else{
+//       document.getElementById("agregar3").disabled = true;
+//       document.getElementById("editar3").disabled = true ;
+//       document.getElementById("eliminar3").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck4').change(function(){
-    if(this.checked){
-      document.getElementById("agregar4").disabled = false;
-      document.getElementById("editar4").disabled = false;
-      document.getElementById("eliminar4").disabled = false;
-    }else{
-      document.getElementById("agregar4").disabled = true;
-      document.getElementById("editar4").disabled = true ;
-      document.getElementById("eliminar4").disabled = true ;
-    }
-  });
+//   $('#myCheck4').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar4").disabled = false;
+//       document.getElementById("editar4").disabled = false;
+//       document.getElementById("eliminar4").disabled = false;
+//     }else{
+//       document.getElementById("agregar4").disabled = true;
+//       document.getElementById("editar4").disabled = true ;
+//       document.getElementById("eliminar4").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck5').change(function(){
-    if(this.checked){
-      document.getElementById("agregar5").disabled = false;
-      document.getElementById("editar5").disabled = false;
-      document.getElementById("eliminar5").disabled = false;
-    }else{
-      document.getElementById("agregar5").disabled = true;
-      document.getElementById("editar5").disabled = true ;
-      document.getElementById("eliminar5").disabled = true ;
-    }
-  });
+//   $('#myCheck5').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar5").disabled = false;
+//       document.getElementById("editar5").disabled = false;
+//       document.getElementById("eliminar5").disabled = false;
+//     }else{
+//       document.getElementById("agregar5").disabled = true;
+//       document.getElementById("editar5").disabled = true ;
+//       document.getElementById("eliminar5").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck6').change(function(){
-    if(this.checked){
-      document.getElementById("agregar6").disabled = false;
-      document.getElementById("editar6").disabled = false;
-      document.getElementById("eliminar6").disabled = false;
-    }else{
-      document.getElementById("agregar6").disabled = true;
-      document.getElementById("editar6").disabled = true ;
-      document.getElementById("eliminar6").disabled = true ;
-    }
-  });
+//   $('#myCheck6').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar6").disabled = false;
+//       document.getElementById("editar6").disabled = false;
+//       document.getElementById("eliminar6").disabled = false;
+//     }else{
+//       document.getElementById("agregar6").disabled = true;
+//       document.getElementById("editar6").disabled = true ;
+//       document.getElementById("eliminar6").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck7').change(function(){
-    if(this.checked){
-      document.getElementById("agregar7").disabled = false;
-      document.getElementById("editar7").disabled = false;
-      document.getElementById("eliminar7").disabled = false;
-    }else{
-      document.getElementById("agregar7").disabled = true;
-      document.getElementById("editar7").disabled = true ;
-      document.getElementById("eliminar7").disabled = true ;
-    }
-  });
+//   $('#myCheck7').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar7").disabled = false;
+//       document.getElementById("editar7").disabled = false;
+//       document.getElementById("eliminar7").disabled = false;
+//     }else{
+//       document.getElementById("agregar7").disabled = true;
+//       document.getElementById("editar7").disabled = true ;
+//       document.getElementById("eliminar7").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck8').change(function(){
-    if(this.checked){
-      document.getElementById("agregar8").disabled = false;
-      document.getElementById("editar8").disabled = false;
-      document.getElementById("eliminar8").disabled = false;
-    }else{
-      document.getElementById("agregar8").disabled = true;
-      document.getElementById("editar8").disabled = true ;
-      document.getElementById("eliminar8").disabled = true ;
-    }
-  });
+//   $('#myCheck8').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar8").disabled = false;
+//       document.getElementById("editar8").disabled = false;
+//       document.getElementById("eliminar8").disabled = false;
+//     }else{
+//       document.getElementById("agregar8").disabled = true;
+//       document.getElementById("editar8").disabled = true ;
+//       document.getElementById("eliminar8").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck9').change(function(){
-    if(this.checked){
-      document.getElementById("agregar9").disabled = false;
-      document.getElementById("editar9").disabled = false;
-      document.getElementById("eliminar9").disabled = false;
-    }else{
-      document.getElementById("agregar9").disabled = true;
-      document.getElementById("editar9").disabled = true ;
-      document.getElementById("eliminar9").disabled = true ;
-    }
-  });
+//   $('#myCheck9').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar9").disabled = false;
+//       document.getElementById("editar9").disabled = false;
+//       document.getElementById("eliminar9").disabled = false;
+//     }else{
+//       document.getElementById("agregar9").disabled = true;
+//       document.getElementById("editar9").disabled = true ;
+//       document.getElementById("eliminar9").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck10').change(function(){
-    if(this.checked){
-      document.getElementById("agregar10").disabled = false;
-      document.getElementById("editar10").disabled = false;
-      document.getElementById("eliminar10").disabled = false;
-    }else{
-      document.getElementById("agregar10").disabled = true;
-      document.getElementById("editar10").disabled = true ;
-      document.getElementById("eliminar10").disabled = true ;
-    }
-  });
+//   $('#myCheck10').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar10").disabled = false;
+//       document.getElementById("editar10").disabled = false;
+//       document.getElementById("eliminar10").disabled = false;
+//     }else{
+//       document.getElementById("agregar10").disabled = true;
+//       document.getElementById("editar10").disabled = true ;
+//       document.getElementById("eliminar10").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck11').change(function(){
-    if(this.checked){
-      document.getElementById("agregar11").disabled = false;
-      document.getElementById("editar11").disabled = false;
-      document.getElementById("eliminar11").disabled = false;
-    }else{
-      document.getElementById("agregar11").disabled = true;
-      document.getElementById("editar11").disabled = true ;
-      document.getElementById("eliminar11").disabled = true ;
-    }
-  });
+//   $('#myCheck11').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar11").disabled = false;
+//       document.getElementById("editar11").disabled = false;
+//       document.getElementById("eliminar11").disabled = false;
+//     }else{
+//       document.getElementById("agregar11").disabled = true;
+//       document.getElementById("editar11").disabled = true ;
+//       document.getElementById("eliminar11").disabled = true ;
+//     }
+//   });
 
-  $('#myCheck12').change(function(){
-    if(this.checked){
-      document.getElementById("agregar12").disabled = false;
-      document.getElementById("editar12").disabled = false;
-      document.getElementById("eliminar12").disabled = false;
-    }else{
-      document.getElementById("agregar12").disabled = true;
-      document.getElementById("editar12").disabled = true ;
-      document.getElementById("eliminar12").disabled = true ;
-    }
-  });
+//   $('#myCheck12').change(function(){
+//     if(this.checked){
+//       document.getElementById("agregar12").disabled = false;
+//       document.getElementById("editar12").disabled = false;
+//       document.getElementById("eliminar12").disabled = false;
+//     }else{
+//       document.getElementById("agregar12").disabled = true;
+//       document.getElementById("editar12").disabled = true ;
+//       document.getElementById("eliminar12").disabled = true ;
+//     }
+//   });
 
-});
-</script>
-html;
-    $sStatus = "";
-    foreach (PerfilesDao::getStatus() as $key => $value) {
-      $sStatus .= <<<html
-        <option value="{$value['catalogo_status_id']}">{$value['nombre']}</option>
-html;
-    }
+// });
+// </script>
+// html;
+//     $sStatus = "";
+//     foreach (PerfilesDao::getStatus() as $key => $value) {
+//       $sStatus .= <<<html
+//         <option value="{$value['catalogo_status_id']}">{$value['nombre']}</option>
+// html;
+//     }
 
-    $tabla1 = '';
-    foreach (PerfilesDao::getSeccionesMenu() as $key => $value) {
-      $tabla1 .= <<<html
-          <tr>
-            <td>
-              <!--input id="categoria" onclick="onClickHandler()"  type="checkbox" class="flat" value="{$value['utilerias_seccion_id']}" name="seccion{$value['utilerias_seccion_id']}"> {$value['nombre_seccion']} -->
+//     $tabla1 = '';
+//     foreach (PerfilesDao::getSeccionesMenu() as $key => $value) {
+//       $tabla1 .= <<<html
+//           <tr>
+//             <td>
+//               <!--input id="categoria" onclick="onClickHandler()"  type="checkbox" class="flat" value="{$value['utilerias_seccion_id']}" name="seccion{$value['utilerias_seccion_id']}"> {$value['nombre_seccion']} -->
 
-              <input type="checkbox" id="myCheck{$value['utilerias_seccion_id']}" name="seccion{$value['utilerias_seccion_id']}" > {$value['nombre_seccion']}
+//               <input type="checkbox" id="myCheck{$value['utilerias_seccion_id']}" name="seccion{$value['utilerias_seccion_id']}" > {$value['nombre_seccion']}
 
-              <!--button type="button" id="deshabiltar" class="btn btn-primary">Deshabiltar</button>
-              <button type="button" id="habilitar" class="btn btn-primary">Habilitar</button-->
-            </td>
-            <td>
-              <input class="toggle botonEstado" name="agregar{$value['utilerias_seccion_id']}" id="agregar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" disabled >
-            </td>
-            <td>
-              <!--No <input type="checkbox" class="js-switch" id="b{$value['utilerias_seccion_id']}" name="editar{$value['utilerias_seccion_id']}"/> Si-->
-              <input class="toggle botonEstado" name="editar{$value['utilerias_seccion_id']}" id="editar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" disabled >
-            </td>
-            <td>
-              <!--No <input type="checkbox" class="js-switch" name="eliminar{$value['utilerias_seccion_id']}"/> Si -->
-              <input class="toggle botonEstado" name="eliminar{$value['utilerias_seccion_id']}" id="eliminar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" disabled >
-            </td>
-        </tr>
-html;
-    }
+//               <!--button type="button" id="deshabiltar" class="btn btn-primary">Deshabiltar</button>
+//               <button type="button" id="habilitar" class="btn btn-primary">Habilitar</button-->
+//             </td>
+//             <td>
+//               <input class="toggle botonEstado" name="agregar{$value['utilerias_seccion_id']}" id="agregar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" disabled >
+//             </td>
+//             <td>
+//               <!--No <input type="checkbox" class="js-switch" id="b{$value['utilerias_seccion_id']}" name="editar{$value['utilerias_seccion_id']}"/> Si-->
+//               <input class="toggle botonEstado" name="editar{$value['utilerias_seccion_id']}" id="editar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" disabled >
+//             </td>
+//             <td>
+//               <!--No <input type="checkbox" class="js-switch" name="eliminar{$value['utilerias_seccion_id']}"/> Si -->
+//               <input class="toggle botonEstado" name="eliminar{$value['utilerias_seccion_id']}" id="eliminar{$value['utilerias_seccion_id']}" type="checkbox" data-toggle="toggle" disabled >
+//             </td>
+//         </tr>
+// html;
+//     }
 
-    /*<input type="checkbox" class="flat" value="{$value['seccion_menu_id']}"> {$value['nombre_seccion']} <br>
-      $getSeccionesMenu = "<label>";
-      foreach (PerfilesDao::getSeccionesMenu() as $key => $value) {
-        $getSeccionesMenu .=<<<html
-html;
-      }
-      $getSeccionesMenu .= "</label>";*/
+//     /*<input type="checkbox" class="flat" value="{$value['seccion_menu_id']}"> {$value['nombre_seccion']} <br>
+//       $getSeccionesMenu = "<label>";
+//       foreach (PerfilesDao::getSeccionesMenu() as $key => $value) {
+//         $getSeccionesMenu .=<<<html
+// html;
+//       }
+//       $getSeccionesMenu .= "</label>";*/
 
-    View::set('tabla', $tabla);
-    View::set('sStatus', $sStatus);
-    View::set('header', $this->_contenedor->header($extraHeader));
-    View::set('footer', $this->_contenedor->footer($extraFooter));
-    View::render("perfil_add");
-  }
+//     View::set('tabla', $tabla);
+//     View::set('sStatus', $sStatus);
+//     View::set('header', $this->_contenedor->header($extraHeader));
+//     View::set('footer', $this->_contenedor->footer($extraFooter));
+//     View::render("perfil_add");
+//   }
 
   public function edit($id)
   {
@@ -960,7 +960,7 @@ html;
       if ($value['seccion'] == 2) {
         $mensaje .= <<<html
             <div class="alert alert-danger" role="alert">
-              <h4>El ID <b>{$value['id']}</b>, no se puede eliminar, ya que esta siendo utilizado por el Catálogo de Gestión Colaboradores</h4>
+              <h4>El ID <b>{$value['id']}</b>, no se puede eliminar, ya que esta siendo utilizado por Utilerias Administradores</h4>
             </div>
 html;
       }

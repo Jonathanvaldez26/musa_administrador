@@ -207,7 +207,8 @@
 
                                     <div class="ps-4">
                                         <div class="panel-body" <?php echo $visible; ?>></div>
-                                        <a href="/Administradores/Add/" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-plus"> </i></a>
+                                        <!-- <a href="/Administradores/Add/" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-plus"> </i></a> -->
+                                        <button id="btn_add_admin" data-toggle="modal" data-target="#modal_add_admin" type="button" class="btn bg-gradient-info btn-icon-only mb-0 mt-3"><i class="fa fa-plus"> </i></button>
                                         <button id="delete" type="button" class="btn bg-gradient-danger btn-icon-only mb-0 mt-3"><i class="fa fa-trash"> <b></b></i></button>
                                         <button type="button" class="btn bg-gradient-secondary btn-icon-only mb-0 mt-3" data-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Todo cambio que usted realice en el sistema será guardado con fecha, usuario y transacción.">
                                             <span class="fa fa-info"></span>
@@ -257,7 +258,28 @@
         </div>
 
     </main>
-</body>
+
+    <div class="modal" id="modal_add_admin" tabindex="-1" role="dialog" aria-labelledby="modal_add_adminLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal_add_adminLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </body>
 
 <script>
     $(document).ready(function (){

@@ -302,7 +302,7 @@
                     </div>
                     <form name="all" id="all" action="/Perfiles/delete" method="POST">
                         <div class="panel-body">
-                            <a href="/Perfiles/add" type="button" class="btn bg-gradient-info btn-circle"><i class="fa fa-plus"> </i></a>
+                            <!-- <a href="/Perfiles/add" type="button" class="btn bg-gradient-info btn-circle"><i class="fa fa-plus"> </i></a> -->
                             <button id="delete" type="button" class="btn bg-gradient-danger btn-circle"><i class="fa fa-trash"></i></button>
                             <!-- <button id="export_pdf" type="button" class="btn btn-info btn-circle"><i class="fa fa-file-pdf-o"> <b>Exportar a PDF</b></i></button>
                 <button id="export_excel" type="button" class="btn btn-success btn-circle"><i class="fa fa-file-excel-o"> <b>Exportar a Excel</b></i></button> -->
