@@ -49,7 +49,7 @@ sql;
             INNER JOIN utilerias_administradores ua on ua.utilerias_administradores_id = pa.utilerias_administradores_id
             INNER JOIN utilerias_asistentes uaa on uaa.utilerias_asistentes_id = pa.utilerias_asistentes_id
             INNER JOIN registros_acceso ra on ra.id_registro_acceso = uaa.id_registro_acceso
-            WHERE pa.tipo = 2 ORDER BY pa.fecha_alta DESC
+            WHERE pa.tipo = 2 
 sql;
 
         return $mysqli->queryAll($query);
