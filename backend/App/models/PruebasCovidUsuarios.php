@@ -157,7 +157,8 @@ sql;
     public static function getByIdUser($id_usuario){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT * FROM prueba_covid WHERE utilerias_asistentes_id = '$id_usuario'
+        SELECT * FROM prueba_covid 
+        WHERE utilerias_asistentes_id = '$id_usuario'
 sql;
 
         return $mysqli->queryAll($query);
@@ -205,7 +206,11 @@ sql;
     public static function contarPruebasValidos(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT COUNT(id_prueba_covid) FROM prueba_covid WHERE status = 2
+        SELECT COUNT(id_prueba_covid) 
+        FROM prueba_covid pc
+        INNER JOIN utilerias_asistentes ua
+        ON pc.utilerias_asistentes_id = ua.utilerias_asistentes_id
+        WHERE status = 2
 sql;
 
         return $mysqli->queryAll($query);        
@@ -250,7 +255,11 @@ sql;
     public static function contarPruebasPorRevisar(){
         $mysqli = Database::getInstance(true);
         $query =<<<sql
-        SELECT COUNT(id_prueba_covid) FROM prueba_covid WHERE status = 0
+        SELECT COUNT(id_prueba_covid)
+        FROM prueba_covid pc
+        INNER JOIN utilerias_asistentes ua
+        ON pc.utilerias_asistentes_id = ua.utilerias_asistentes_id
+        WHERE status = 0
 sql;
 
         return $mysqli->queryAll($query);        
