@@ -382,7 +382,7 @@ html;
         $this->generaterQr($clave_ticket);
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
 
-        $nombre_completo = $datos_user['nombre'] . "\n" . $datos_user['apellido_paterno'] ;
+        $nombre_completo = $datos_user['nombre'] . "\n\n" . $datos_user['apellido_paterno'] ;
         
 
         $pdf = new \FPDF($orientation = 'P', $unit = 'mm', array(390, 152));
@@ -392,7 +392,7 @@ html;
         $pdf->SetFont('Arial', 'B', 16);
         $pdf->Image('qrs/gafetes/'.$clave_ticket.'.png', 50, 50, 50, 50);
         $pdf->SetFont('Arial', 'B', 25);
-        $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
+        // $pdf->Multicell(133, 80, $clave_ticket, 0, 'C');
 
         //$pdf->Image('1.png', 1, 0, 190, 190);
         $pdf->SetFont('Arial', 'B', 5);    //Letra Arial, negrita (Bold), tam. 20
