@@ -491,8 +491,8 @@ class Mailer
            echo 'success';
            //echo 'El mensaje ha sido enviado';
         } catch (Exception $e) {
-            echo 'fail';
-           //echo "No se pudo enviar el email: {$mail->ErrorInfo}";
+            //echo 'fail';
+           echo "No se pudo enviar el email: {$mail->ErrorInfo}";
         }
     }
 

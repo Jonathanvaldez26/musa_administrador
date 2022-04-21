@@ -156,7 +156,7 @@ html;
 
 html;
 
-    $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
+    // $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
 
      $vuelos = VuelosDao::getAllLlegada();
     //  if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
@@ -172,6 +172,10 @@ html;
      foreach ($vuelos as $key => $value) {
 
             $visible_button_mail = $value['envio_email'] == 1 ? "style=\"display:none;\"" : "";
+
+            $permiso_root = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? $visible_button_mail : "";
+
+            //$visible_button_mail = $value['envio_email'] == 1 ? "style=\"display:none;\"" : "";
            
             $tabla.= <<<html
             <tr>
@@ -205,8 +209,8 @@ html;
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <!--a class="bg-gradient-primary btn btn-icon-only btn-iframe-uno" data-document="{$value['link']}" href="/comprobante_vuelo_uno/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <button class="btn bg-gradient-primary btn-icon-only btn-iframe-uno" data-borrar="{$value['id_pase_abordar']}" data-document="{$value['link']}" type="button" data-toggle="modal" data-target="#modal-ver-pdf-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
-                    <button class="btn bg-gradient-info btn-icon-only send_mail" id="btn-enviar_email-{$value['id_pase_abordar']}" value="{$value['id_pase_abordar']}" type="button" {$visible_button_mail}><span class="fas fa-envelope"></span></button>
-                    <button class="btn bg-gradient-danger btn-icon-only" id="btn-borrar-{$value['id_pase_abordar']}" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}" {$visible_button_mail}><span class="fas fa-trash"></span></button>
+                    <button class="btn bg-gradient-info btn-icon-only send_mail" id="btn-enviar_email-{$value['id_pase_abordar']}" value="{$value['id_pase_abordar']}" type="button" {$permiso_root}><span class="fas fa-envelope"></span></button>
+                    <button class="btn bg-gradient-danger btn-icon-only" id="btn-borrar-{$value['id_pase_abordar']}" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}" {$permiso_root}><span class="fas fa-trash"></span></button>
                 </td>
                  
             </tr>
@@ -216,6 +220,8 @@ html;
         }
 
     $vuelos_salida = VuelosDao::getAllSalida();
+
+    
 
     // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
     //     $vuelos_salida = VuelosDao::getAllSalida();
@@ -227,7 +233,12 @@ html;
      $tabla1 = '';
      $modal_salida = '';
      foreach ($vuelos_salida as $key => $value) {
+
             $visible_button_mail = $value['envio_email'] == 1 ? "style=\"display:none;\"" : "";
+
+            $permiso_root = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? $visible_button_mail : "";
+
+            
             $tabla1.= <<<html
             <tr>
                  <td>
@@ -259,8 +270,8 @@ html;
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="https://www.admin.convencionasofarma2022.mx/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <!--a class="bg-gradient-primary btn btn-icon-only" href="/comprobante_vuelo_dos/{$value['link']}" data-bs-toggle="tooltip" data-bs-placement="bottom" title="" target="_blank" data-bs-original-title="Ver .PDF Pase de Abordar"><i class="fa fa-eye"></i></a-->
                     <button class="btn bg-gradient-primary btn-icon-only btn-iframe-dos"  data-borrar="{$value['id_pase_abordar']}" data-document="{$value['link']}" type="button" data-toggle="modal" data-target="#modal-ver-pdf-{$value['id_pase_abordar']}" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-original-title="Ver .PDF Pase de Abordar de {$value['nombre']} - {$value['id_pase_abordar']}"><span class="fas fa-eye"></span></button>
-                    <button class="btn bg-gradient-info btn-icon-only send_mail" id="btn-enviar_email-{$value['id_pase_abordar']}" value="{$value['id_pase_abordar']}" type="button" {$visible_button_mail}><span class="fas fa-envelope"></span></button>
-                    <button class="btn bg-gradient-danger btn-icon-only" id="btn-borrar-{$value['id_pase_abordar']}" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}" {$visible_button_mail}><span class="fas fa-trash"></span></button>
+                    <button class="btn bg-gradient-info btn-icon-only send_mail" id="btn-enviar_email-{$value['id_pase_abordar']}" value="{$value['id_pase_abordar']}" type="button" {$permiso_root}><span class="fas fa-envelope"></span></button>
+                    <button class="btn bg-gradient-danger btn-icon-only" id="btn-borrar-{$value['id_pase_abordar']}" onclick="borrarPaseAbordar({$value['id_pase_abordar']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Eliminar Pase de Abordar de {$value['nombre']}" {$permiso_root}><span class="fas fa-trash"></span></button>
                 </td>
                  
             </tr>
