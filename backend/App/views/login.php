@@ -61,7 +61,7 @@
                                             </div> -->
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" id="btnEntrar" class="btn bg-gradient-musa morado-musa-text w-100 mt-4 mb-0">ENTRAR</button>
+                                            <button type="button" id="btnEntrar" class="btn bg-gradient-pink morado-musa-text w-100 mt-4 mb-0">ENTRAR</button>
                                         </div>
                                     </form>
                                 </div>
