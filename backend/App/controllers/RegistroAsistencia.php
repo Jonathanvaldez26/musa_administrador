@@ -382,7 +382,7 @@ html;
         $this->generaterQr($clave_ticket);
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
 
-        $nombre_completo = strtoupper($datos_user['nombre']) . "\n\n" . strtoupper($datos_user['apellido_paterno']);
+        $nombre_completo = mb_strtoupper($datos_user['nombre']) . "\n\n" . mb_strtoupper($datos_user['apellido_paterno']);
 
         
 
