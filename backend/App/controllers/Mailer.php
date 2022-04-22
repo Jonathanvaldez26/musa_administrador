@@ -461,9 +461,9 @@ class Mailer
                     <br>
                     <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh</a>
                 </p>
-                <p>
-                    
-                </p>
+                <br>
+
+                <img src="https://registro.foromusa.com/img/pie_email_musa.png" alt="píe">
                 
             </div>
             

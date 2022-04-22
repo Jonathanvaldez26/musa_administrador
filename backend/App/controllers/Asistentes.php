@@ -1533,7 +1533,7 @@ html;
             $pdf->SetFont('Arial', 'B', 25);
             #4D9A9B
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Multicell(130, 5.5, $nombre_completo , 0, 'C');
+            $pdf->Multicell(130, 5.5, utf8_decode($nombre_completo) , 0, 'C');
 
  
             $textypos += 6;
