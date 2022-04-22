@@ -459,7 +459,7 @@ class Mailer
                     <br> <br><a href="https://admin.foromusa.com/'.$link.'">https://admin.foromusa.com/'.$link.'</a><br> <br>
                     Si usted necesita ayuda, comuníquese a la línea de soporte a través de WhatsApp en el siguiente enlace 
                     <br>
-                    <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh<a/>
+                    <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh</a>
                 </p>
                 <p>
                     
