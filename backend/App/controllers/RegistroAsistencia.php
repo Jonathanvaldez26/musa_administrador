@@ -401,11 +401,11 @@ html;
         //$num_linea =utf8_decode("Línea: 39");
         //$num_linea2 =utf8_decode("Línea: 39");
 
-        $pdf->SetXY(0, 250);
+        $pdf->SetXY(10, 250);
         $pdf->SetFont('Arial', 'B', 30);
         #4D9A9B
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->Multicell(90, 10, utf8_decode($nombre_completo), 0, 'C');
+        $pdf->Multicell(95, 10, utf8_decode($nombre_completo), 0, 'C');
         $pdf->output();
     }
 
