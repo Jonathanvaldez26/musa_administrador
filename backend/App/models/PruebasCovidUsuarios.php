@@ -210,7 +210,7 @@ sql;
         FROM prueba_covid pc
         INNER JOIN utilerias_asistentes ua
         ON pc.utilerias_asistentes_id = ua.utilerias_asistentes_id
-        WHERE status = 2
+        WHERE pc.status = 2
 sql;
 
         return $mysqli->queryAll($query);        
@@ -259,7 +259,7 @@ sql;
         FROM prueba_covid pc
         INNER JOIN utilerias_asistentes ua
         ON pc.utilerias_asistentes_id = ua.utilerias_asistentes_id
-        WHERE status = 0
+        WHERE pc.status = 0
 sql;
 
         return $mysqli->queryAll($query);        

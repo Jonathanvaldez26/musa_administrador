@@ -923,6 +923,40 @@ function pendienteComprobante(dato){
     $(document).ready(function (){
         $('#vacunacion a').addClass('active');
         $('#vacunacion .fa-shield-virus').addClass('text-white');
+
+
+        // $(".form_upload_prueba").on("submit",function(event){
+        //       event.preventDefault();
+              
+        //       var formData = $(this).serialize();
+        //         console.log(formData);
+        //           $.ajax({
+        //               url:"/ComprobantesVacunacion/uploadComprobante",
+        //               type: "POST",
+        //               data: formData,
+        //               cache: false,
+        //               contentType: false,
+        //               processData: false,
+        //               beforeSend: function(){
+        //               console.log("Procesando....");
+        //           },
+        //           success: function(respuesta){
+        //             //   if(respuesta == 'success'){
+        //             //      // $('#modal_payment_ticket').modal('toggle');
+                         
+        //             //       swal("¡Se ha guardado tu la prueba correctamente!", "", "success").
+        //             //       then((value) => {
+        //             //           window.location.replace("/Covid/");
+        //             //       });
+        //             //   }
+        //               console.log(respuesta);
+        //           },
+        //           error:function (respuesta)
+        //           {
+        //               console.log(respuesta);
+        //           }
+        //       });
+        //   });
     });
 </script>
 

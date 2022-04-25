@@ -1,6 +1,8 @@
 <?php
+
 namespace App\controllers;
-defined("APPPATH") OR die("Access denied");
+
+defined("APPPATH") or die("Access denied");
 
 use \Core\View;
 use \Core\MasterDom;
@@ -10,23 +12,27 @@ use \App\models\ComprobantesVacunacion as ComprobantesVacunacionDao;
 use \App\models\Linea as LineaDao;
 use \App\models\Asistentes as AsistentesDao;
 
-class ComprobantesVacunacion extends Controller{
+class ComprobantesVacunacion extends Controller
+{
 
-    private $_contenedor;
+  private $_contenedor;
 
-    function __construct(){
-        parent::__construct();
-        $this->_contenedor = new Contenedor;
-        View::set('header',$this->_contenedor->header());
-        View::set('footer',$this->_contenedor->footer());
-    }
+  function __construct()
+  {
+    parent::__construct();
+    $this->_contenedor = new Contenedor;
+    View::set('header', $this->_contenedor->header());
+    View::set('footer', $this->_contenedor->footer());
+  }
 
-    public function getUsuario(){
-      return $this->__usuario;
-    }
+  public function getUsuario()
+  {
+    return $this->__usuario;
+  }
 
-    public function index() {
-     $extraHeader =<<<html
+  public function index()
+  {
+    $extraHeader = <<<html
       <style>
         .logo{
           width:100%;
@@ -37,35 +43,35 @@ class ComprobantesVacunacion extends Controller{
       </style>
 html;
 
-      $btnVacunacionEditarHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vacunacion", 5) == 0) ? "style=\"display:none;\"" : "";
+    $btnVacunacionEditarHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vacunacion", 5) == 0) ? "style=\"display:none;\"" : "";
 
-      $tabla = '';
-      $tabla_no_v = '';
-      $tabla_rechazados = '';
+    $tabla = '';
+    $tabla_no_v = '';
+    $tabla_rechazados = '';
 
-      $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
-      
-      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $comprobantes = ComprobantesVacunacionDao::getAll();
+    $permisos = Controller::getPermisoGlobalUsuario($this->__usuario)[0];
 
-      // }else{
-      //   $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
-      //   // var_dump($id_linea['utilerias_administradores_id']);
-      //   $comprobantes = ComprobantesVacunacionDao::getComprobatesByLinea($id_linea['id_linea_ejecutivo']);
-      // }
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    $comprobantes = ComprobantesVacunacionDao::getAll();
 
-      $permiso_eliminar = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? "style=\"display:none;\"" : "";
+    // }else{
+    //   $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+    //   // var_dump($id_linea['utilerias_administradores_id']);
+    //   $comprobantes = ComprobantesVacunacionDao::getComprobatesByLinea($id_linea['id_linea_ejecutivo']);
+    // }
 
-      foreach ($comprobantes as $key => $value) {
+    $permiso_eliminar = (Controller::getPermisoUser($this->__usuario)['perfil_id']) != 1 ? "style=\"display:none;\"" : "";
 
-        if ($value['status_comprobante'] == 0) {
-          
-          // print('asdasdasdadas');
-          $tabla_rechazados .= <<<html
+    foreach ($comprobantes as $key => $value) {
+
+      if ($value['status_comprobante'] == 0) {
+
+        // print('asdasdasdadas');
+        $tabla_rechazados .= <<<html
             <tr>
               <td class="text-center">
                 <span class="badge badge-danger"> <i class="fas fa-times"> </i> Rechazado</span> <br>
-                <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v'] }</span>
+                <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v']}</span>
                  <!--<hr>-->
                  <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                     
@@ -172,8 +178,8 @@ html;
                               <h5>Notas</h5>
 html;
 
-                        if ($value['nota'] != '') {
-                          $tabla_rechazados .=<<<html
+        if ($value['nota'] != '') {
+          $tabla_rechazados .= <<<html
                             <div class="editar_section" id="editar_section">
                               <p id="">
                                 {$value['nota']}
@@ -204,8 +210,8 @@ html;
                               </form>
                             </div>
 html;
-                        }else{
-                          $tabla_rechazados .=<<<html
+        } else {
+          $tabla_rechazados .= <<<html
                             <p>
                               {$value['nota']}
                             </p>
@@ -219,8 +225,8 @@ html;
                               </button>
                             </form>
 html;
-                        }
-                        $tabla_rechazados .=<<<html
+        }
+        $tabla_rechazados .= <<<html
                             </div>
                           </div>
                         </div>
@@ -229,17 +235,17 @@ html;
               </div>
             </div>
 html;
-        } else {
+      } else {
 
-          $id_linea = $value['id_linea_principal'];
-          // $encargado = AsistentesDao::getEncargadoLinea($id_linea);
+        $id_linea = $value['id_linea_principal'];
+        // $encargado = AsistentesDao::getEncargadoLinea($id_linea);
 
-          if ($value['validado'] == 1) {
-            $tabla .= <<<html
+        if ($value['validado'] == 1) {
+          $tabla .= <<<html
               <tr>
                 <td class="text-center">
                   <span class="badge badge-success"><i class="fas fa-check"> </i> Aprobado</span> <br>
-                  <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v'] }</span>
+                  <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v']}</span>
                    <!--<hr>-->
                    <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                             
@@ -271,6 +277,7 @@ html;
                   <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
+                  
                     <button class="btn bg-gradient-warning btn-icon-only" id="btn-status-{$value['id_c_v']}" onclick="pendienteComprobante({$value['id_c_v']})" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-original-title="Poner pendiente prueba de {$value['nombre_completo']}">
                       <span class="fas fa-clock"></span>
                   </button>
@@ -346,8 +353,8 @@ html;
                             <h5>Notas</h5>
 html;
 
-                        if ($value['nota'] != '') {
-                          $tabla .=<<<html
+          if ($value['nota'] != '') {
+            $tabla .= <<<html
                             <div class="editar_section" id="editar_section">
                               <p id="">
                                 {$value['nota']}
@@ -378,8 +385,8 @@ html;
                               </form>
                             </div>
 html;
-                        }else{
-                          $tabla .=<<<html
+          } else {
+            $tabla .= <<<html
                             <p>
                               {$value['nota']}
                             </p>
@@ -393,8 +400,8 @@ html;
                               </button>
                             </form>
 html;
-                        }
-                        $tabla .=<<<html
+          }
+          $tabla .= <<<html
                           </div>
                         </div>
                       </div>
@@ -403,15 +410,15 @@ html;
                 </div>
               </div>
 html;
-          }
-  
-          if ($value['validado'] == 0) {
-            $tabla_no_v .= <<<html
+        }
+
+        if ($value['validado'] == 0) {
+          $tabla_no_v .= <<<html
             
               <tr>
                 <td class="text-center">
                   <span class="badge badge-warning text-dark"><i class="fas fa-clock"></i> Pendiente</span><br>
-                  <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v'] }</span>
+                  <span class="badge badge-secondary">Folio <i class="fas fa-hashtag"> </i> {$value['id_c_v']}</span>
                    <!--<hr>-->
                    <!--<p class="text-sm font-weight-bold mb-0 "><span class="fa fas fa-user-tie" style="font-size: 13px;"></span><b> Ejecutivo Asignado a Línea: </b><br><span class="fas fa-suitcase"> </span> {$value['nombre_ejecutivo']} <span class="badge badge-success" style="background-color:  {$value['color']}; color:white "><strong>{$value['nombre_linea_ejecutivo']}</strong></span></p>-->
                     
@@ -439,10 +446,13 @@ html;
                   <p class="text-center" style="font-size: small;"><span class="fa fa-cubes" style="font-size: 13px;"></span> <strong>Marca: {$value['marca_dosis']}</strong></p>
                 </td>
                 <td class="text-center">
+                  <!--<button type="button" class="btn bg-gradient-success btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#subir-documento-{$value['id_c_v']}">
+                  <i class="fa fa-solid fa-upload"></i>
+                  </button>-->
                   <button type="button" class="btn bg-gradient-primary btn_iframe btn-icon-only" data-document="{$value['documento']}" data-toggle="modal" data-target="#ver-documento-{$value['id_c_v']}">
                     <i class="fas fa-eye"></i>
                   </button>
-                  <button type="button" class="btn bg-gradient-danger"{$permiso_eliminar} onclick="borrarComprobante({$value['id_c_v']})">
+                  <button type="button" class="btn bg-gradient-danger btn-icon-only"{$permiso_eliminar} onclick="borrarComprobante({$value['id_c_v']})">
                     <i class="fa fa-solid fa-trash"></i>
                   </button>
                   
@@ -517,8 +527,8 @@ html;
                               <h5 class="mb-2">Notas</h5>
 html;
 
-              if ($value['nota'] != '') {
-                $tabla_no_v .=<<<html
+          if ($value['nota'] != '') {
+            $tabla_no_v .= <<<html
                   <div class="editar_section" id="editar_section">
                     <p id="">
                       {$value['nota']}
@@ -549,8 +559,8 @@ html;
                     </form>
                   </div>
 html;
-              }else{
-                $tabla_no_v .=<<<html
+          } else {
+            $tabla_no_v .= <<<html
                   <p>
                     {$value['nota']}
                   </p>
@@ -564,9 +574,9 @@ html;
                     </button>
                   </form>
 html;
-              }
+          }
 
-              $tabla_no_v .= <<<html
+          $tabla_no_v .= <<<html
                                 
                                 
                               </div>
@@ -601,11 +611,48 @@ html;
                 </div>
               </div>
 html;
-          }
-        }      
+
+          $tabla_no_v .= <<<html
+
+<div class="modal fade" id="subir-documento-{$value['id_c_v']}" tabindex="-1" role="dialog" aria-labelledby="subir-documento-{$value['id_c_v']}" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="max-width: 800px;">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cambiar Comprobante de Vacunación {$value['id_c_v']}</h5>
+              <span type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">
+                  X
+              </span>
+          </div>
+          <form method="POST" enctype="multipart/form-data" class="form_upload_prueba">
+            <div class="modal-body bg-gray-200">
+              <div class="row">
+              <input type="text" name="id_comprobante_vacuna" id="id_comprobante_vacuna" value="{$value['id_c_v']}">
+                <div class="form-group col-md-12">
+                  <label class="control-label col-md-12 col-sm-12 col-xs-12" for="file_">Comprobante de Vacunación: <span class="required">*</span></label>
+                  <div class="col-md-12 col-sm-12 col-xs-12">
+                      <input type="file" accept="application/pdf" class="form-control" id="file_" name="file_" required="" onfocus="focused(this)" onfocusout="defocused(this)">
+                  </div>
+                  <span id="availability_4_"></span>
+                </div>
+              </div>
+            </div>
+            <div class="pt-4 modal-footer">
+              
+              <button type="submit" class="btn btn-success" id="btn_upload" name="btn_upload">Aceptar</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        
+            </div>
+          </form>  
+      </div>
+      
+  </div>
+</div>
+html;
+        }
+      }
     }
 
-      $extraFooter =<<<html
+    $extraFooter = <<<html
 
       <script src="http://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" defer></script>
       <link rel="stylesheet" href="http://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css" />
@@ -936,209 +983,244 @@ html;
       </script>
   
 html;
-      // $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
+    // $id_linea = LineaDao::getLineaByAdmin($_SESSION['utilerias_administradores_id'])[0];
 
 
-      //-----------------------------//
-      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $comprobantes_validos = ComprobantesVacunacionDao::contarComprobantesValidos();
-      // }
-      // else{
-      //   $comprobantes_validos = ComprobantesVacunacionDao::contarComprobantesValidosByLine($id_linea['id_linea_ejecutivo']);
-      // }
-      
-      foreach ($comprobantes_validos[0] as $key => $value) {
-        $numero_validos = $value;
-      }
+    //-----------------------------//
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    $comprobantes_validos = ComprobantesVacunacionDao::contarComprobantesValidos();
+    // }
+    // else{
+    //   $comprobantes_validos = ComprobantesVacunacionDao::contarComprobantesValidosByLine($id_linea['id_linea_ejecutivo']);
+    // }
 
-      //----------------------------//
+    foreach ($comprobantes_validos[0] as $key => $value) {
+      $numero_validos = $value;
+    }
 
-      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $asistentes_total = ComprobantesVacunacionDao::contarAsistentes();
-      // }else{
-      //   $asistentes_total = ComprobantesVacunacionDao::contarAsistentesByLine($id_linea['id_linea_ejecutivo']);
-      // }
+    //----------------------------//
 
-      
-      foreach ($asistentes_total[0] as $key => $value) {
-        $numero_asistentes = $value;
-      }
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    $asistentes_total = ComprobantesVacunacionDao::contarAsistentes();
+    // }else{
+    //   $asistentes_total = ComprobantesVacunacionDao::contarAsistentesByLine($id_linea['id_linea_ejecutivo']);
+    // }
 
-       //-----------------------------//
-      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $comprobantes_total = ComprobantesVacunacionDao::contarComprobantesTotales();
-      // }else{
-      //   $comprobantes_total = ComprobantesVacunacionDao::contarComprobantesTotalesByLine($id_linea['id_linea_ejecutivo']);
-      // }
-      foreach ($comprobantes_total[0] as $key => $value) {
-        $numero_comprobantes = $value;
-      }
-      //-----------------------------//
 
-      //-----------------------------//
+    foreach ($asistentes_total[0] as $key => $value) {
+      $numero_asistentes = $value;
+    }
 
-      // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
-        $comprobantes_sin_revisar = ComprobantesVacunacionDao::contarComprobantesPorRevisar();
-      // }else{
-      //   $comprobantes_sin_revisar = ComprobantesVacunacionDao::contarComprobantesPorRevisarByLine($id_linea['id_linea_ejecutivo']);
-      // }
-      
-      foreach ($comprobantes_sin_revisar[0] as $key => $value) {
-        $numero_sin_revisar = $value;
-      }
-      //-----------------------------//
+    //-----------------------------//
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    $comprobantes_total = ComprobantesVacunacionDao::contarComprobantesTotales();
+    // }else{
+    //   $comprobantes_total = ComprobantesVacunacionDao::contarComprobantesTotalesByLine($id_linea['id_linea_ejecutivo']);
+    // }
+    foreach ($comprobantes_total[0] as $key => $value) {
+      $numero_comprobantes = $value;
+    }
+    //-----------------------------//
+
+    //-----------------------------//
+
+    // if($permisos['permisos_globales'] == 1 || $permisos['permisos_globales'] == 5){
+    $comprobantes_sin_revisar = ComprobantesVacunacionDao::contarComprobantesPorRevisar();
+    // }else{
+    //   $comprobantes_sin_revisar = ComprobantesVacunacionDao::contarComprobantesPorRevisarByLine($id_linea['id_linea_ejecutivo']);
+    // }
+
+    foreach ($comprobantes_sin_revisar[0] as $key => $value) {
+      $numero_sin_revisar = $value;
+    }
+    //-----------------------------//
 
     $permisoGlobalHidden = (Controller::getPermisoGlobalUsuario($this->__usuario)[0]['permisos_globales']) != 1 ? "style=\"display:none;\"" : "";
-     $asistentesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistentes", 1) == 0) ? "style=\"display:none;\"" : "";
-     $vuelosHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos", 1) == 0) ? "style=\"display:none;\"" : "";
-     $pickUpHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pickup", 1) == 0) ? "style=\"display:none;\"" : "";
-     $habitacionesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_habitaciones", 1) == 0) ? "style=\"display:none;\"" : "";
-     $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
-     $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
-     $aistenciasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistencias", 1) == 0) ? "style=\"display:none;\"" : "";
-     $vacunacionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vacunacion", 1) == 0) ? "style=\"display:none;\"" : "";
-     $pruebasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pruebas_covid", 1) == 0) ? "style=\"display:none;\"" : "";
-     $configuracionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_configuracion", 1) == 0) ? "style=\"display:none;\"" : "";
-     $utileriasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_utilerias", 1) == 0) ? "style=\"display:none;\"" : "";
+    $asistentesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistentes", 1) == 0) ? "style=\"display:none;\"" : "";
+    $vuelosHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vuelos", 1) == 0) ? "style=\"display:none;\"" : "";
+    $pickUpHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pickup", 1) == 0) ? "style=\"display:none;\"" : "";
+    $habitacionesHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_habitaciones", 1) == 0) ? "style=\"display:none;\"" : "";
+    $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
+    $cenasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_cenas", 1) == 0) ? "style=\"display:none;\"" : "";
+    $aistenciasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_asistencias", 1) == 0) ? "style=\"display:none;\"" : "";
+    $vacunacionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_vacunacion", 1) == 0) ? "style=\"display:none;\"" : "";
+    $pruebasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_pruebas_covid", 1) == 0) ? "style=\"display:none;\"" : "";
+    $configuracionHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_configuracion", 1) == 0) ? "style=\"display:none;\"" : "";
+    $utileriasHidden = (Controller::getPermisosUsuario($this->__usuario, "seccion_utilerias", 1) == 0) ? "style=\"display:none;\"" : "";
 
 
-     View::set('permisoGlobalHidden', $permisoGlobalHidden);
-     View::set('asistentesHidden', $asistentesHidden);
-     View::set('vuelosHidden', $vuelosHidden);
-     View::set('pickUpHidden', $pickUpHidden);
-     View::set('habitacionesHidden', $habitacionesHidden);
-     View::set('cenasHidden', $cenasHidden);
-     View::set('aistenciasHidden', $aistenciasHidden);
-     View::set('vacunacionHidden', $vacunacionHidden);
-     View::set('pruebasHidden', $pruebasHidden);
-     View::set('configuracionHidden', $configuracionHidden);
-     View::set('utileriasHidden', $utileriasHidden);     
+    View::set('permisoGlobalHidden', $permisoGlobalHidden);
+    View::set('asistentesHidden', $asistentesHidden);
+    View::set('vuelosHidden', $vuelosHidden);
+    View::set('pickUpHidden', $pickUpHidden);
+    View::set('habitacionesHidden', $habitacionesHidden);
+    View::set('cenasHidden', $cenasHidden);
+    View::set('aistenciasHidden', $aistenciasHidden);
+    View::set('vacunacionHidden', $vacunacionHidden);
+    View::set('pruebasHidden', $pruebasHidden);
+    View::set('configuracionHidden', $configuracionHidden);
+    View::set('utileriasHidden', $utileriasHidden);
 
-    View::set('comprobantes',$comprobantes);
-    View::set('numero_sin_revisar',$numero_sin_revisar);
-    View::set('numero_comprobantes',$numero_comprobantes);
-    View::set('numero_asistentes',$numero_asistentes);
-    View::set('numero_validos',$numero_validos);
-    View::set('tabla',$tabla);
-    View::set('tabla_no_v',$tabla_no_v);
-    View::set('tabla_rechazados',$tabla_rechazados);
-    View::set('asideMenu',$this->_contenedor->asideMenu());
-    View::set('header',$this->_contenedor->header($extraHeader));
-    View::set('footer',$this->_contenedor->footer($extraFooter));
+    View::set('comprobantes', $comprobantes);
+    View::set('numero_sin_revisar', $numero_sin_revisar);
+    View::set('numero_comprobantes', $numero_comprobantes);
+    View::set('numero_asistentes', $numero_asistentes);
+    View::set('numero_validos', $numero_validos);
+    View::set('tabla', $tabla);
+    View::set('tabla_no_v', $tabla_no_v);
+    View::set('tabla_rechazados', $tabla_rechazados);
+    View::set('asideMenu', $this->_contenedor->asideMenu());
+    View::set('header', $this->_contenedor->header($extraHeader));
+    View::set('footer', $this->_contenedor->footer($extraFooter));
     View::render("comprobantesvacunacion_all");
   }
 
-    public function Validar(){
+  public function Validar()
+  {
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-          $documento = new \stdClass();
-
-            $id_comprobante = $_POST['id_comprobante'];
-            $id_asistente = $_POST['id_asistente'];
-
-            $documento->_id_comprobante_vacuna = $id_comprobante;
-            $documento->_id_asistente = $id_asistente;
-
-            $id = ComprobantesVacunacionDao::validar($documento);
-
-            if($id){
-                echo "success";
-              //header("Location: /Home");
-            }else{
-                echo "fail";
-             // header("Location: /Home/");
-            }
-
-        } else {
-            echo 'fail REQUEST';
-        }
-    }
-
-    public function Rechazar(){
-
-      if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $documento = new \stdClass();
-        $id_comprobante = $_POST['id_comprobante'];
-        $id_asistente = $_POST['id_asistente'];
-        
-        $documento->_id_comprobante_vacuna = $id_comprobante;
-        $documento->_id_asistente = $id_asistente;
-
-        $comprobante = ComprobantesVacunacionDao::getComprobanteById($id_comprobante)[0];
-
-        $ua_id = $comprobante['utilerias_asistentes_id'];
-        $fecha_carga_doc = $comprobante['fecha_carga_documento'];
-        $numero_dosis = $comprobante['numero_dosis'];
-        $marca_dosis = $comprobante['marca_dosis'];
-        $nota = $comprobante['nota'];
-        $documento_prueba = $comprobante['doc'];
-
-        $id = ComprobantesVacunacionDao::rechazar($documento);
-        ComprobantesVacunacionDao::insertLog($ua_id,$fecha_carga_doc,$numero_dosis,$marca_dosis,$documento_prueba,$nota);
-
-        if($id){
-            echo "success";
-          //header("Location: /Home");
-        }else{
-            echo "fail";
-          // header("Location: /Home/");
-        }
-
-      } else {
-          echo 'fail REQUEST';
-      }
-
-    }
-
-    public function GuardarNota(){
-
-
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $documento = new \stdClass();
 
+      $id_comprobante = $_POST['id_comprobante'];
+      $id_asistente = $_POST['id_asistente'];
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $documento->_id_comprobante_vacuna = $id_comprobante;
+      $documento->_id_asistente = $id_asistente;
 
-            $id_comprobante_vacuna = $_POST['id_comprobante_vacuna'];
-            $nota = $_POST['nota'];
+      $id = ComprobantesVacunacionDao::validar($documento);
 
-            $documento->_id_comprobante_vacuna = $id_comprobante_vacuna;
-            $documento->_nota = $nota;
-
-            $id = ComprobantesVacunacionDao::updateNote($documento);
-
-
-            if($id){
-                echo "success";
-              //header("Location: /Home");
-            }else{
-                echo "fail";
-             // header("Location: /Home/");
-            }
-
-        } else {
-            echo 'fail REQUEST';
-        }
-
+      if ($id) {
+        echo "success";
+        //header("Location: /Home");
+      } else {
+        echo "fail";
+        // header("Location: /Home/");
+      }
+    } else {
+      echo 'fail REQUEST';
     }
-
-    public function borrarComprobante(){
-
-      $id = $_POST['dato'];
-
-      $getData = ComprobantesVacunacionDao::getById($id)[0];     
-
-      //unlink("https://registro.foromusa.com/comprobante_vacunacion/".$getData['documento']);
-
-      $delete_registrado = ComprobantesVacunacionDao::delete($id);
-
-      echo json_encode($delete_registrado);
-    }
-
-    public function changeStatus(){
-
-      $id = $_POST['dato'];
-      $update_comprobante = ComprobantesVacunacionDao::updateStatus($id);
-
-      echo json_encode($update_comprobante);
   }
+
+  public function Rechazar()
+  {
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+      $documento = new \stdClass();
+      $id_comprobante = $_POST['id_comprobante'];
+      $id_asistente = $_POST['id_asistente'];
+
+      $documento->_id_comprobante_vacuna = $id_comprobante;
+      $documento->_id_asistente = $id_asistente;
+
+      $comprobante = ComprobantesVacunacionDao::getComprobanteById($id_comprobante)[0];
+
+      $ua_id = $comprobante['utilerias_asistentes_id'];
+      $fecha_carga_doc = $comprobante['fecha_carga_documento'];
+      $numero_dosis = $comprobante['numero_dosis'];
+      $marca_dosis = $comprobante['marca_dosis'];
+      $nota = $comprobante['nota'];
+      $documento_prueba = $comprobante['doc'];
+
+      $id = ComprobantesVacunacionDao::rechazar($documento);
+      ComprobantesVacunacionDao::insertLog($ua_id, $fecha_carga_doc, $numero_dosis, $marca_dosis, $documento_prueba, $nota);
+
+      if ($id) {
+        echo "success";
+        //header("Location: /Home");
+      } else {
+        echo "fail";
+        // header("Location: /Home/");
+      }
+    } else {
+      echo 'fail REQUEST';
+    }
+  }
+
+  public function GuardarNota()
+  {
+
+
+    $documento = new \stdClass();
+
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+      $id_comprobante_vacuna = $_POST['id_comprobante_vacuna'];
+      $nota = $_POST['nota'];
+
+      $documento->_id_comprobante_vacuna = $id_comprobante_vacuna;
+      $documento->_nota = $nota;
+
+      $id = ComprobantesVacunacionDao::updateNote($documento);
+
+
+      if ($id) {
+        echo "success";
+        //header("Location: /Home");
+      } else {
+        echo "fail";
+        // header("Location: /Home/");
+      }
+    } else {
+      echo 'fail REQUEST';
+    }
+  }
+
+  public function borrarComprobante()
+  {
+
+    $id = $_POST['dato'];
+
+    $getData = ComprobantesVacunacionDao::getById($id)[0];
+
+    //unlink("https://registro.foromusa.com/comprobante_vacunacion/".$getData['documento']);
+
+    $delete_registrado = ComprobantesVacunacionDao::delete($id);
+
+    echo json_encode($delete_registrado);
+  }
+
+  public function changeStatus()
+  {
+
+    $id = $_POST['dato'];
+    $update_comprobante = ComprobantesVacunacionDao::updateStatus($id);
+
+    echo json_encode($update_comprobante);
+  }
+
+  public function uploadComprobante()
+  {
+      $documento = new \stdClass();
+
+      $id_comprobante = $_POST['comprobante'];
+      $file = $_FILES["file_"];
+     
+      $pdf = $this->generateRandomString();
+
+      var_dump($file);
+
+
+      //(move_uploaded_file($file["tmp_name"], "pruebas_covid/" . $pdf . '.pdf');
+
+      $documento->_url = $pdf . '.pdf';
+      $documento->_id_comprobante_vacuna = $id_comprobante;
+
+
+      // var_dump($documento);
+      // var_dump($file);
+
+      // $id = ComprobantesVacunacionDao::updateComprobante($documento);
+
+      // if ($id) {
+      //   echo 'success';
+      // } else {
+      //   echo 'fail';
+      // }
+    
+  }
+
+  function generateRandomString($length = 10) { 
+    return substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, $length); 
+} 
 }
