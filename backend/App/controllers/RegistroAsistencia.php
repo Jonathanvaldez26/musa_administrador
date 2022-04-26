@@ -335,7 +335,7 @@ html;
     {
 
         $datos_user = AsistentesDao::getRegistroAccesoHabitacionByClaveRA($clave)[0];
-        $nombre_completo = $datos_user['nombre'] . " " . $datos_user['segundo_nombre'] . " " . $datos_user['apellido_paterno'] . " " . $datos_user['apellido_materno'];
+        $nombre_completo = strtoupper($datos_user['nombre'] . " " . $datos_user['segundo_nombre'] . " " . $datos_user['apellido_paterno'] . " " . $datos_user['apellido_materno']);
         //$nombre_completo = utf8_decode($_POST['nombre']);
         $num_habitacion = $_POST['num_habitacion'];
 

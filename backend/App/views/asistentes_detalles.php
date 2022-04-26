@@ -464,12 +464,13 @@
                                                                         <div class="row">
                                                                             <input type="hidden" id="clave_ra" name="clave_ra" value="<?php echo $clave_ra; ?>">
                                                                             <h4>Etiquetas</h4>
-                                                                            <div class="col-md-6">
+                                                                            <!-- <div class="col-md-6">
                                                                                 <label>Número de Habitación</label>
-                                                                                <input type="number" id="no_habitacion" name="no_habitacion" class="form-control" />
-                                                                            </div>
+                                                                                
+                                                                            </div> -->
 
                                                                             <div class="col-md-6">
+                                                                                <input type="number" value="0" hidden readonly id="no_habitacion" name="no_habitacion" class="form-control" />
                                                                                 <label>Número de etiquetas</label>
                                                                                 <input type="number" id="no_etiquetas" name="no_etiquetas" class="form-control" />
                                                                             </div>
