@@ -589,7 +589,7 @@ html;
                               <form class="form-horizontal btn_validar" id="" action="" method="POST">
                                 <input type="text" id="id_comprobante" name="id_comprobante" value="{$value['id_c_v']}" readonly style="display:none;" hidden>
                                 <input type="text" id="id_asistente" name="id_asistente" value="{$value['utilerias_asistentes_id']}" readonly style="display:none;" hidden>
-                                <button type="submit" class="btn bg-gradient-success" {$btnVacunacionEditarHidden}>
+                                <button type="submit" class="btn bg-gradient-success" >
                                   Aceptar
                                 </button>
                               </form>
@@ -598,7 +598,7 @@ html;
                               <form class="form btn_rechazar" id="btn_rechazar" action="" method="POST">
                                 <input type="text" id="id_comprobante" name="id_comprobante" value="{$value['id_c_v']}" readonly style="display:none;">
                                 <input type="text" id="id_asistente" name="id_asistente" value="{$value['utilerias_asistentes_id']}" readonly style="display:none;" hidden>
-                                <button type="submit" class="btn bg-gradient-secondary" {$btnVacunacionEditarHidden} >
+                                <button type="submit" class="btn bg-gradient-secondary" >
                                   Rechazar
                                 </button>
                               </form>
