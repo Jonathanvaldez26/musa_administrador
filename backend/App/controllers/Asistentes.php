@@ -1086,12 +1086,13 @@ html;
                                             <input type="hidden" id="clave_ra_{$datos['id_registro_acceso']}" name="clave_ra_{$datos['id_registro_acceso']}" value="{$datos['clave']}" readonly>
                                         </div>
 
-                                        <div class="col-md-6">
-                                            <label>Número de Habitación</label>
-                                            <input type="number" id="no_habitacion_{$datos['id_registro_acceso']}" name="no_habitacion_{$datos['id_registro_acceso']}" class="form-control">
-                                        </div>
+                                        <!--div class="col-md-10">
+                                            <label hidden>Número de Habitación</label>
+                                            
+                                        </div-->
 
                                         <div class="col-md-6">
+                                        <input type="number" id="no_habitacion_{$datos['id_registro_acceso']}" value="0" readonly hidden name="no_habitacion_{$datos['id_registro_acceso']}" value="0" readonly hidden class="form-control">
                                             <label>Número de etiquetas</label>
                                             <input type="number" id="no_etiquetas_{$datos['id_registro_acceso']}" name="no_etiquetas_{$datos['id_registro_acceso']}" class="form-control">
                                         </div>
@@ -1509,7 +1510,7 @@ html;
     public function abrirpdf($clave, $noPages = null, $no_habitacion = null)
     {
         $datos_user = AsistentesDao::getRegistroAccesoByClaveRA($clave)[0];
-        $nombre_completo = $datos_user['nombre'] . " " . $datos_user['apellido_paterno'];
+        $nombre_completo = strtoupper($datos_user['nombre'] . " " . $datos_user['apellido_paterno']) ;
        
         //$nombre_completo = utf8_decode($_POST['nombre']);
         //$datos_user['numero_habitacion']
