@@ -354,22 +354,19 @@ sql;
         $mysqli = Database::getInstance(true);
         $query =<<<sql
         SELECT cv.id_comprobante_vacuna AS id_c_v, cv.utilerias_asistentes_id, cv.nota, cv.status AS status_comprobante, cv.validado,
-            email, telefono, fecha_carga_documento, fecha_carga_documento, numero_dosis, marca_dosis, documento,
-            lp.nombre AS nombre_linea,  
-            CONCAT(ra.nombre, ' ',ra.segundo_nombre,' ',ra.apellido_paterno,' ',ra.apellido_materno) AS nombre_completo,
-            uad.nombre as nombre_ejecutivo
+        email, telefono, fecha_carga_documento, fecha_carga_documento, numero_dosis, marca_dosis, documento,
+        lp.nombre AS nombre_linea,  
+        CONCAT(ra.nombre, ' ',ra.segundo_nombre,' ',ra.apellido_paterno,' ',ra.apellido_materno) AS nombre_completo,
+          uad.nombre as nombre_ejecutivo
         FROM comprobante_vacuna cv
         JOIN utilerias_asistentes u
         JOIN registros_acceso ra
-        JOIN linea_principal lp
-        
-        
-        
+        JOIN linea_principal lp         
         JOIN utilerias_administradores uad    
         ON cv.utilerias_asistentes_id = u.utilerias_asistentes_id
         and u.id_registro_acceso = ra.id_registro_acceso
-      
         and lp.id_linea_principal = ra.especialidad
+        and uad.utilerias_administradores_id = lp.utilerias_administradores_id
         where ra.clave = '$id_clave';
 sql;
 
