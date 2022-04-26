@@ -71,7 +71,7 @@ html;
 
     public function setTicketVirtual($asistentes){
         foreach ($asistentes as $key => $value) {
-            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL' || $value['clave'] == ' ') {
                 $clave_10 = $this->generateRandomString(6);
                 AsistentesDao::updateTicketVirtualRA($value['id_registro_acceso'], $clave_10);
                 $this->generaterQr($clave_10);
@@ -81,7 +81,7 @@ html;
 
     public function setClaveRA($all_ra){
         foreach ($all_ra as $key => $value) {
-            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL') {
+            if ($value['clave'] == '' || $value['clave'] == NULL || $value['clave'] == 'NULL' || $value['clave'] == ' ') {
                 $clave_10 = $this->generateRandomString(10);
                 // var_dump($clave_10);
                 AsistentesDao::updateClaveRA($value['id_registro_acceso'], $clave_10);

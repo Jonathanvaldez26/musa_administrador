@@ -667,9 +667,9 @@ html;
                 }
             }
 
-            $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
-            $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            $value['nombre'] = utf8_encode($value['nombre']);
+            // $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
+            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
+            // $value['nombre'] = utf8_encode($value['nombre']);
 
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
@@ -884,9 +884,9 @@ html;
                 }
             }
 
-            $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
-            $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            $value['nombre'] = utf8_encode($value['nombre']);
+            
+            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
+            // $value['nombre'] = utf8_encode($value['nombre']);
 
             if (empty($value['img']) || $value['img'] == null) {
                 $img_user = "/img/user.png";
@@ -1478,9 +1478,9 @@ html;
 
             $img_user = "/img/user.png";
 
-            $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
-            $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
-            $value['nombre'] = utf8_encode($value['nombre']);
+            // $value['apellido_paterno'] = utf8_encode($value['apellido_paterno']);
+            // $value['apellido_materno'] = utf8_encode($value['apellido_materno']);
+            // $value['nombre'] = utf8_encode($value['nombre']);
 
 
 
@@ -1534,7 +1534,7 @@ html;
             $pdf->SetFont('Arial', 'B', 25);
             #4D9A9B
             $pdf->SetTextColor(0, 0, 0);
-            $pdf->Multicell(130, 5.5, $nombre_completo , 0, 'C');
+            $pdf->Multicell(130, 5.5, utf8_decode($nombre_completo) , 0, 'C');
 
  
             $textypos += 6;

@@ -33,6 +33,12 @@ sql;
     INNER JOIN linea_principal lp ON (ra.especialidad = lp.id_linea_principal)
     AND CONCAT_WS(ra.email,ra.nombre,ra.segundo_nombre,ra.apellido_materno,ra.apellido_paterno,ra.ticket_virtual) LIKE '%$search%';
 sql;
+
+// $query =<<<sql
+//     SELECT *
+//     FROM registros_acceso 
+//     WHERE CONCAT_WS(email,nombre,segundo_nombre,apellido_materno,apellido_paterno,ticket_virtual) LIKE '%$search%';
+// sql;
     return $mysqli->queryAll($query);
   }
 

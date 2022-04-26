@@ -389,4 +389,20 @@ sql;
 
         return $mysqli->update($query);
     }
+
+    public static function updateComprobante($comprobante){
+        $mysqli = Database::getInstance(true);
+        $query=<<<sql
+        UPDATE comprobante_vacuna SET documento = :documento WHERE id_comprobante_vacuna = :id_comprobante_vacuna;
+  sql;
+        $parametros = array(
+          ':id_comprobante_vacuna'=>$comprobante->_id_comprobante_vacuna,
+          ':documento'=>$comprobante->_url
+        );
+        //   $accion = new \stdClass();
+        //   $accion->_sql= $query;
+        //   $accion->_parametros = $parametros;
+        //   $accion->_id = $hotel->_id_hotel;
+          return $mysqli->update($query, $parametros);
+      }
 }

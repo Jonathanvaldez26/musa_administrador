@@ -448,26 +448,22 @@ class Mailer
         <body leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
             
             <div class="container">
-                <img src="https://registro.foromusa.com/img/musa-01.png" alt="">
+                <img src="https://registro.foromusa.com/img/musa-01.png" alt="firma">
                 <br>
                 <p>
                     Hola <b>'.$pase['nombre'].'</b>
                 </p>
                 <br>
                 <p style="text-align: justify;">
-                    Le informamos que sus pases de abordar rumbo a la MUSA 2022, fueron cargados con éxito, usted puede consultarlos en su app móvil en la sección de Pases de Abordar que ya se encuentra activa o a través del siguiente link para consulta automática
+                    Le informamos que sus pases de abordar rumbo a foro MUSA Mujer Salud 2022, fueron cargados con éxito, usted puede consultarlos en su app móvil en la sección de Pases de Abordar que ya se encuentra activa o a través del siguiente link para consulta automática
                     <br> <br><a href="https://admin.foromusa.com/'.$link.'">https://admin.foromusa.com/'.$link.'</a><br> <br>
                     Si usted necesita ayuda, comuníquese a la línea de soporte a través de WhatsApp en el siguiente enlace 
                     <br>
-                    <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh<a/>
-                </p>
-                <p>
-                    
+                    <br><a href="https://wa.link/t8evgh">https://wa.link/t8evgh</a>
                 </p>
                 <br>
-                <img src="https://registro.foromusa.com/img/musa-01.png" alt="firma">
 
-                    
+                <img src="https://registro.foromusa.com/img/pie_email_musa.png" alt="píe">
                 
             </div>
             
