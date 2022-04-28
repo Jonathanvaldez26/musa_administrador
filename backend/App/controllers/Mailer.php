@@ -29,7 +29,8 @@ class Mailer
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'contacto@convencionasofarma2022.mx';                     //SMTP username contacto@convencionasofarma2022.mx
-            $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            // $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            $mail->Password   = 'grupolahe664';                               //SMTP password
             $mail->SMTPSecure = 'ssl';
             $mail->SMTPAutoTLS = false;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -141,7 +142,8 @@ class Mailer
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'contacto@convencionasofarma2022.mx';                     //SMTP username contacto@convencionasofarma2022.mx
-            $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            // $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            $mail->Password   = 'grupolahe664';                               //SMTP password
             $mail->SMTPSecure = 'ssl';
             $mail->SMTPAutoTLS = false;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -255,7 +257,8 @@ class Mailer
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'contacto@convencionasofarma2022.mx';                     //SMTP username contacto@convencionasofarma2022.mx
-            $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            // $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            $mail->Password   = 'grupolahe664';                               //SMTP password
             $mail->SMTPSecure = 'ssl';
             $mail->SMTPAutoTLS = false;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -369,11 +372,11 @@ class Mailer
 
         if($pase['tipo'] == 1){
             $titulo_pase = 'PASE DE ABORDAR RUMBO MUSA.';
-            $link = 'https://admin.foromusa.com/comprobante_vuelo_uno/'.$pase['link'];
+            $link = "/comprobante_vuelo_uno/".$pase['link'];
             // $link = 'comprobante_vuelo_uno/'.$pase['link'];
         }else{
             $titulo_pase = 'PASE DE ABORDAR REGRESO A CASA.';
-            $link = 'https://admin.foromusa.com/comprobante_vuelo_dos/'.$pase['link'];            
+            $link = "/comprobante_vuelo_dos/".$pase['link'];            
             // $link = 'comprobante_vuelo_dos/'.$pase['link'];
         }
 
@@ -386,7 +389,8 @@ class Mailer
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
             $mail->Username   = 'contacto@convencionasofarma2022.mx';                     //SMTP username contacto@convencionasofarma2022.mx
-            $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            // $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            $mail->Password   = 'grupolahe664';                               //SMTP password
             $mail->SMTPSecure = 'ssl';
             $mail->SMTPAutoTLS = false;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -475,7 +479,7 @@ class Mailer
 
             //Content
             $mail->isHTML(true);
-            $mail->AddAttachment($link);                                  //Set email format to HTML
+            // $mail->AddAttachment($link);                                  //Set email format to HTML
             $mail->Subject = $titulo_pase;
             $mail->Body    = $html;
             $mail->CharSet = 'UTF-8';
