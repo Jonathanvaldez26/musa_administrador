@@ -372,11 +372,11 @@ class Mailer
 
         if($pase['tipo'] == 1){
             $titulo_pase = 'PASE DE ABORDAR RUMBO MUSA.';
-            $link = "/comprobante_vuelo_uno/".$pase['link'];
+            $link = "comprobante_vuelo_uno/".$pase['link'];
             // $link = 'comprobante_vuelo_uno/'.$pase['link'];
         }else{
             $titulo_pase = 'PASE DE ABORDAR REGRESO A CASA.';
-            $link = "/comprobante_vuelo_dos/".$pase['link'];            
+            $link = "comprobante_vuelo_dos/".$pase['link'];            
             // $link = 'comprobante_vuelo_dos/'.$pase['link'];
         }
 
@@ -388,8 +388,8 @@ class Mailer
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'contacto@convencionasofarma2022.mx';                     //SMTP username contacto@convencionasofarma2022.mx
-            $mail->Password   = 'lxwqdkznaznpwpcg';                               //SMTP password
+            $mail->Username   = 'mujersalud2022@gmail.com';                     //SMTP username contacto@convencionasofarma2022.mx
+            $mail->Password   = 'grupolahe664';                               //SMTP password
             // $mail->Password   = 'grupolahe664';                               //SMTP password
             $mail->SMTPSecure = 'ssl';
             $mail->SMTPAutoTLS = false;            //Enable implicit TLS encryption
@@ -479,7 +479,7 @@ class Mailer
 
             //Content
             $mail->isHTML(true);
-            // $mail->AddAttachment($link);                                  //Set email format to HTML
+            $mail->AddAttachment($link);                                  //Set email format to HTML
             $mail->Subject = $titulo_pase;
             $mail->Body    = $html;
             $mail->CharSet = 'UTF-8';
@@ -489,10 +489,10 @@ class Mailer
 
            VuelosDao::updateEmail($id_pase_abordar);
            echo 'success';
-           echo 'El mensaje ha sido enviado';
+        //    echo 'El mensaje ha sido enviado';
         } catch (Exception $e) {
-            //echo 'fail';
-           echo "No se pudo enviar el email: {$mail->ErrorInfo}";
+            echo 'fail';
+        //    echo "No se pudo enviar el email: {$mail->ErrorInfo}";
         }
     }
 
