@@ -239,9 +239,9 @@ class Mailer
             $mail->CharSet = 'UTF-8';
 
             $mail->send();
-           //echo 'El mensaje ha sido enviado';
+           echo 'El mensaje ha sido enviado';
         } catch (Exception $e) {
-           //echo "No se pudo enviar el email: {$mail->ErrorInfo}";
+           echo "No se pudo enviar el email: {$mail->ErrorInfo}";
         }
     }
 
@@ -369,11 +369,11 @@ class Mailer
 
         if($pase['tipo'] == 1){
             $titulo_pase = 'PASE DE ABORDAR RUMBO MUSA.';
-            $link = 'comprobante_vuelo_uno/'.$pase['link'];
+            $link = 'https://admin.foromusa.com/comprobante_vuelo_uno/'.$pase['link'];
             // $link = 'comprobante_vuelo_uno/'.$pase['link'];
         }else{
             $titulo_pase = 'PASE DE ABORDAR REGRESO A CASA.';
-            $link = 'comprobante_vuelo_dos/'.$pase['link'];            
+            $link = 'https://admin.foromusa.com/comprobante_vuelo_dos/'.$pase['link'];            
             // $link = 'comprobante_vuelo_dos/'.$pase['link'];
         }
 
@@ -485,10 +485,10 @@ class Mailer
 
            VuelosDao::updateEmail($id_pase_abordar);
            echo 'success';
-           //echo 'El mensaje ha sido enviado';
+           echo 'El mensaje ha sido enviado';
         } catch (Exception $e) {
             //echo 'fail';
-           //echo "No se pudo enviar el email: {$mail->ErrorInfo}";
+           echo "No se pudo enviar el email: {$mail->ErrorInfo}";
         }
     }
 
